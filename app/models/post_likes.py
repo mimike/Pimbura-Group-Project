@@ -11,7 +11,7 @@ class PostLikes(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey("posts.id"), nullable=False, index=True)
 
     post = db.relationship("Posts", back_populates="post_likes")
-    user = db.relationship("User", back_populates="user")
+    user = db.relationship("User", back_populates="post_likes")
     
 
     def to_dict(self):   #{id: asdf, username: asdf}

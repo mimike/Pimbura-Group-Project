@@ -15,7 +15,12 @@ class User(db.Model, UserMixin):  #came with the skeleton, do we need to make mo
   comments = db.relationship("Comments", back_populates="user")
   comment_likes = db.relationship("CommentLikes", back_populates="user")
   post_likes = db.relationship("PostLikes", back_populates="user")
-
+  # follower_id = db.relationship("Followers", back_populates='follower', foreign_keys='followers.user_id' )
+  # following_ids = db.relationship("Followers", back_populates='following', foreign_keys='followers.following_id')
+  # Would like to try to make this work
+  # follower_id = db.relationship("Followers", backref='follower', foreign_keys='followers.user_id')
+  # following_ids = db.relationship("Followers", backref='following', foreign_keys='followers.following_id')
+  
   @property
   def password(self):
     return self.hashed_password
@@ -38,5 +43,6 @@ class User(db.Model, UserMixin):  #came with the skeleton, do we need to make mo
       "posts": self.posts.to_dict(),    #a list w/id, photourl, user, caption
       "comments": self.comments.to_dict(),
       "comment_likes": self.comment_likes.to_dict(),
-      "post_likes": self.post_likes.to_dict()
+      "post_likes": self.post_likes.to_dict(),
+      # "following_ids": self.following_id.to_dict()
     }

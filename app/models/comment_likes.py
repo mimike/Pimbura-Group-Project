@@ -8,7 +8,7 @@ class CommentLikes(db.Model):
 
     id = db.Column(db.Integer, primary_key= True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), index=True)
-    comment_id = db.Column(db.Integer, db.ForeignKey("posts.id"), nullable=False, index=True)
+    comment_id = db.Column(db.Integer, db.ForeignKey("comments.id"), nullable=False, index=True)
 
     comment = db.relationship("Comments", back_populates="comment_likes")
     user = db.relationship("User", back_populates="comment_likes")
