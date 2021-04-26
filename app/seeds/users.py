@@ -1,6 +1,7 @@
 # from werkzeug.security import generate_password_hash
 from app.models import db, User
-
+from faker import Faker
+fake = Faker()
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
@@ -20,3 +21,11 @@ def seed_users():
 def undo_users():
     db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
     db.session.commit()
+
+
+
+# fake.name()
+# fake.username()
+# fake.email()
+# fake.avatarUlr()
+
