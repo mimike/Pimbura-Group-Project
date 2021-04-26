@@ -1,0 +1,10 @@
+git checkout main
+git pull
+
+
+git checkout -b nameofbranch
+git push -u origin nameofbranch
+
+
+git branch
+q

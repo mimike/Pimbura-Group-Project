@@ -1,3 +1,6 @@
+
+
+
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
@@ -10,6 +13,41 @@ const setUser = (user) => ({
 const removeUser = () => ({
     type: REMOVE_USER
 })
+
+// sunday w/junaid mock
+export const photoUpload = ( submission ) => async (dispatch) => {
+    const { photo_url, caption } = submission
+    const formData = new FormData() //packages up submission data nicely
+    formData.append("caption", caption)  // every single non file upload
+    // for multiple files
+    //   if (images && images.length !== 0) {
+    //     for (var i = 0; i < images.length; i++) {
+    //       formData.append("images", images[i]);
+    //     }
+    //   }
+
+    if(photo_url){
+        formData.append("photo_url", photo_url)
+    }
+
+    const response = await fetch('/api/posts/', {  //not done routes yet
+        method: "POST",
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }, body: formData
+    });
+
+    if(response.ok){  //202
+        const data = await response.json();
+        return data
+    }
+    // if (data.errors) {
+    //     return;
+    // }
+    // dispatch(setUser(data))
+
+
+}
 
 
 
@@ -26,7 +64,7 @@ export const authenticate = () => async (dispatch) => {
         return;
     }
     dispatch(setUser(data))
-    
+
 }
 
 export const login = (email, password) => async (dispatch) => {
