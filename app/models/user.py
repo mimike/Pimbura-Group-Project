@@ -39,8 +39,8 @@ class User(db.Model, UserMixin):  #came with the skeleton, do we need to make mo
     return {
       "id": self.id,
       "username": self.username,
-      "email": self.email
-      #"posts": self.posts.to_dict(),    #a list w/id, photourl, user, caption
+      "email": self.email,
+      "posts": [post.to_dict() for post in self.posts],    #a list w/id, photourl, user, caption
       # "comments": self.comments.to_dict(),
       # "comment_likes": self.comment_likes.to_dict(),
       # "post_likes": self.post_likes.to_dict(),

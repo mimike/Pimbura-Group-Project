@@ -80,6 +80,7 @@ def post_like(id):
     db.session.add(like)
     db.session.commit()
 
+
 #route for posting a comment
 @post_routes.route('/<int:id>/comments', methods=['POST'])
 @login_required
@@ -97,7 +98,7 @@ def post_comment(id):
     return
 
 
-
+#Route for patching a post
 @post_routes.route('/<int:id>', methods=['PATCH'])
 @login_required
 def patch_post(id):
@@ -108,6 +109,7 @@ def patch_post(id):
     return redirect('/')
 
 
+#Route for patching a comment
 @post_routes.route('/<int:id>/comments/<int:commentId>', methods=['PATCH'])
 @login_required
 def patch_comment(commentId):
@@ -118,6 +120,7 @@ def patch_comment(commentId):
     return
 
 
+# Route for deleting a post
 @post_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_post(id):
@@ -126,7 +129,7 @@ def delete_post(id):
     db.session.commit()
     return redirect('/')
 
-
+# Route for deleting a comment
 @post_routes.route('/<int:id>/comments/<int:commentId>', methods=['DELETE'])
 @login_required
 def delete_comment(commentId):

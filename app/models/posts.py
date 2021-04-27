@@ -16,10 +16,10 @@ class Posts(db.Model):
 
     def to_dict(self):   #{id: asdf, username: asdf} in order to sent it to json, list, dict, or string
         return {
-        "id": self.id,
-        "photo_url": self.photo_url,
-        # "user": self.user.to_dict(),   # call the to dict on the user model
-        "caption": self.caption,
-        # "post_comments": self.post_comments.to_dict(),
-        # "post_likes": self.post_likes.to_dict()
+            "id": self.id,
+            "photo_url": self.photo_url,
+            "user": self.user.to_dict(),   # call the to dict on the user model
+            "caption": self.caption,
+            "post_comments": [post_comment.to_dict() for post_comment in self.post_comments],
+            "post_likes": [post_like.to_dict() for post_like in self.post_likes]
         }
