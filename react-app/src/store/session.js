@@ -1,6 +1,4 @@
 
-
-
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
@@ -14,9 +12,8 @@ const removeUser = () => ({
     type: REMOVE_USER
 })
 
-// sunday w/junaid mock
 export const photoUpload = ( submission ) => async (dispatch) => {
-    const { photo_url, caption } = submission
+    const { image, caption } = submission
     const formData = new FormData() //packages up submission data nicely
     formData.append("caption", caption)  // every single non file upload
     // for multiple files
@@ -26,15 +23,13 @@ export const photoUpload = ( submission ) => async (dispatch) => {
     //     }
     //   }
 
-    if(photo_url){
-        formData.append("photo_url", photo_url)
+    if(image){
+        formData.append("image", image)
     }
 
     const response = await fetch('/api/posts/', {  //not done routes yet
         method: "POST",
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }, body: formData
+        body: formData
     });
 
     if(response.ok){  //202

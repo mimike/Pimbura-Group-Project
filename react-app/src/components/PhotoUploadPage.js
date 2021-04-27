@@ -1,20 +1,20 @@
 // sunday with junaid
 import React, { useEffect, useState } from "react";
 //import { NavLink } from "react-router-dom";
-import { useState } from "react";
+
 import { useDispatch } from "react-redux";
-import { photoUpload } from "../../store/session"  // may change name of this function and store location! curly braces from export const
+import { photoUpload } from "../store/session"  // may change name of this function and store location! curly braces from export const
 
 
 function PhotoUploadPage() {
 
   const [ caption, setCaption ] = useState("")
-  const [ photoUrl, setPhotoUrl ] = useState("")
+  const [ image, setImage ] = useState(null)
 
   const dispatch = useDispatch()
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const submission = { caption, photoUrl }
+    const submission = { caption, image }
     let createdPhoto = await dispatch(photoUpload(submission)) // line ~42 of session.js data return
     if(createdPhoto){            // if photo created, modal, redirect, etc.
       // redirect to (/feed)
@@ -37,11 +37,19 @@ function PhotoUploadPage() {
 
         <div>
           <input
-            name = "photo_url"
+            name = "image"
             type = "file"
             placeholder = "Upload"
-            onChange = { (e) => setPhotoUrl(e.target.files[0])} // only accepts ONE photo if they try and upload multiple files
+            onChange = { (e) => setImage(e.target.files[0])} // only accepts ONE photo if they try and upload multiple files
           />
+        </div>
+
+        <div>
+          <button
+            type="submit"
+
+          >SUBMIT
+          </button>
         </div>
       </form>
     </>

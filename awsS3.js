@@ -1,4 +1,4 @@
-//sunday
+//sunday this will be .py file
 //notes: download packages for python later
 const AWS = require("aws-sdk");
 // name of your bucket here
