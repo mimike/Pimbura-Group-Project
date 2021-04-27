@@ -18,7 +18,8 @@ class Posts(db.Model):
         return {
             "id": self.id,
             "photo_url": self.photo_url,
-            "user": self.user.to_dict(),   # call the to dict on the user model
+            "user_id": self.user_id,
+            # "user": self.user.to_dict(),   # call the to dict on the user model
             "caption": self.caption,
             "post_comments": [post_comment.to_dict() for post_comment in self.post_comments],
             "post_likes": [post_like.to_dict() for post_like in self.post_likes]
