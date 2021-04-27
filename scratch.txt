@@ -7,4 +7,14 @@ git push -u origin nameofbranch
 
 
 git branch
-q
+
+
+git merge main
+
+
+pipenv run flask db init
+pipenv run flask db migrate -m "create simple people"
+pipenv run flask db upgrade
+
+flask seed all
+flask seed undof

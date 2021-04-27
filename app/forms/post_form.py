@@ -4,3 +4,6 @@ from wtforms.validators import DataRequired, ValidationError
 
 
 class PostForm(FlaskForm):
+    #url StringFieldd andcaption
+    url = StringField('url', validators=[DataRequired()])
+    caption = StringField('caption', validators=[DataRequired()])

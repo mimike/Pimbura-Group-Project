@@ -7,11 +7,11 @@ fake = Faker()
 def seed_users():
 
     demo = User(username='Demo', email='demo@aa.io',
-                hashed_password='password', avatar_url='https://dogtime.com/assets/uploads/2011/03/puppy-development.jpg')
+                password='password', avatar_url='https://dogtime.com/assets/uploads/2011/03/puppy-development.jpg')
     db.session.add(demo)
 
     for num in range(50):
-        user = User(username=fake.name(), email=fake.email(), hashed_password='password', avatar_url='https://dogtime.com/assets/uploads/2011/03/puppy-development.jpg')
+        user = User(username=fake.name(), email=fake.email(), password='password', avatar_url='https://dogtime.com/assets/uploads/2011/03/puppy-development.jpg')
         db.session.add(user)
 
     db.session.commit()
@@ -31,4 +31,3 @@ def undo_users():
 # fake.username()
 # fake.email()
 # fake.avatarUlr()
-
