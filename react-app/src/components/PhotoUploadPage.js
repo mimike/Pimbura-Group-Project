@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 //import { NavLink } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
-import { photoUpload } from "../store/session"  // may change name of this function and store location! curly braces from export const
+import { photoUpload } from "../store/posts"  // may change name of this function and store location! curly braces from export const
 
 
 function PhotoUploadPage() {

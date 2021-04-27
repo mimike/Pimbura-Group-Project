@@ -12,37 +12,7 @@ const removeUser = () => ({
     type: REMOVE_USER
 })
 
-export const photoUpload = ( submission ) => async (dispatch) => {
-    const { image, caption } = submission
-    const formData = new FormData() //packages up submission data nicely
-    formData.append("caption", caption)  // every single non file upload
-    // for multiple files
-    //   if (images && images.length !== 0) {
-    //     for (var i = 0; i < images.length; i++) {
-    //       formData.append("images", images[i]);
-    //     }
-    //   }
 
-    if(image){
-        formData.append("image", image)
-    }
-
-    const response = await fetch('/api/posts/', {  //not done routes yet
-        method: "POST",
-        body: formData
-    });
-
-    if(response.ok){  //202
-        const data = await response.json();
-        return data
-    }
-    // if (data.errors) {
-    //     return;
-    // }
-    // dispatch(setUser(data))
-
-
-}
 
 
 
