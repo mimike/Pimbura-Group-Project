@@ -10,6 +10,7 @@ import User from "./components/User";
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 import PhotoUploadPage from "./components/PhotoUploadPage"
+import PhotoFeed from "./components/PostFeed"
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -48,6 +49,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
           <h1>My Home Page</h1>
+          <PhotoFeed />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
