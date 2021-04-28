@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session'
-
+import { Link } from 'react-router-dom'
 const SignUpForm = () => {
   const history = useHistory()
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const SignUpForm = () => {
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState('') // not on Database. need to add
   const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState(""); //not on form
+  const [repeatPassword, setRepeatPassword] = useState("");
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -22,76 +22,128 @@ const SignUpForm = () => {
     }
   };
 
-  if (user) {
+  if (user !== null) {
     return <Redirect to="/" />;
   }
 
-  // const validateEmailPassword(){
-  // }
-
   return (
-    <form onSubmit={onSignUp}>
+    <div>
+      <div className="splash-image">
+        <img alt="cell phone" src="/images/splash.jpeg"></img>
+      </div>
+      <div className="sign-up-form-container">
+
+        <div className="icon">
+            <h1>Instagram</h1>
+        </div>
+        <div className="see-friends">
+            <h4>Sign up to see photos and videos from your friends.</h4>
+        </div>
+        <div className="log-in-with-facebook">
+            <button>Log in with Facebook</button>
+        </div>
+
+        <div>
+          <h5 style={{color:'grey'}}>---------------------   OR  ---------------------</h5>
+        </div>
+
+        <div className="sign-up-form">
+          <form onSubmit={onSignUp}>
+            <div>
+                <input
+                type="text"
+                placeholder="Email"
+                name="email"
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                value={email}
+                >
+                </input>
+            </div>
+
+            <div>
+                <input
+                type="text"
+                placeholder="Full Name"
+                name="fullname"
+                onChange={(e) => setFullName(e.target.value)}
+                value={fullName}
+                >
+                </input>
+            </div>
+
+            <div>
+                <input
+                type="text"
+                placeholder="Username"
+                name="username"
+                onChange={(e) => setUsername(e.target.value)}
+                value={username}
+                >
+                </input>
+            </div>
+
+            <div>
+                <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                >
+                </input>
+            </div>
+
+            <div>
+                <input
+                type="password"
+                placeholder="Repeat Password"
+
+                onChange={(e) => setRepeatPassword(e.target.value)}
+                value={repeatPassword}
+                >
+                </input>
+            </div>
+            <div className="sign-up-button">
+              <button>
+                  Sign Up
+              </button>
+            </div>
+
+            <div className="terms-agreement">
+              <h5>By signing up, you agree to our Terms, Data Policy and Cookies Policy.</h5>
+            </div>
+
+          </form>
+        </div>
+      </div>
       <div>
-          <input
-          type="text"
-          placeholder="Email"
-          name="email"
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          value={email}
-          >
-          </input>
+      <div className="log-in-box">
+        <h3>
+          Have an account? <Link to="/login">Log in</Link>
+        </h3>
+        </div>
       </div>
 
-      <div>
-          <input
-          type="text"
-          placeholder="Full Name"
-          name="fullname"
-          onChange={(e) => setFullName(e.target.value)}
-          value={fullName}
-          >
-          </input>
+      <div className="get-app-container">
+        <h4>Get the app.</h4>
+      </div>
+      <div className="app-icon-container">
+        <span className="google-image">
+          <img alt="google app" src="/images/google-app.png"></img>
+        </span>
+        <span className="apple-image">
+          <img alt="apple app" src="/images/apple-app.png"></img>
+        </span>
       </div>
 
-      <div>
-          <input
-          type="text"
-          placeholder="Username"
-          name="username"
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
-          >
-          </input>
-      </div>
 
-      <div>
-          <input
-          type="password"
-          placeholder="Password"
-          name="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-          >
-          </input>
-      </div>
+    </div>
 
-      <div>
-          <input
-          type="password"
-          placeholder="Repeat Password"
 
-          onChange={(e) => setRepeatPassword(e.target.value)}
-          value={repeatPassword}
-          >
-          </input>
-      </div>
 
-      <button>
-          Sign Up
-      </button>
 
-    </form>
+
   );
 };
 

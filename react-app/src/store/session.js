@@ -1,4 +1,4 @@
-
+import { setErrors, removeErrors } from "./errors"
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
@@ -72,7 +72,12 @@ export const signUp = (username, email, password) => async (dispatch)=> {
         }),
     });
     const data = await response.json();
-    dispatch(setUser(data));
+    if (!response.ok){
+        dispatch(setErrors(data.errors))
+    } else {
+        dispatch(setUser(data));
+        //clear errors here dispatch(removeErrors())
+    }
 }
 
 // reducer

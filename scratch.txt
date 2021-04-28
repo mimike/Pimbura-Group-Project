@@ -17,4 +17,4 @@ pipenv run flask db migrate -m "create simple people"
 pipenv run flask db upgrade
 
 flask seed all
-flask seed undof
+flask seed undo

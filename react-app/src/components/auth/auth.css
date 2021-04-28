@@ -1,0 +1,125 @@
+.sign-up-form-container{
+    border: 1px solid grey;
+    height: 500px;
+    width: 350px;
+}
+
+.icon h1{
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-style: italic;
+    margin: 20px;
+}
+.see-friends{
+    color: grey;
+    width: 180px;
+}
+
+.log-in-with-facebook button{
+    background-color:  #0095f6;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: white;
+    border-radius: 5px;
+    width: 300px;
+    font-weight: bold;
+}
+
+.sign-up-form{
+
+}
+
+.sign-up-form input{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 300px;
+}
+
+.sign-up-button button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color:  #0095f6;
+    color: white;
+    width: 300px;
+    font-weight: bold;
+
+}
+
+.log-in-container{
+    display: flex;
+}
+ .log-in-box{
+    border: 1px solid grey;
+    width: 350px;
+    margin-top: 20px;
+ }
+
+ .log-in-box h3{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+ }
+
+ .splash-image{
+    order: 1;
+ }
+
+ .log-in-form-container{
+    order: 2;
+    border: 1px solid grey;
+    height: 300px;
+    width: 350px;
+}
+
+input{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 300px;
+}
+
+.log-in button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: rgb(52, 121, 211);
+    color: white;
+    width: 300px;
+    font-weight: bold;
+}
+
+.sign-up-box{
+    border: 1px solid grey;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 350px;
+    height: 350px;
+}
+
+.sign-up-box h3{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+ }
+
+ .splash-image img{
+     height: 550px;
+ }
+
+ .get-app-text {
+    display: flex;
+ }
+ .get-app-text h4{
+    
+ }
+
+ .app-icon-container{
+     display: flex;
+ }
+ .apple-image {
+    margin: 10px;
+ }
+ .google-image{
+     margin: 10px;
+
+ }

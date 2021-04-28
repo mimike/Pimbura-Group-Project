@@ -10,13 +10,9 @@ import User from "./components/User";
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 import PhotoUploadPage from "./components/PhotoUploadPage"
-
 import SignUpPage from "./components/SignUpPage"
 import LoginPage from "./components/LoginPage"
-
 import PhotoFeed from "./components/PostFeed"
-
-
 
 
 function App() {
@@ -45,7 +41,7 @@ function App() {
         </Route>
 
         <Route path="/sign-up" exact={true}>
-          
+
           <SignUpPage />
         </Route>
         <Route path="/posts" exact={true}>
