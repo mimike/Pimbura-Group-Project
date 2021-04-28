@@ -26,6 +26,28 @@ export const getAllPosts = () => async (dispatch) => {
     }
 }
 
+export const likeAPost = (params) => async dispatch => {
+    const {user_id, post_id} = params
+    const response = await fetch(`/api/posts/${post_id}/like`, {
+        method: "POST",
+        user_id,
+        post_id
+    })
+    const data = await response.json()
+    return
+}
+
+export const unlikeAPost = (params) => async dispatch => {
+    const {post_id, like_id} = params
+    const response = await fetch(`/api/posts/like/${like_id}`, {
+        method: "DELETE",
+        post_id,
+        like_id
+    })
+    const data = await response.json()
+    return
+}
+
 export const photoUpload = ( submission ) => async (dispatch) => {
     const { image, caption } = submission
     const formData = new FormData() //packages up submission data nicely
