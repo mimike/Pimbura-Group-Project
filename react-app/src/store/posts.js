@@ -26,9 +26,9 @@ export const getAllPosts = () => async (dispatch) => {
     }
 }
 
-export const getAllUserPosts = (username) => async (dispatch) => {
+export const getAllUserPosts = (id) => async (dispatch) => {
     // const response = await fetch('/api/posts')
-    const response = await fetch('/api/posts/<username>', {  //not done routes yet
+    const response = await fetch('/api/posts/user/:id', {  //not done routes yet
         method: "GET",
     });
 
