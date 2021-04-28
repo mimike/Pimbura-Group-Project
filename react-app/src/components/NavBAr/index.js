@@ -1,10 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
-import ProfileButton from './ProfileButton'
+import ProfileButton from './ProfileDropDown';
+import SearchForm from './SearchForm';
 import "./NavBar.css";
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
     <nav className="navbar">
       <ul className="navlist">
@@ -15,18 +16,29 @@ const NavBar = () => {
             </NavLink>
           </li>
         </div>
+        <div className="navbar-center">
+          <SearchForm />
+        </div>
         <div className="navbar-right">
           <li>
             <NavLink to="/" exact={true} activeClassName="active">
-              <i className="home icon"/>
+              <i className="home icon right-list"/>
             </NavLink>
           </li>
           <li>
             <NavLink to="/explor" exact={true} activeClassName="active">
-              <i className="compass outline icon"/>
+              <i className="compass outline icon right-list"/>
+            </NavLink>
+            <NavLink to="/posts" exact={true} activeClassName="active">
+              <i className="upload icon right-list"/>
+            </NavLink>
+            <NavLink to="/inbox" exact={true} activeClassName="active">
+              <i className="comment alternate outline icon right-list"/>
             </NavLink>
           </li>
-          <ProfileButton/>
+          <li className="right-list">
+            <ProfileButton/>
+          </li>
           {/* <li>
             <NavLink to="/login" exact={true} activeClassName="active">
               Login

@@ -11,6 +11,7 @@ post_routes = Blueprint('posts', __name__)
 # this route will create a new post, get posts(from my followers), delete a post, and patch a post.
 # We need an explore route!!! Thinking!
 
+
 # Route for getting all of the posts from the user followers
 @post_routes.route('/')
 @login_required
@@ -27,31 +28,32 @@ def get_single_post(id):
     return {"post": post.to_dict()}
 
 
+# Route for posting a single post:
 @post_routes.route('/', methods=['POST'])
 @login_required
 def post_post():
-    print('_________________', request.files)
+    # print('_________________', request.files)
     form = PostForm()
     if "image" not in request.files:
-        print('_________________LINE 27')
+        # print('_________________LINE 27')
         return {"errors": "image required"}, 400
 
     image = request.files["image"]
-    print('_________________LINE 31')
+    # print('_________________LINE 31')
     if not allowed_file(image.filename):
-        print('_________________LINE 33')
+        # print('_________________LINE 33')
         return {"errors": "file type not permitted"}, 400
 
     image.filename = get_unique_filename(image.filename)
 
     upload = upload_file_to_s3(image)
-    print('this is the upload', upload)
+    # print('this is the upload', upload)
 
     if "url" not in upload:
         # if the dictionary doesn't have a url key
         # it means that there was an error when we tried to upload
         # so we send back that error message
-        print('_________________LINE 44')
+        # print('_________________LINE 44')
         return upload, 400
 
     url = upload["url"]
@@ -79,6 +81,7 @@ def post_like(id):
     )
     db.session.add(like)
     db.session.commit()
+    return like.to_dict()
 
 
 #route for posting a comment
@@ -95,7 +98,7 @@ def post_comment(id):
         )
     db.session.add(comment)
     db.session.commit()
-    return
+    return 
 
 
 #Route for patching a post
@@ -140,10 +143,11 @@ def delete_comment(commentId):
 
 
 # Route for unliking a post
-@post_routes.route('/<int:id>/likes/<int:likeId>', methods=['DELETE'])
+@post_routes.route('/like/<int:likeId>', methods=['DELETE'])
 @login_required
 def post_unlike(likeId):
+    print('---------------------------', likeId)
     like = PostLikes.query.get(likeId)
     db.session.delete(like)
     db.session.commit()
-    return
+    return {"like": None}
