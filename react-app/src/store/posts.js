@@ -19,14 +19,27 @@ export const getAllPosts = () => async (dispatch) => {
         method: "GET",
     });
 
-    if (response.ok){
+    if (response.ok) {
         const posts = await response.json();
         dispatch(displayPosts(posts))
         return posts
     }
 }
 
-export const photoUpload = ( submission ) => async (dispatch) => {
+export const getAllUserPosts = (username) => async (dispatch) => {
+    // const response = await fetch('/api/posts')
+    const response = await fetch('/api/posts/<username>', {  //not done routes yet
+        method: "GET",
+    });
+
+    if (response.ok) {
+        const posts = await response.json();
+        dispatch(displayPosts(posts))
+        return posts
+    }
+}
+
+export const photoUpload = (submission) => async (dispatch) => {
     const { image, caption } = submission
     const formData = new FormData() //packages up submission data nicely
     formData.append("caption", caption)  // every single non file upload
@@ -37,7 +50,7 @@ export const photoUpload = ( submission ) => async (dispatch) => {
     //     }
     //   }
 
-    if(image){
+    if (image) {
         formData.append("image", image)
     }
     console.log('BEFORE RESPONSE')
@@ -46,7 +59,7 @@ export const photoUpload = ( submission ) => async (dispatch) => {
         body: formData
     });
 
-    if (response.ok){  //202
+    if (response.ok) {  //202
         const data = await response.json();
         dispatch(createPost(data))
         // return data
@@ -59,17 +72,17 @@ export const photoUpload = ( submission ) => async (dispatch) => {
 }
 
 const initialState = { post: null, posts: null }
-export default function reducer(state = initialState, action){
-    switch (action.type){
+export default function reducer(state = initialState, action) {
+    switch (action.type) {
         case UPLOAD_PHOTO:
             return { ...state, post: action.payload };
         case DISPLAY_PHOTOS: {
             const allPosts = action.payload.posts;
             const postsObj = {};
-            for (const post of allPosts){
+            for (const post of allPosts) {
                 postsObj[post.id] = post
             }
-            return {...state, posts: postsObj}
+            return { ...state, posts: postsObj }
         }
 
         default:

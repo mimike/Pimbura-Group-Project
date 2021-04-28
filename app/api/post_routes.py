@@ -153,3 +153,11 @@ def post_unlike(likeId):
     db.session.delete(like)
     db.session.commit()
     return
+
+
+# Route for getting all posts for a single User@post_routes.route('/')
+@post_routes.route('/user/<int:id>')
+@login_required
+def get_user_posts(id):
+    posts = Posts.query.filter_by(user_id=id).all()  # ??????
+    return {"posts": [post.to_dict() for post in posts]}

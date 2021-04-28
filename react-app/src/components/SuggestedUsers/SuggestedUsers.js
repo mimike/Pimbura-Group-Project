@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { getAllUsers } from '../../store/session'
+import { getAllUserPosts } from '../../store/posts'
 import { logout } from "../../store/session";
 import './SuggestedUsers.css'
 
@@ -24,8 +25,14 @@ function SuggestedUsers() {
         history.push('/')
     };
 
-    console.log('users', users)
-    console.log('sessionUser', sessionUser)
+    const userProfile = async (e) => {
+        console.log('event', (e.target.value))
+        // await dispatch(getAllUserPosts())
+        history.push('/')
+    };
+
+    // console.log('users', users)
+    // console.log('sessionUser', sessionUser)
     if (!users) return null
 
 
@@ -61,7 +68,7 @@ function SuggestedUsers() {
                                 {/* <img src={user.avatar_url} alt="test"></img> */}
                             </div>
                             <div className='user-information'>
-                                <div className='user-name'>{user.username}hello</div>
+                                <div className='user-name' value={user.username} onClick={userProfile}>{user.username}</div>
                                 <div className='suggested-text'>Suggested for you</div>
                             </div>
                             <div className='user-follow-button'>Follow</div>
