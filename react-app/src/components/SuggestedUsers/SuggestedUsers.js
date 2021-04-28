@@ -12,9 +12,6 @@ function SuggestedUsers() {
     const sessionUser = useSelector(state => state.session.user)
     let users = useSelector(state => state.session.users)
     let newUsers;
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    // }
 
     useEffect(() => {
         dispatch(getAllUsers())
@@ -30,7 +27,6 @@ function SuggestedUsers() {
         // console.log('event', targetUser[1].value)
         history.push(`/user/${targetUser[1].value}`)
     };
-
 
     // console.log('sessionUser', sessionUser)
     if (!users) return null

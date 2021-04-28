@@ -155,7 +155,7 @@ def post_unlike(likeId):
     return
 
 
-# Route for getting all posts for a single User@post_routes.route('/')
+# Route for getting all posts for a single User
 @post_routes.route('/user/<int:id>')
 @login_required
 def get_user_posts(id):
