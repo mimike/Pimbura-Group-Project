@@ -10,12 +10,14 @@ import User from "./components/User";
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 import PhotoUploadPage from "./components/PhotoUploadPage"
-<<<<<<< HEAD
+
 import SignUpPage from "./components/SignUpPage"
 import LoginPage from "./components/LoginPage"
-=======
+
 import PhotoFeed from "./components/PostFeed"
->>>>>>> main
+
+
+
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
