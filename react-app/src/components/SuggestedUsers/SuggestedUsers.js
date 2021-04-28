@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { getAllUsers } from '../../store/session'
-import { getAllUserPosts } from '../../store/posts'
 import { logout } from "../../store/session";
 import './SuggestedUsers.css'
 
