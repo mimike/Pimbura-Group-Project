@@ -10,6 +10,8 @@ import User from "./components/User";
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 import PhotoUploadPage from "./components/PhotoUploadPage"
+import SignUpPage from "./components/SignUpPage"
+import LoginPage from "./components/LoginPage"
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -31,11 +33,14 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
+
         <Route path="/sign-up" exact={true}>
-          <SignUpForm />
+          
+          <SignUpPage />
         </Route>
         <Route path="/posts" exact={true}>
           <PhotoUploadPage />
