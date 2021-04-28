@@ -22,11 +22,36 @@ li{
     padding: 7px
 }
 
-.profile-button {
+.logout-button {
     text-decoration: none;
+    cursor: pointer;
 }
 
-.profile-menu {
-    list-style-position:inside;
-    border: 1px solid rgb(209, 207, 207);
+
+.dropdown-ul{
+    position: absolute;
+    margin: 5px;
+    margin-left: -4.5%;
+    padding:20px;
+    border: 2px solid rgb(209, 207, 207);
+    /* border-width: 6px 0 6px 6px;
+    border-style: solid;
+    border-color: transparent #fff;     */
+    background-color: white;
+}
+
+.drop-list{
+    padding: 4px;
+}
+
+.logout {
+    border-top: 1px solid rgb(209, 207, 207);
+}
+
+.right-list{
+    padding: 0px 20px;
+}
+
+.search-result{
+    border: 2px solid rgb(209, 207, 207);
 }
