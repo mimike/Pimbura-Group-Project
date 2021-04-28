@@ -79,6 +79,7 @@ def post_like(id):
     )
     db.session.add(like)
     db.session.commit()
+    return like.to_dict()
 
 
 #route for posting a comment
@@ -95,7 +96,7 @@ def post_comment(id):
         )
     db.session.add(comment)
     db.session.commit()
-    return
+    return 
 
 
 #Route for patching a post
@@ -140,10 +141,11 @@ def delete_comment(commentId):
 
 
 # Route for unliking a post
-@post_routes.route('/<int:id>/likes/<int:likeId>', methods=['DELETE'])
+@post_routes.route('/like/<int:likeId>', methods=['DELETE'])
 @login_required
 def post_unlike(likeId):
+    print('---------------------------', likeId)
     like = PostLikes.query.get(likeId)
     db.session.delete(like)
     db.session.commit()
-    return
+    return {"like": None}
