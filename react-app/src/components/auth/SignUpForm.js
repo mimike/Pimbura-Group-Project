@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from 'react-router'
 import { Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import { signUp } from '../../store/session'
 
 const SignUpForm = () => {
+  const history = useHistory()
   const dispatch = useDispatch();
+
   const user = useSelector(state => state.session.user);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [fullName, setFullName] = useState('') // not on Database. need to add
   const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState(""); //not on form
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -18,66 +22,75 @@ const SignUpForm = () => {
     }
   };
 
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
-  };
-
   if (user) {
     return <Redirect to="/" />;
   }
 
+  // const validateEmailPassword(){
+  // }
+
   return (
     <form onSubmit={onSignUp}>
       <div>
-        <label>User Name</label>
-        <input
+          <input
           type="text"
-          name="username"
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type="text"
+          placeholder="Email"
           name="email"
-          onChange={updateEmail}
+          onChange={(e) => setEmail(e.target.value)}
+          required
           value={email}
-        ></input>
+          >
+          </input>
       </div>
+
       <div>
-        <label>Password</label>
-        <input
+          <input
+          type="text"
+          placeholder="Full Name"
+          name="fullname"
+          onChange={(e) => setFullName(e.target.value)}
+          value={fullName}
+          >
+          </input>
+      </div>
+
+      <div>
+          <input
+          type="text"
+          placeholder="Username"
+          name="username"
+          onChange={(e) => setUsername(e.target.value)}
+          value={username}
+          >
+          </input>
+      </div>
+
+      <div>
+          <input
           type="password"
+          placeholder="Password"
           name="password"
-          onChange={updatePassword}
+          onChange={(e) => setPassword(e.target.value)}
           value={password}
-        ></input>
+          >
+          </input>
       </div>
+
       <div>
-        <label>Repeat Password</label>
-        <input
+          <input
           type="password"
-          name="repeat_password"
-          onChange={updateRepeatPassword}
+          placeholder="Repeat Password"
+
+          onChange={(e) => setRepeatPassword(e.target.value)}
           value={repeatPassword}
-          required={true}
-        ></input>
+          >
+          </input>
       </div>
-      <button type="submit">Sign Up</button>
+
+      <button>
+          Sign Up
+      </button>
+
     </form>
   );
 };
