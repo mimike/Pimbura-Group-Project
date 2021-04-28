@@ -19,6 +19,11 @@
     color: #0095F6
 }
 
+.user-follow-button:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .suggested-for-you-header{
     padding: 10px;
     color: #8E8E8E;
@@ -33,8 +38,21 @@
     font-weight: bold;
 }
 
+.user-name:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .suggested-container{
     width: 300px;
     font-size: 14px;
     font-family: apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background-color: #FAFAFA;
+    color: rgba(var(--i1d,38,38,38),1);
+}
+
+.bogus-legal-info{
+    padding: 10px;
+    font-size: 11px;
+    color: #C7C7C7;
 }

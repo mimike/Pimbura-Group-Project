@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { getAllUsers } from '../../store/session'
-//import { NavLink } from "react-router-dom";
+import { logout } from "../../store/session";
 import './SuggestedUsers.css'
 
 
 function SuggestedUsers() {
-
+    const history = useHistory()
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
     const users = useSelector(state => state.session.users)
@@ -17,6 +18,11 @@ function SuggestedUsers() {
     useEffect(() => {
         dispatch(getAllUsers())
     }, [dispatch])
+
+    const onLogout = async (e) => {
+        await dispatch(logout());
+        history.push('/')
+    };
 
     console.log('users', users)
     console.log('sessionUser', sessionUser)
@@ -37,14 +43,14 @@ function SuggestedUsers() {
                     <div className='user-information user-name'>
                         {sessionUser.username}
                     </div>
-                    <div className='user-follow-button'>Switch</div>
+                    <div className='user-follow-button' onClick={onLogout}>Switch</div>
                 </div>
                 <div className='suggested-for-you-header'>
                     Suggested for you
                 </div>
                 <div className='suggested-user-div'>
                     {console.log(users)}
-                    {users.users.map(user => (
+                    {users.users.slice(0, 6).map(user => (
                         <div className='single-user'>
                             <div
                                 className='user-avatar'
@@ -62,6 +68,7 @@ function SuggestedUsers() {
                         </div>
                     ))}
                 </div>
+                <div className='bogus-legal-info'>About * Help * Press * API * Jobs * Privacy * Terms * Locations * Top Accounts * Hashtags * Language</div>
             </div>
         </>
     );

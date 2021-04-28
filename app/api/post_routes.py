@@ -12,6 +12,8 @@ post_routes = Blueprint('posts', __name__)
 # We need an explore route!!! Thinking!
 
 # Route for getting all of the posts from the user followers
+
+
 @post_routes.route('/')
 @login_required
 def get_posts():
@@ -63,13 +65,15 @@ def post_post():
             photo_url=url,  # don't forget AWS 43
             user_id=current_user.id,
             caption=form.caption.data
-            )
+        )
 
         db.session.add(post)
         db.session.commit()
     return "HI!!!"
 
 # route for liking a post
+
+
 @post_routes.route('/<int:id>/like', methods=['POST'])
 @login_required
 def post_like(id):
@@ -81,7 +85,7 @@ def post_like(id):
     db.session.commit()
 
 
-#route for posting a comment
+# route for posting a comment
 @post_routes.route('/<int:id>/comments', methods=['POST'])
 @login_required
 def post_comment(id):
@@ -98,7 +102,7 @@ def post_comment(id):
     return
 
 
-#Route for patching a post
+# Route for patching a post
 @post_routes.route('/<int:id>', methods=['PATCH'])
 @login_required
 def patch_post(id):
@@ -109,7 +113,7 @@ def patch_post(id):
     return redirect('/')
 
 
-#Route for patching a comment
+# Route for patching a comment
 @post_routes.route('/<int:id>/comments/<int:commentId>', methods=['PATCH'])
 @login_required
 def patch_comment(commentId):
@@ -130,6 +134,8 @@ def delete_post(id):
     return redirect('/')
 
 # Route for deleting a comment
+
+
 @post_routes.route('/<int:id>/comments/<int:commentId>', methods=['DELETE'])
 @login_required
 def delete_comment(commentId):
