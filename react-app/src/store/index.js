@@ -12,11 +12,9 @@ import search from './search'
 
 const rootReducer = combineReducers({
     session,
-
-    errorsReducer
-
-    search,
-
+    posts,
+    errorsReducer,
+    search
 });
 
 let enhancer;
