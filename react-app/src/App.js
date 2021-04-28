@@ -14,6 +14,7 @@ import SuggestedUsers from "./components/SuggestedUsers/SuggestedUsers";
 import SignUpPage from "./components/SignUpPage"
 import LoginPage from "./components/LoginPage"
 import PhotoFeed from "./components/PostFeed"
+import UserProfile from "./components/UserProfile/UserProfile";
 
 
 
@@ -53,6 +54,9 @@ function App() {
         </Route>
         <Route path='/test'>
           <SuggestedUsers />
+        </Route>
+        <Route path='/user/:userId' exact={true}>
+          <UserProfile />
         </Route>
         <ProtectedRoute path="/users" exact={true} >
           <UsersList />

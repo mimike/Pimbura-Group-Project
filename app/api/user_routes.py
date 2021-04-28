@@ -42,5 +42,3 @@ def post_search_user(id):
         data = User()
         form.populate_obj(data)
     return
-
-

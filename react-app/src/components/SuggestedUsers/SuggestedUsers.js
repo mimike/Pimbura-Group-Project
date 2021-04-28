@@ -25,7 +25,10 @@ function SuggestedUsers() {
     const userProfile = async (e) => {
         let targetUser = Object.values(e.target)
         // console.log('event', targetUser[1].value)
-        history.push(`/user/${targetUser[1].value}`)
+        history.push({
+            pathname: `/user/${targetUser[1].value}`,
+            state: { user_id: targetUser[1].value }
+        })
     };
 
     // console.log('sessionUser', sessionUser)
