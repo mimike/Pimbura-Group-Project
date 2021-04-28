@@ -1,10 +1,30 @@
 
 const UPLOAD_PHOTO = "posts/UPLOAD_PHOTO";
+const DISPLAY_PHOTOS = "posts/DISPLAY_PHOTOS";
 
 const createPost = (submission) => ({
     type: UPLOAD_PHOTO,
     payload: submission
 })
+
+const displayPosts = (posts) => ({
+    type: DISPLAY_PHOTOS,
+    payload: posts
+
+})
+
+export const getAllPosts = () => async (dispatch) => {
+    // const response = await fetch('/api/posts')
+    const response = await fetch('/api/posts/', {  //not done routes yet
+        method: "GET",
+    });
+
+    if (response.ok){
+        const posts = await response.json();
+        dispatch(displayPosts(posts))
+        return posts
+    }
+}
 
 export const photoUpload = ( submission ) => async (dispatch) => {
     const { image, caption } = submission
@@ -38,11 +58,19 @@ export const photoUpload = ( submission ) => async (dispatch) => {
 
 }
 
-const initialState = { post: null }
+const initialState = { post: null, posts: null }
 export default function reducer(state = initialState, action){
     switch (action.type){
         case UPLOAD_PHOTO:
-            return { post: action.payload };
+            return { ...state, post: action.payload };
+        case DISPLAY_PHOTOS: {
+            const allPosts = action.payload.posts;
+            const postsObj = {};
+            for (const post of allPosts){
+                postsObj[post.id] = post
+            }
+            return {...state, posts: postsObj}
+        }
 
         default:
             return state

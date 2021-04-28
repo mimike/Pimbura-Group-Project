@@ -3,15 +3,19 @@ import { useDispatch} from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBAr";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 import PhotoUploadPage from "./components/PhotoUploadPage"
+<<<<<<< HEAD
 import SignUpPage from "./components/SignUpPage"
 import LoginPage from "./components/LoginPage"
+=======
+import PhotoFeed from "./components/PostFeed"
+>>>>>>> main
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -53,6 +57,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
           <h1>My Home Page</h1>
+          <PhotoFeed />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
