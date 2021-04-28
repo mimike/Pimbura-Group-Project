@@ -10,11 +10,8 @@ import User from "./components/User";
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 import PhotoUploadPage from "./components/PhotoUploadPage"
-<<<<<<< HEAD
 import SuggestedUsers from "./components/SuggestedUsers/SuggestedUsers";
-=======
 import PhotoFeed from "./components/PostFeed"
->>>>>>> 93a87a7fe40e646805195c7a31ea6a7c3dbf316a
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -57,6 +54,7 @@ function App() {
         <ProtectedRoute path="/" exact={true}>
           <h1>My Home Page</h1>
           <PhotoFeed />
+          <SuggestedUsers />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

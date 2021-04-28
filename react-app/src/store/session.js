@@ -84,19 +84,17 @@ export const signUp = (username, email, password) => async (dispatch) => {
 
 export const getAllUsers = () => async (dispatch) => {
     const res = await fetch('/api/users/', {
-        headers: {
-            'Content-Type': 'application/json'
-        }
+        method: 'GET'
     })
-    const data = await res.json();
-    dispatch(getUsers(data))
-    return {}
+    const users = await res.json();
+    dispatch(getUsers(users))
+    return users
 
 }
 
 // reducer
 
-const initialState = { user: null };
+const initialState = { user: null, users: null };
 
 // useSelector(state => state.session.user)
 
@@ -112,3 +110,4 @@ export default function reducer(state = initialState, action) {
             return state;
     }
 }
+

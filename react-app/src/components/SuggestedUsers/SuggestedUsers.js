@@ -9,7 +9,7 @@ function SuggestedUsers() {
 
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
-    const users = useSelector(state => state.user)
+    const users = useSelector(state => state.session.users)
     // const handleSubmit = async (e) => {
     //     e.preventDefault();
     // }
@@ -18,30 +18,50 @@ function SuggestedUsers() {
         dispatch(getAllUsers())
     }, [dispatch])
 
-    // console.log('user', user)
-
-
     console.log('users', users)
+    console.log('sessionUser', sessionUser)
+    if (!users) return null
+
+
     return (
         <>
-            <h1>Users</h1>
-            <div className='current_user'>
-                {sessionUser.username}
-            </div>
-            <div className='suggested-for-you-test'>
-                Suggested for you
-                </div>
-            <div className='suggested-user-div'>
-                {console.log(users)}
-                {users && users.map(user => (
-                    <div className='single-user'>
-                        {/* <div
-                                className='user-avatar'
-                                style={{ backgroundImage: `url('${user.avatar_url}')` }}
-                            ></div> */}
-                        <div className='user-name'>{user.username}hello</div>
+            <div className='suggested-container'>
+                <div className='single-user'>
+                    <div
+                        className='user-avatar'
+                        style={{
+                            backgroundImage: `url(${sessionUser.avatar_url})`
+                        }}
+                    >
                     </div>
-                ))}
+                    <div className='user-information user-name'>
+                        {sessionUser.username}
+                    </div>
+                    <div className='user-follow-button'>Switch</div>
+                </div>
+                <div className='suggested-for-you-header'>
+                    Suggested for you
+                </div>
+                <div className='suggested-user-div'>
+                    {console.log(users)}
+                    {users.users.map(user => (
+                        <div className='single-user'>
+                            <div
+                                className='user-avatar'
+                                style={{
+                                    backgroundImage: `url(${user.avatar_url})`
+                                }}
+                            >
+                                {/* <img src={user.avatar_url} alt="test"></img> */}
+                            </div>
+                            <div className='user-information'>
+                                <div className='user-name'>{user.username}hello</div>
+                                <div className='suggested-text'>Suggested for you</div>
+                            </div>
+                            <div className='user-follow-button'>Follow</div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </>
     );
