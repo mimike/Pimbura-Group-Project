@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import LogoutButton from '../auth/LogoutButton';
 
 
 function ProfileButton() {
-
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user)
     const [showMenu, setShowMenu] = useState(false);  // setting the menu showing to false "closed"
 
@@ -25,6 +25,7 @@ function ProfileButton() {
         document.addEventListener('click', closeMenu);
         return (() => document.removeEventListener('click', closeMenu))
     }, [showMenu]);
+
 
 
     return (

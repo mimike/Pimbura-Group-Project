@@ -14,9 +14,11 @@ function UserProfile(props) {
     // const users = useSelector(state => state.session.users)
     const sessionUser = useSelector(state => state.session.user)
     const targetUser = useSelector(state => state.session.target_user)
+    var url = /[^/]*$/.exec(`${location.pathname}`)[0];
+    console.log('location', url)
 
     useEffect(() => {
-        dispatch(getSingleUser(location.state.user_id))
+        dispatch(getSingleUser(url))
     }, [dispatch]);
 
 
