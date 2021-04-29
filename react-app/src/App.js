@@ -16,10 +16,6 @@ import LoginPage from "./components/LoginPage"
 import PhotoFeed from "./components/PostFeed"
 import UserProfile from "./components/UserProfile/UserProfile";
 
-
-
-
-
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
   const dispatch = useDispatch()

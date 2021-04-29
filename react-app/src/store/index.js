@@ -3,10 +3,18 @@ import thunk from 'redux-thunk';
 import session from './session'
 import posts from './posts'
 
+import { errorsReducer } from "./errors"
+
+import search from './search'
+
+
+
 
 const rootReducer = combineReducers({
     session,
     posts,
+    errorsReducer,
+    search
 });
 
 let enhancer;

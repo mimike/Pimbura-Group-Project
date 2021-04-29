@@ -22,23 +22,24 @@ def user(id):
 
 
 # GET Route for searching:
-@user_routes.route('/<int:id>/search')
+@user_routes.route('/search')
 @login_required
-def search_user(id):
+def search_user():
+    print("-------user--------")
     form = SearchForm()
     searched_user = form.search.data
-    user = User.query.filter(User.username.ilike('%searched_user%')).all()
-    # print("user", user)
-    return "Searching"
+    print("++++++++++++++++++", searched_user)
+    users = User.query.filter(User.username.like('%searched_user%')).all()
+    return {"users": [user.to_dict() for user in users]}
 
 
 # POST Route for searching:
-@user_routes.route('/<int:id>/search', methods=['POST'])
-@login_required
-def post_search_user(id):
-    form = SearchForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        data = User()
-        form.populate_obj(data)
-    return
+# @user_routes.route('/search', methods=['POST'])
+# @login_required
+# def post_search_user():
+#     form = SearchForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
+#         data = User()
+#         form.populate_obj(data)
+#     return
