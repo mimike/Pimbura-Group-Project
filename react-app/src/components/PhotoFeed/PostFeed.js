@@ -70,15 +70,17 @@ const userOwnsComment = (comment, userId) => {
     if (comment.user_id === userId){
         let commentId = comment.id
         return (
-            <div>{comment.comment}
+            <div><span className='user'>{comment.user.username}</span>{comment.comment}
             <button 
             value={commentId}
             onMouseOver={() => setCommentId(comment.id)}
             onClick={handleDeleteAComment}
-            >X</button>
+            className='editBtn'
+            ><i class="trash alternate icon"></i></button>
             </div>)
     } else {
-        return <div>{comment.comment}</div>
+        
+        return <div><span className='user'>{comment.user.username}</span>{comment.comment}</div>
     }
 }
 
@@ -90,6 +92,10 @@ const userOwnsComment = (comment, userId) => {
                 <div className='postsDiv'>
                     {Object.values(allPosts).map(post => (
                         <div className='individualPhotoDiv'>
+                            <div className='userInfo'>
+                                <img src={post.user.avatar_url} className="avatar" alt=""/>
+                                <span>{post.user.username}</span>
+                            </div>
                             <img className='individualImg' src={post.photo_url} alt=""/>
                             <div className='icons'>
                                 {
@@ -103,13 +109,10 @@ const userOwnsComment = (comment, userId) => {
                                 ? <div>{post.post_likes.length} Likes</div>
                                 : <div>0 Likes</div>
                             }
-                            <div>{post.caption}</div>
+                            <div><span className='user'>{post.user.username}</span> {post.caption}</div>
                             {post.post_comments.map(comment => (
                                 userOwnsComment(comment, userId)
                             ))}
-                            {
-                                userOwnsComment(post, userId)
-                            }
                             <div className="commentDiv">
                                 <Comments post_id = {post.id}/>
                             </div>
