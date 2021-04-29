@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {getAllPosts, likeAPost, unlikeAPost } from '../store/posts'
+import {getAllPosts, likeAPost, unlikeAPost } from '../../store/posts'
+import Comments from './Comments'
 import  './PhotoFeed.css';
 
 function PhotoFeed(){
@@ -79,8 +80,12 @@ function PhotoFeed(){
                             <img className='individualImg' src={post.photo_url} alt=""/>
                             <div>{post.caption}</div>
                             {post.post_comments.map(comment => (
-                                <div>{comment.comment}</div>
+                                <>
+                                    <div>{comment.comment}</div>
+                                    
+                                </>
                             ))}
+                            <Comments post_id = {post.id}/>
                             {
                                 post.post_likes.length
                                 ? <div>{post.post_likes.length} Likes</div>

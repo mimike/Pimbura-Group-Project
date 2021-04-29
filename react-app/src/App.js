@@ -13,7 +13,7 @@ import PhotoUploadPage from "./components/PhotoUploadPage"
 import SuggestedUsers from "./components/SuggestedUsers/SuggestedUsers";
 import SignUpPage from "./components/SignUpPage"
 import LoginPage from "./components/LoginPage"
-import PhotoFeed from "./components/PostFeed"
+import PhotoFeed from "./components/PhotoFeed/PostFeed"
 import UserProfile from "./components/UserProfile/UserProfile";
 import ExplorePage from "./components/ExplorePage"
 

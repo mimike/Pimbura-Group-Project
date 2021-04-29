@@ -5,6 +5,7 @@ from app.forms.post_form import PostForm
 from app.forms.comment_form import CommentForm
 from app.awsS3 import (
     upload_file_to_s3, allowed_file, get_unique_filename)
+import json
 
 post_routes = Blueprint('posts', __name__)
 
@@ -100,17 +101,20 @@ def post_like(id):
 @post_routes.route('/<int:id>/comments', methods=['POST'])
 @login_required
 def post_comment(id):
-    form = CommentForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        comment = Comments(
-            post_id=id,
-            user_id=current_user.id,
-            comment=form.comment.data
-        )
-    db.session.add(comment)
+    
+    print('TYPE OF REQUEST', request.json)
+    data = request.json
+    print(data['comment'])
+
+    newComment = Comments(
+        post_id=id,
+        user_id=current_user.id,
+        comment=data['comment']
+    )
+    db.session.add(newComment)
     db.session.commit()
-    return
+    return newComment.to_dict()
+    
 
 
 # Route for patching a post
