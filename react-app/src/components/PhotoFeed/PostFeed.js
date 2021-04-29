@@ -54,7 +54,7 @@ function PhotoFeed(){
                 if (post.post_likes[i].user_id === userId){
                     return (
                         <Link onClick={handleUnlike} onMouseOver={e => setLikeID(post.post_likes[i].id)}>
-                            <div value={post.id}><i class="heart icon"></i></div>
+                            <i className="heart icon"></i>
                         </Link>
                     )
                 }
@@ -62,7 +62,7 @@ function PhotoFeed(){
             }
             
         }
-        return <Link onClick={handleLike} onMouseOver={e => setPostID(post.id)}><div value={post.id}><i value={post.id} class="heart outline icon"></i></div></Link>
+        return <Link onClick={handleLike} onMouseOver={e => setPostID(post.id)}><i value={post.id} class="heart outline icon"></i></Link>
 }
 
 const userOwnsComment = (comment, userId) => {
@@ -91,21 +91,24 @@ const userOwnsComment = (comment, userId) => {
                     {Object.values(allPosts).map(post => (
                         <div className='individualPhotoDiv'>
                             <img className='individualImg' src={post.photo_url} alt=""/>
+                            <div className='icons'>
+                                {
+                                    userHasLiked(post, userId)
+                                }
+                                <i className="comment outline icon"></i>
+                                <i className="paper plane outline icon"></i>
+                            </div>
+                            {
+                                post.post_likes.length
+                                ? <div>{post.post_likes.length} Likes</div>
+                                : <div>0 Likes</div>
+                            }
                             <div>{post.caption}</div>
                             {post.post_comments.map(comment => (
                                 userOwnsComment(comment, userId)
                             ))}
                             {
                                 userOwnsComment(post, userId)
-                            }
-                            
-                            {
-                                post.post_likes.length
-                                ? <div>{post.post_likes.length} Likes</div>
-                                : <div>0 Likes</div>
-                            }
-                            {
-                                userHasLiked(post, userId)
                             }
                             <div className="commentDiv">
                                 <Comments post_id = {post.id}/>

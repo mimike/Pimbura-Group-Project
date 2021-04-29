@@ -48,3 +48,9 @@ class User(db.Model, UserMixin):
             # "post_likes": self.post_likes.to_dict(),
             # "following_ids": self.following_id.to_dict()
         }
+
+    def get_user(self):
+        return {
+            "username": self.username,
+            "avatar_url": self.avatar_url,
+        }

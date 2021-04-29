@@ -19,6 +19,7 @@ class Posts(db.Model):
             "id": self.id,
             "photo_url": self.photo_url,
             "user_id": self.user_id,
+            "user": self.user.get_user(),
             # "user": self.user.to_dict(),   # call the to dict on the user model
             "caption": self.caption,
             "post_comments": [post_comment.to_dict() for post_comment in self.post_comments],
