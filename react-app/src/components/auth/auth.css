@@ -1,31 +1,29 @@
-.sign-up-form-container{
-    /* display: flex;
-    flex-direction: column; */
+/* .sign-up-form-container{
+
     border: 1px solid grey;
     height: 600px;
     width: 350px;
     margin-top: 20px;
     text-align: center;
-}
+} */
 
-
+/*
 .splash-image{
     order: 1;
- }
-.sign-up-form{
+ } */
+/* .sign-up-form{
     order: 2;
     text-align: center;
-}
+} */
 
-.see-friends{
+/* .see-friends{
     color: grey;
     width: 180px;
     margin-left: 80px;
 
-}
+} */
 
-
-.log-in-with-facebook button{
+/* .log-in-with-facebook button{
     background-color:  #0095f6;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -49,9 +47,9 @@
 .or-divider::after {
   content: "----------------------";
 
-}
+} */
 
-.sign-up-form{
+/* .sign-up-form{
     display: flex;
     flex-direction: column;
     margin-top: 10px;
@@ -105,6 +103,8 @@ input{
     margin-top: 5px;
     margin-bottom: 5px;
     width: 300px;
+    border: 1px solid grey;
+
 }
 
 .log-in button{
@@ -135,7 +135,7 @@ input{
 }
 
 .sign-up-box{
-    /* margin: 20px 0px 20px 0px; */
+    margin: 20px 0px 20px 0px;
 
 }
 .sign-up-box h3{
@@ -148,12 +148,13 @@ input{
      height: 550px;
  }
 
- .get-app{
+ .get-app-container {
     display: flex;
+    flex-direction: column;
  }
 
  .get-app{
-     display: flex;
+
  }
  .get-app p{
     font-size: 14px;
@@ -175,8 +176,13 @@ input{
      text-align: center;
  }
 
+ .icon{
+     margin-left: 20px;
+     margin-right: 20px;
+ }
+
  .icon h1{
-    /* font-family: 'Playfair Display', serif; */
+
     font-family: 'Billabong', sans-serif;
     font-size: 50px;
     font-style: italic;
@@ -199,4 +205,4 @@ input{
 
  .footer-links a{
      color: lightgrey;
- }
+ } */

@@ -24,8 +24,6 @@ const getOneUser = (user) => ({
     payload: user
 })
 
-
-
 // thunks
 export const authenticate = () => async (dispatch) => {
     const response = await fetch('/api/auth/', {
@@ -41,7 +39,19 @@ export const authenticate = () => async (dispatch) => {
     dispatch(setUser(data))
 
 }
-
+//need?
+export const demoLogin = () => async (dispatch) => {
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: "demo@aa.io",
+        password: "password"
+      }),
+    })
+    const data = await response.json()
+    dispatch(setUser(data.user));
+    return response;
+}
 export const login = (email, password) => async (dispatch) => {
     const response = await fetch('/api/auth/login', {
         method: 'POST',
@@ -70,7 +80,6 @@ export const logout = () => async (dispatch) => {
     const data = await response.json();
     dispatch(removeUser());
 };
-
 
 export const signUp = (username, email, password) => async (dispatch) => {
     const response = await fetch("/api/auth/signup", {
@@ -135,4 +144,3 @@ export default function reducer(state = initialState, action) {
             return state;
     }
 }
-
