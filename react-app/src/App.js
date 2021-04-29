@@ -12,9 +12,7 @@ import PhotoUploadPage from "./components/PhotoUploadPage"
 import SuggestedUsers from "./components/SuggestedUsers/SuggestedUsers";
 import SignUpPage from "./components/SignUpPage"
 import LoginPage from "./components/LoginPage"
-
-
-
+import DemoUser from "./components/auth/DemoUser"
 
 import PhotoFeed from "./components/PhotoFeed/PostFeed"
 
@@ -44,19 +42,22 @@ function App() {
 
         <Route path="/login" exact={true}>
           <LoginPage />
+          {/* <DemoUser /> */}
         </Route>
+
 
         <Route path="/sign-up" exact={true}>
           <SignUpPage />
         </Route>
 
-        <Route path="/posts" exact={true}>
+        {/* <Route path="/posts" exact={true}>
           <NavBar />
           <PhotoUploadPage />
-        </Route>
-        
-        <Route path="/explore" exact={true}>
-          <ExplorePage />
+        </Route> */}
+
+        <Route path="/upload" exact={true}>
+          <NavBar />
+          <PhotoUploadPage />
         </Route>
 
         <Route path='/test'>

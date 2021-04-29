@@ -29,7 +29,7 @@ const NavBar = (props) => {
             <NavLink to="/explore" exact={true} activeClassName="active">
               <i className="compass outline icon right-list"/>
             </NavLink>
-            <NavLink to="/posts" exact={true} activeClassName="active">
+            <NavLink to="/upload" exact={true} activeClassName="active">
               <i className="upload icon right-list"/>
             </NavLink>
             <NavLink to="/inbox" exact={true} activeClassName="active">
