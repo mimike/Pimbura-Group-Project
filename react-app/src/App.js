@@ -13,8 +13,13 @@ import SuggestedUsers from "./components/SuggestedUsers/SuggestedUsers";
 import SignUpPage from "./components/SignUpPage"
 import LoginPage from "./components/LoginPage"
 
-import PhotoFeed from "./components/PostFeed"
+
+
+
+import PhotoFeed from "./components/PhotoFeed/PostFeed"
+
 import UserProfile from "./components/UserProfile/UserProfile";
+import ExplorePage from "./components/ExplorePage"
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -49,6 +54,11 @@ function App() {
           <NavBar />
           <PhotoUploadPage />
         </Route>
+        
+        <Route path="/explore" exact={true}>
+          <ExplorePage />
+        </Route>
+
         <Route path='/test'>
           <NavBar />
           <SuggestedUsers />
