@@ -1,16 +1,42 @@
+*{
+    font-family: -apple-system,BlinkMacSystemFont,“Segoe UI”,Roboto,Helvetica,Arial,sans-serif;
+}
 .postsDiv{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: rgb(250, 250, 250);
 }
 
 .individualPhotoDiv{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin: 10px;
-    height: 600px;
+    border: 1px solid lightgray;
+    margin: 50px;
+    background-color: white;
+   
 }
 
 .individualImg {
-    width: 500px;
+    width: 600px;
 
+}
+
+.commentForm{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+}
+.commentDiv {
+    border-top: 1px solid lightgray;
+    display: flex;
+    justify-content: space-between;
+}
+.commentInput, .commentButton {
+    border: none;
+    background-color: white;
+    outline: none;
+}
+
+.commentButton{
+    color:  #0095f6;
 }

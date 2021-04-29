@@ -17,9 +17,10 @@ class Comments(db.Model):
 
     def to_dict(self):   #{id: asdf, username: asdf}
         return {
-        "post_id": self.post_id,
-        "user_id": self.user_id,
-        "comment": self.comment,
-        # "user": self.user.to_dict(),  #clarify- may delete this
-        # "comment_likes": self.comment_likes.to_dict()
+            "id": self.id,
+            "post_id": self.post_id,
+            "user_id": self.user_id,
+            "comment": self.comment,
+            # "user": self.user.to_dict(),  #clarify- may delete this
+            # "comment_likes": self.comment_likes.to_dict()
         }

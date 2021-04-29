@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {getAllPosts, likeAPost, unlikeAPost } from '../../store/posts'
+import {getAllPosts, likeAPost, unlikeAPost, deleteAComment } from '../../store/posts'
 import Comments from './Comments'
 import  './PhotoFeed.css';
 
@@ -14,6 +14,7 @@ function PhotoFeed(){
 
     const [likeID, setLikeID] = useState()
     const [postID, setPostID] = useState()
+    const [commentId, setCommentId] = useState()
 
     useEffect(() => {
         dispatch(getAllPosts())
@@ -37,16 +38,12 @@ function PhotoFeed(){
         dispatch(getAllPosts())
     }
 
-    // const userHasLiked = (post, userId) => {
-    //         if (post.post_likes.length > 0 && post.post_likes.user_id === userId){
-    //             return (
-    //                 <Link onClick={handleUnlike}>
-    //                     <div value={post.id}><i  value={post.id} class="heart icon"></i></div>
-    //                 </Link>
-    //             )
-    //         }
-    //         return <Link onClick={handleLike}><div value={post.id}><i value={post.id} class="heart outline icon"></i></div></Link>
-    // }
+    const handleDeleteAComment = async () => {
+        
+        console.log('handle delete a comment triggered', commentId)
+        dispatch(deleteAComment(commentId))
+        dispatch(getAllPosts())
+    }
 
     const userHasLiked = (post, userId) => {
         // console.log(post.post_likes.length)
@@ -55,7 +52,6 @@ function PhotoFeed(){
             for (let i = 0 ; i < post.post_likes.length; i++){
                 // console.log(post.post_likes[i].user_id)
                 if (post.post_likes[i].user_id === userId){
-                    console.log(post.post_likes[i])
                     return (
                         <Link onClick={handleUnlike} onMouseOver={e => setLikeID(post.post_likes[i].id)}>
                             <div value={post.id}><i class="heart icon"></i></div>
@@ -69,6 +65,23 @@ function PhotoFeed(){
         return <Link onClick={handleLike} onMouseOver={e => setPostID(post.id)}><div value={post.id}><i value={post.id} class="heart outline icon"></i></div></Link>
 }
 
+const userOwnsComment = (comment, userId) => {
+    
+    if (comment.user_id === userId){
+        let commentId = comment.id
+        return (
+            <div>{comment.comment}
+            <button 
+            value={commentId}
+            onMouseOver={() => setCommentId(comment.id)}
+            onClick={handleDeleteAComment}
+            >X</button>
+            </div>)
+    } else {
+        return <div>{comment.comment}</div>
+    }
+}
+
     if (!allPosts) return null;
 
     return (
@@ -80,12 +93,12 @@ function PhotoFeed(){
                             <img className='individualImg' src={post.photo_url} alt=""/>
                             <div>{post.caption}</div>
                             {post.post_comments.map(comment => (
-                                <>
-                                    <div>{comment.comment}</div>
-                                    
-                                </>
+                                userOwnsComment(comment, userId)
                             ))}
-                            <Comments post_id = {post.id}/>
+                            {
+                                userOwnsComment(post, userId)
+                            }
+                            
                             {
                                 post.post_likes.length
                                 ? <div>{post.post_likes.length} Likes</div>
@@ -94,6 +107,9 @@ function PhotoFeed(){
                             {
                                 userHasLiked(post, userId)
                             }
+                            <div className="commentDiv">
+                                <Comments post_id = {post.id}/>
+                            </div>
                         </div>
                     ))}
                 </div>
