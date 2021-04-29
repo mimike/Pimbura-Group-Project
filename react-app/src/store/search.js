@@ -9,8 +9,16 @@ const searchUser = (searchList) => ({
 
 
 //thunk:
-export const getSearchResult = () => async (dispatch) => {
-    const response = await fetch ('/api/users/search')
+export const getSearchResult = (searchField) => async (dispatch) => {
+    const response = await fetch ('/api/users/search', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            search: searchField
+        })
+    })
     const data = await response.json();
     dispatch(searchUser(data))
 }
