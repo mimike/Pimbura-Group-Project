@@ -45,10 +45,17 @@ function App() {
           <SignUpPage />
         </Route>
 
-        <Route path="/posts" exact={true}>
+        {/* <Route path="/posts" exact={true}>
+          <NavBar />
+          <PhotoUploadPage />
+        </Route> */}
+
+        <Route path="/upload" exact={true}>
           <NavBar />
           <PhotoUploadPage />
         </Route>
+
+
         <Route path='/test'>
           <NavBar />
           <SuggestedUsers />
