@@ -61,6 +61,22 @@ export const unlikeAPost = (params) => async dispatch => {
     return
 }
 
+export const commentOnAPost = (params) => async dispatch => {
+    const {user_id, post_id, comment} = params
+    const response = await fetch(`/api/posts/${post_id}/comments`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            user_id,
+            comment,
+        }),
+    });
+    const data = await response.json
+    return
+}
+
 export const photoUpload = (submission) => async (dispatch) => {
     const { image, caption } = submission
     const formData = new FormData() //packages up submission data nicely

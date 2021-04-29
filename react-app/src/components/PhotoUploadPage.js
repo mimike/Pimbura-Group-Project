@@ -24,13 +24,13 @@ function PhotoUploadPage() {
 
   return (
     <>
-      <h1>Your Photo here</h1>
+      <h1>Photo Upload</h1>
       <form onSubmit={handleSubmit} enctype="multipart/form">
         <div>
           <textarea
             type="text"
             value = {caption}
-            placeholder = "Write what u want to say"
+            placeholder = "Caption it"
             onChange={ (e) => setCaption(e.target.value)}
           />
         </div>
@@ -39,7 +39,7 @@ function PhotoUploadPage() {
           <input
             name = "image"
             type = "file"
-            placeholder = "Upload"
+            placeholder = "Upload Pix"
             onChange = { (e) => setImage(e.target.files[0])} // only accepts ONE photo if they try and upload multiple files
           />
         </div>
