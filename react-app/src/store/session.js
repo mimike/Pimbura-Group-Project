@@ -85,7 +85,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
         }),
     });
     const data = await response.json();
-    if (!response.ok){
+    if (!response.ok) {
         dispatch(setErrors(data.errors))
     } else {
         dispatch(setUser(data));
@@ -104,7 +104,7 @@ export const getAllUsers = () => async (dispatch) => {
 }
 
 export const getSingleUser = (id) => async (dispatch) => {
-    const res = await fetch('/api/users/:id', {
+    const res = await fetch(`/api/users/${id}`, {
         method: 'GET'
     })
     if (res.ok) {
