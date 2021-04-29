@@ -12,7 +12,7 @@ const SearchForm = () => {
     const onChange = (e) => {
         setSearch(e.target.value)
         e.preventDefault()
-        dispatch(getSearchResult());
+        dispatch(getSearchResult(e.target.value));
         // setSearch(searchResult)
     }
 

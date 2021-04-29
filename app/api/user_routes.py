@@ -1,7 +1,7 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import User
-from app.forms.search_form import SearchForm
+import json
 
 user_routes = Blueprint('users', __name__)
 
@@ -21,25 +21,25 @@ def user(id):
     return user.to_dict()
 
 
-# GET Route for searching:
-@user_routes.route('/search')
-@login_required
-def search_user():
-    print("-------user--------")
-    form = SearchForm()
-    searched_user = form.search.data
-    print("++++++++++++++++++", searched_user)
-    users = User.query.filter(User.username.like('%searched_user%')).all()
-    return {"users": [user.to_dict() for user in users]}
+# GET Route for searching: NO GET ROUTE FOR THE SEARCH
+# @user_routes.route('/search')
+# @login_required
+# def search_user():
+#     print("-------user--------")
+#     form = SearchForm()
+#     searched_user = form.search.data
+#     print("++++++++++++++++++", searched_user)
+#     users = User.query.filter(User.username.like('%searched_user%')).all()
+#     return {"users": [user.to_dict() for user in users]}
 
 
 # POST Route for searching:
-# @user_routes.route('/search', methods=['POST'])
-# @login_required
-# def post_search_user():
-#     form = SearchForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         data = User()
-#         form.populate_obj(data)
-#     return
+@user_routes.route('/search', methods=['POST'])
+@login_required
+def post_search_user():
+    data = request.json["search"]
+    # print("4------------------", data)
+    users = User.query.filter(User.username.like(f'{data}%')).all()
+    # print("5++++++++++", users)
+    return {"users": [user.to_dict() for user in users]}
+    

@@ -15,6 +15,7 @@ import SignUpPage from "./components/SignUpPage"
 import LoginPage from "./components/LoginPage"
 import PhotoFeed from "./components/PostFeed"
 import UserProfile from "./components/UserProfile/UserProfile";
+import ExplorePage from "./components/ExplorePage"
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -48,6 +49,11 @@ function App() {
         <Route path="/posts" exact={true}>
           <PhotoUploadPage />
         </Route>
+        
+        <Route path="/explore" exact={true}>
+          <ExplorePage />
+        </Route>
+
         <Route path='/test'>
           <SuggestedUsers />
         </Route>
