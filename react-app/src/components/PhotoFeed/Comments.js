@@ -18,6 +18,7 @@ function Comments (postID) {
 
     const handleMakeAComment = async (e) => {
         e.preventDefault()
+        console.log('IN HANDLEMAKEACOMMENT')
         const params = {user_id, post_id, comment}
         console.log(params)
         dispatch(commentOnAPost(params))
@@ -26,16 +27,16 @@ function Comments (postID) {
     }
 
     return (
-        <div>
-            <form onSubmit={handleMakeAComment}>
+            <form className="commentForm" onSubmit={handleMakeAComment}>
                 <input 
+                className='commentInput'
                 type="text" 
                 value={comment}
+                placeholder="Add a comment..."
                 onChange={(e) => setComment(e.target.value)}
                 />
-                <button type="submit">Comment</button>
+                <button className="commentButton" type="submit">Post</button>
             </form>
-        </div>
     )
 }
  export default Comments

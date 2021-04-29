@@ -76,6 +76,15 @@ export const commentOnAPost = (params) => async dispatch => {
     const data = await response.json
     return
 }
+export const deleteAComment = (commentId) => async dispatch => {
+    const response = await fetch(`api/posts/comments/${commentId}`, {
+        method: "DELETE",
+        commentId,
+    })
+
+    const data = await response.json()
+    return
+}
 
 export const photoUpload = (submission) => async (dispatch) => {
     const { image, caption } = submission

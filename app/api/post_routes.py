@@ -151,13 +151,14 @@ def delete_post(id):
 # Route for deleting a comment
 
 
-@post_routes.route('/<int:id>/comments/<int:commentId>', methods=['DELETE'])
+@post_routes.route('/comments/<int:commentId>', methods=['DELETE'])
 @login_required
 def delete_comment(commentId):
+    print('++++++++++++++++++++++++++++++++++++++++++++++++++', commentId)
     comment = Comments.query.get(commentId)
     db.session.delete(comment)
     db.session.commit()
-    return
+    return {"delete": "post deleted"}
 
 
 # Route for unliking a post
