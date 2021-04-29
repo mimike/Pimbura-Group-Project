@@ -10,6 +10,7 @@ user_routes = Blueprint('users', __name__)
 @login_required
 def users():
     users = User.query.all()
+    print('------------------', users)
     return {"users": [user.to_dict() for user in users]}
 
 
@@ -42,5 +43,3 @@ def search_user():
 #         data = User()
 #         form.populate_obj(data)
 #     return
-
-
