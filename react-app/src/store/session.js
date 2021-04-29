@@ -37,20 +37,23 @@ export const authenticate = () => async (dispatch) => {
         return;
     }
     dispatch(setUser(data))
-
 }
-//need?
+
 export const demoLogin = () => async (dispatch) => {
     const response = await fetch('/api/auth/login', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+    },
       body: JSON.stringify({
         email: "demo@aa.io",
         password: "password"
       }),
     })
     const data = await response.json()
-    dispatch(setUser(data.user));
+    dispatch(setUser(data));
     return response;
+
 }
 export const login = (email, password) => async (dispatch) => {
     const response = await fetch('/api/auth/login', {
@@ -118,7 +121,7 @@ export const getSingleUser = (id) => async (dispatch) => {
     })
     if (res.ok) {
         const user = await res.json();
-        dispatch(getOneUser(user))
+        dispatch(getOneUser(user))  
         return user
     }
 

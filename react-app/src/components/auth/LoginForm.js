@@ -16,24 +16,16 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //On submit of the form, dispatch the login thunk action with the form input values. Make sure to handle and display errors from the login thunk action if there are any.
-  const onLogin = (e) => {
-    e.preventDefault();
-    setErrors([]);
-    return dispatch(sessionActions.login({ email, password }))
-        .catch(async (res) => {
-            const data = await res.json();
-            if (data && data.errors) setErrors(data.errors)
-        });
-        // history.push('/')
-}
+
+// }
   //skeleton code
-  // const onLogin = async (e) => {
-  //   e.preventDefault();
-  //   const data = await dispatch(login(email, password));
-  //   if (data.errors) {
-  //     setErrors(data.errors);
-  //   }
-  // };
+  const onLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login(email, password));
+    if (data.errors) {
+      setErrors(data.errors);
+    }
+  };
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -41,7 +33,7 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  if (user !== null) {
+  if (user !== null) {  //if user
     return <Redirect to="/" />;
   }
 

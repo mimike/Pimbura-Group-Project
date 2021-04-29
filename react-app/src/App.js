@@ -12,9 +12,7 @@ import PhotoUploadPage from "./components/PhotoUploadPage"
 import SuggestedUsers from "./components/SuggestedUsers/SuggestedUsers";
 import SignUpPage from "./components/SignUpPage"
 import LoginPage from "./components/LoginPage"
-
-
-
+import DemoUser from "./components/auth/DemoUser"
 
 import PhotoFeed from "./components/PhotoFeed/PostFeed"
 
@@ -44,7 +42,9 @@ function App() {
 
         <Route path="/login" exact={true}>
           <LoginPage />
+          {/* <DemoUser /> */}
         </Route>
+
 
         <Route path="/sign-up" exact={true}>
           <SignUpPage />
