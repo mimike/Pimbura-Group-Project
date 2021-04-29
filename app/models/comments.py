@@ -21,6 +21,7 @@ class Comments(db.Model):
             "post_id": self.post_id,
             "user_id": self.user_id,
             "comment": self.comment,
+            "user": self.user.get_user(),
             # "user": self.user.to_dict(),  #clarify- may delete this
             # "comment_likes": self.comment_likes.to_dict()
         }
