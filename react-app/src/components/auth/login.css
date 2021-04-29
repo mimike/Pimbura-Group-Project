@@ -1,0 +1,97 @@
+.log-in-container{
+    display: flex;
+    margin-top: 60px;
+}
+.log-in-form-container{
+    order: 2;
+    border: 1px solid lightgray;
+    height: 500px;
+    width: 390px;
+    margin-top: 80px;
+    background-color:white;
+}
+.log-in-box{
+    width: 350px;
+    margin-top: 20px;
+ }
+.log-in-box h3{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.log-in-form{
+    text-align: center;
+}
+.log-in-form input{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 300px;
+    padding: 9px 0 7px 8px;
+    border: 1px solid grey;
+}
+.log-in button{
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: rgb(52, 121, 211);
+    color: white;
+    width: 300px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.sign-up-box{
+    background-color:white;
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+    /* width: 350px; */
+    /* height: 70px; */
+}
+.demo-log-in{
+    text-align: center;
+}
+.get-app-container {
+    display: flex;
+    flex-direction: column;
+    padding: 9px 0 7px 8px;
+
+ }
+ .get-app{
+
+ }
+ .get-app p{
+    font-size: 14px;
+    text-align: center;
+ }
+ .app-icon-container{
+    text-align: center;
+ }
+ .apple-image img {
+    margin: 10px;
+    width: 100px;
+ }
+ .google-image img{
+     margin: 10px;
+     width: 100px;
+ }
+.forgot{
+     text-align: center;
+ }
+footer {
+    display: flex;
+    flex-direction: column;
+}
+.footer-links{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 3rem;
+
+}
+.footer-links a{
+    color: grey;
+    font-size: 12px;
+}

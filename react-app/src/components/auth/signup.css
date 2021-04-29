@@ -1,0 +1,136 @@
+body{
+    background-color: rgb(250, 250, 250);
+}
+.sign-up-container{
+    display: flex;
+    flex-direction: row;
+}
+.sign-up-form-container{
+    /* display: flex;
+    flex-direction: column; */
+    border: 1px solid lightgray;
+    background-color: white;
+    order: 1;
+    height: auto;
+    width: 390px;
+    margin-top: 80px;
+    text-align: center;
+}
+.phones-image img{
+    margin-top: 10px;
+    height: 750px;
+    order: 2;
+}
+.see-friends{
+    color: grey;
+    width: 180px;
+    margin-left: 80px;
+}
+.icon{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.icon h1{
+   font-family: 'Billabong', sans-serif;
+   font-size: 50px;
+   font-style: italic;
+   margin: 20px;
+}
+h5{
+    margin: 15px
+}
+.facebook-login {
+    margin: 20px;
+    text-align: center;
+}
+.sign-up-form{
+    order: 2;
+    text-align: center;
+}
+.log-in-with-facebook button{
+    background-color: rgb(52, 121, 211);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: white;
+    border-radius: 5px;
+    width: 300px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.or-divider{
+    font-weight: 700;
+    position: relative;
+    font-size: 1.2rem;
+    color: grey;
+}
+.or-divider::before,
+.or-divider::after {
+  content: "----------------------";
+}
+.sign-up-form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+.sign-up-form input{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 300px;
+    padding: 9px 0 7px 8px;
+    border: 1px solid rgb(214, 214, 214);
+}
+.sign-up button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: rgb(52, 121, 211);
+    color: white;
+    width: 300px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.log-in-box{
+    margin-top: 20px;
+    /* border: 1px solid rgb(214, 214, 214); */
+    width: 350px;
+
+}
+.get-app-container {
+   display: flex;
+   flex-direction: column;
+   margin-top: 20px;
+}
+.get-app{
+
+}
+.get-app p{
+   font-size: 15px;
+   text-align:center
+}
+.app-icon-container{
+   text-align: center;
+}
+.apple-image img {
+   margin: 10px;
+   width: 100px;
+}
+.google-image img{
+    margin: 10px;
+    width: 100px;
+}
+footer {
+    display: flex;
+    flex-direction: column;
+}
+.footer-links{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 3rem;
+}
+.footer-links a{
+    color: grey;
+    font-size: 12px;
+}
