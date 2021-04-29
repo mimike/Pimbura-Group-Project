@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {getAllPosts, likeAPost, unlikeAPost } from '../store/posts'
+import  './PhotoFeed.css';
 
 function PhotoFeed(){
     const dispatch = useDispatch();
@@ -71,11 +72,11 @@ function PhotoFeed(){
 
     return (
         <>
-            <div className='postsDiv' >
-                <div>
+            <div >
+                <div className='postsDiv'>
                     {Object.values(allPosts).map(post => (
-                        <div >
-                            <img src={post.photo_url} alt=""/>
+                        <div className='individualPhotoDiv'>
+                            <img className='individualImg' src={post.photo_url} alt=""/>
                             <div>{post.caption}</div>
                             {post.post_comments.map(comment => (
                                 <div>{comment.comment}</div>
