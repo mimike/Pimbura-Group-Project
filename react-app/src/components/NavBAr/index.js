@@ -26,7 +26,7 @@ const NavBar = (props) => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/explor" exact={true} activeClassName="active">
+            <NavLink to="/explore" exact={true} activeClassName="active">
               <i className="compass outline icon right-list"/>
             </NavLink>
             <NavLink to="/posts" exact={true} activeClassName="active">

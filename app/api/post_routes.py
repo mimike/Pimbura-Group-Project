@@ -22,6 +22,14 @@ def get_posts():
     return {"posts": [post.to_dict() for post in posts]}
 
 
+# Route for the explore page:
+@post_routes.route('/explore')
+@login_required
+def get_explore_page():
+    posts = Posts.query.all()
+    return {"posts": [post.to_dict() for post in posts]}
+
+
 # Route for getting a single post:
 @post_routes.route('/<int:id>')
 @login_required
