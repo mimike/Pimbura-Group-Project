@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import './signup.css'
+import './auth.css'
+
 const SignUpForm = () => {
   const history = useHistory()
   const dispatch = useDispatch();
@@ -19,7 +22,8 @@ const SignUpForm = () => {
     e.preventDefault();
     if (password === repeatPassword) {
       await dispatch(signUp(username, email, password));
-    }
+    };
+    history.push('/')
   };
 
   if (user !== null) {
@@ -28,23 +32,23 @@ const SignUpForm = () => {
 
   return (
     <>
-      <div className="phones-image">
-        <img alt="cell phone" src="/images/splash.jpeg"></img>
-      </div>
-      <div className="sign-up-form-container">
-
-        <div className="icon">
-            <h1>Instagram</h1>
+      <div className="sign-up-container">
+        <div className="phones-image">
+          <img alt="cell phone" src="/images/splash.jpeg"></img>
         </div>
+        <div className="sign-up-form-container">
+          <div className="icon">
+              <h1>Instagram</h1>
+          </div>
         <div className="see-friends">
             <h4>Sign up to see photos and videos from your friends.</h4>
         </div>
         <div className="log-in-with-facebook">
-            <button>Log in with Facebook</button>
+            <a href='https://www.facebook.com/'><button>Log in with Facebook</button></a>
         </div>
-
+        {/* ---or---- */}
         <span class="or-divider">OR</span>
-
+        {/* sign up form */}
         <div className="sign-up-form">
           <form onSubmit={onSignUp}>
             <div>
@@ -102,7 +106,7 @@ const SignUpForm = () => {
                 >
                 </input>
             </div>
-            <div className="sign-up-button">
+            <div className="sign-up">
               <button>
                   Sign Up
               </button>
@@ -114,27 +118,32 @@ const SignUpForm = () => {
 
           </form>
         </div>
+
+        {/* have an account log in */}
+        <div className="log-in-box">
+          <h3>
+            Have an account? <Link to="/login">  Log in</Link>
+          </h3>
+        </div>
+
       </div>
-      <div>
-      <div className="log-in-box">
-        <h3>
-          Have an account? <Link to="/login">Log in</Link>
-        </h3>
+      </div>
+
+      {/* <---app box--> */}
+      <div className="get-app-container">
+        <div className="get-app">
+            <p>Get the app.</p>
+        </div>
+        <div className="app-icon-container">
+          <span className="google-image">
+            <img alt="google app" src="/images/google-app.png"></img>
+          </span>
+          <span className="apple-image">
+            <img alt="apple app" src="/images/apple-app.png"></img>
+          </span>
         </div>
       </div>
 
-      <div className="get-app">
-          <p>Get the app.</p>
-      </div>
-
-      <div className="app-icon-container">
-        <span className="google-image">
-          <img alt="google app" src="/images/google-app.png"></img>
-        </span>
-        <span className="apple-image">
-          <img alt="apple app" src="/images/apple-app.png"></img>
-        </span>
-      </div>
       <footer>
         <ul class="footer-links">
           <li><a href="/">About</a></li>
