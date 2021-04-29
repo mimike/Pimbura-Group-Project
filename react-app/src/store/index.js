@@ -6,15 +6,14 @@ import posts from './posts'
 import { errorsReducer } from "./errors"
 
 import search from './search'
-
-
-
+import { commentsReducer } from "./comments"
 
 const rootReducer = combineReducers({
     session,
     posts,
     errorsReducer,
-    search
+    search,
+    commentsReducer
 });
 
 let enhancer;

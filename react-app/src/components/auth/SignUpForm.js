@@ -27,8 +27,8 @@ const SignUpForm = () => {
   }
 
   return (
-    <div>
-      <div className="splash-image">
+    <>
+      <div className="phones-image">
         <img alt="cell phone" src="/images/splash.jpeg"></img>
       </div>
       <div className="sign-up-form-container">
@@ -43,9 +43,7 @@ const SignUpForm = () => {
             <button>Log in with Facebook</button>
         </div>
 
-        <div>
-          <h5 style={{color:'grey'}}>---------------------   OR  ---------------------</h5>
-        </div>
+        <span class="or-divider">OR</span>
 
         <div className="sign-up-form">
           <form onSubmit={onSignUp}>
@@ -125,9 +123,10 @@ const SignUpForm = () => {
         </div>
       </div>
 
-      <div className="get-app-container">
-        <h4>Get the app.</h4>
+      <div className="get-app">
+          <p>Get the app.</p>
       </div>
+
       <div className="app-icon-container">
         <span className="google-image">
           <img alt="google app" src="/images/google-app.png"></img>
@@ -136,9 +135,21 @@ const SignUpForm = () => {
           <img alt="apple app" src="/images/apple-app.png"></img>
         </span>
       </div>
+      <footer>
+        <ul class="footer-links">
+          <li><a href="/">About</a></li>
+          <li><a href="/">Blog</a></li>
+          <li><a href="/">Jobs</a></li>
+          <li><a href="/">API</a></li>
+          <li><a href="/">Privacy</a></li>
+          <li><a href="/">Terms</a></li>
+          <li><a href="/">Top Accounts</a></li>
+          <li><a href="/">Hashtags</a></li>
+          <li><a href="/">Locations</a></li>
+        </ul>
+      </footer>
 
-
-    </div>
+    </>
 
 
 
