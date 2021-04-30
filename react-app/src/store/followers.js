@@ -10,7 +10,12 @@
 //         method: "GET",
 //         headers: {
 //             'Content-Type': 'application/json',
-//         },
+//         },<<<<<<< finalsearch
+//         // body: JSON.stringify({
+//         //     follower_id,
+//         //     following_id
+//         // })
+
 //         body: JSON.stringify({
 //             follower_id,
 //             following_id
