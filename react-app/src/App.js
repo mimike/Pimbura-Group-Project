@@ -37,7 +37,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <NavBar /> */}
       <Switch>
 
         <Route path="/login" exact={true}>
@@ -48,6 +47,11 @@ function App() {
 
         <Route path="/sign-up" exact={true}>
           <SignUpPage />
+        </Route>
+
+        <Route path="/explore" exact={true}>
+          <NavBar />
+          <ExplorePage />
         </Route>
 
         {/* <Route path="/posts" exact={true}>
@@ -63,18 +67,22 @@ function App() {
           <NavBar />
           <UserProfile />
         </Route>
+
         <ProtectedRoute path="/users" exact={true} >
           <NavBar />
           <UsersList />
         </ProtectedRoute>
+
         <ProtectedRoute path="/users/:userId" exact={true} >
           <NavBar />
           <User />
         </ProtectedRoute>
+
         <ProtectedRoute path="/" exact={true}>
           <NavBar />
           <PhotoFeed />
         </ProtectedRoute>
+
       </Switch>
     </BrowserRouter>
   );
