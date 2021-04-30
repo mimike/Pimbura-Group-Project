@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllPosts, likeAPost, unlikeAPost, deleteAComment } from '../../store/posts'
+import { getAllPosts, likeAPost, unlikeAPost, deleteAComment, likeAComment, unlikeAcomment } from '../../store/posts'
 import Comments from './Comments'
 import SuggestedUsers from '../SuggestedUsers/SuggestedUsers'
 import './PhotoFeed.css';
@@ -17,6 +17,7 @@ function PhotoFeed() {
     const [likeID, setLikeID] = useState()
     const [postID, setPostID] = useState()
     const [commentId, setCommentId] = useState()
+    const [commentLike, setCommentLikeId] = useState()
 
     useEffect(() => {
         dispatch(getAllPosts())
@@ -26,8 +27,15 @@ function PhotoFeed() {
         const user_id = userId
         const post_id = postID
         const params = { user_id, post_id }
-        console.log('POST ID', postID)
         dispatch(likeAPost(params))
+        dispatch(getAllPosts())
+    }
+
+    const handleCommentLike = async (e) => {
+        const user_id = userId
+        const comment_id = commentId
+        const params = {user_id, comment_id}
+        dispatch(likeAComment(params))
         dispatch(getAllPosts())
     }
 
@@ -35,60 +43,71 @@ function PhotoFeed() {
         const post_id = userId
         const like_id = likeID
         const params = { post_id, like_id }
-        console.log('UNLIKE TRIGGERED')
         dispatch(unlikeAPost(params))
         dispatch(getAllPosts())
     }
 
-    const handleDeleteAComment = async () => {
+    const handleCommentUnlike = async (e) => {
+        const id = commentLike
+        console.log('INSIDE UNLIKE A COMMENT', id)
+        dispatch(unlikeAcomment(id))
+        dispatch(getAllPosts())
 
-        console.log('handle delete a comment triggered', commentId)
+    }
+
+    const handleDeleteAComment = async () => {
         dispatch(deleteAComment(commentId))
         dispatch(getAllPosts())
     }
 
     const userHasLiked = (post, userId) => {
-        // console.log(post.post_likes.length)
         if (post.post_likes.length > 0) {
-
             for (let i = 0; i < post.post_likes.length; i++) {
-                // console.log(post.post_likes[i].user_id)
                 if (post.post_likes[i].user_id === userId) {
                     return (
-                        <Link onClick={handleUnlike} onMouseOver={e => setLikeID(post.post_likes[i].id)}>
-                            <i className="heart icon"></i>
-                        </Link>
+                            <span onClick={handleUnlike} onMouseOver={() => setLikeID(post.post_likes[i].id)}><i className="heart icon"></i></span>
                     )
                 }
-                // else 
             }
-
         }
-        return <Link onClick={handleLike} onMouseOver={e => setPostID(post.id)}><i value={post.id} class="heart outline icon"></i></Link>
+        return <span onClick={handleLike} onMouseOver={() => setPostID(post.id)}><i value={post.id} className="heart outline icon"></i></span>
     }
 
     const userOwnsComment = (comment, userId) => {
-
         if (comment.user_id === userId) {
             let commentId = comment.id
             return (
-                <div><span className='user' >{comment.user.username}</span>{comment.comment}
+                <div><span className='user' >{comment.user.username}</span><span className='commentSpan'>{comment.comment}</span>
                     <button
                         value={commentId}
                         onMouseOver={() => setCommentId(comment.id)}
                         onClick={handleDeleteAComment}
                         className='editBtn'
                     ><i class="trash alternate icon"></i></button>
+                    {userOwnsCommentLike(comment, userId)}
                 </div>)
         } else {
-
-            return <div><span className='user'>{comment.user.username}</span>{comment.comment}</div>
+            return <div><span className='user'>{comment.user.username}</span><span className='commentSpan'>{comment.comment}</span>{userOwnsCommentLike(comment, userId)}</div>
         }
+    }
+
+    const userOwnsCommentLike = (comment, userId) => {
+         if (comment.comment_likes.length) {
+             for (let i = 0; i < comment.comment_likes.length; i++){
+                 if (comment.comment_likes[i].user_id === userId){
+                    return <i onMouseOver={() => setCommentLikeId(comment.comment_likes[i].id)} onClick={handleCommentUnlike} className="heart icon"></i> 
+                 }
+             }
+            
+            }
+         else {
+             return <i onMouseOver={() => setCommentId(comment.id)} onClick={handleCommentLike} className="heart outline icon"></i>
+            }
+            
     }
 
     const userProfile = async (e) => {
         let targetUser = Object.values(e.target)
-        console.log('event', targetUser)
         history.push({
             pathname: `/user/${targetUser[1].id}`
         })
@@ -101,7 +120,7 @@ function PhotoFeed() {
             <div className='container'>
                 <div className='postsDiv'>
                     {Object.values(allPosts).map(post => (
-                        <div className='individualPhotoDiv' key={`${post.id}`}>
+                        <div key={post.id} className='individualPhotoDiv' key={`${post.id}`}>
                             <div className='userInfo'>
                                 <img src={post.user.avatar_url} className="avatar" alt="" />
                                 <span className='user' onClick={userProfile} id={`${post.user_id}`}>{post.user.username}</span>
@@ -116,13 +135,15 @@ function PhotoFeed() {
                             </div>
                             {
                                 post.post_likes.length
-                                    ? <div>{post.post_likes.length} Likes</div>
-                                    : <div>0 Likes</div>
+                                    ? <div className='commentsandlikesDiv'>{post.post_likes.length} Likes</div>
+                                    : <div className='commentsandlikesDiv'>0 Likes</div>
                             }
-                            <div><span className='user' onClick={userProfile} id={`${post.user_id}`}>{post.user.username}</span> {post.caption}</div>
+                            <div className='commentsandlikesDiv'><span className='user' onClick={userProfile} id={`${post.user_id}`}>{post.user.username}</span> {post.caption}
                             {post.post_comments.map(comment => (
                                 userOwnsComment(comment, userId)
+                            
                             ))}
+                            </div>
                             <div className="commentDiv">
                                 <Comments post_id={post.id} />
                             </div>

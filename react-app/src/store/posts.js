@@ -49,6 +49,19 @@ export const likeAPost = (params) => async dispatch => {
     return
 }
 
+export const likeAComment = (params) => async dispatch => {
+    const {user_id, comment_id} = params
+    console.log("INSIDE LIKEACOMMENT FUNCTION THUNK")
+    const response = await fetch(`/api/comments/${comment_id}/like`, {
+        method: "POST",
+        user_id,
+    })
+    const data = await response.json()
+    return 
+}
+
+
+
 export const unlikeAPost = (params) => async dispatch => {
     const { post_id, like_id } = params
     const response = await fetch(`/api/posts/like/${like_id}`, {
@@ -56,6 +69,15 @@ export const unlikeAPost = (params) => async dispatch => {
         post_id,
         like_id
     })
+    const data = await response.json()
+    return
+}
+
+export const unlikeAcomment = (id) => async dispatch => {
+    const response = await fetch(`api/comments/${id}/unlike`, {
+        method: "DELETE",
+    })
+
     const data = await response.json()
     return
 }
