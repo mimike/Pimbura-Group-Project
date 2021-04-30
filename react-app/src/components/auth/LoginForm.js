@@ -42,6 +42,7 @@ const LoginForm = () => {
       <div className="log-in-container">
         <div className="phones-image">
           <img alt="cell phone" src="/images/splash.jpeg"></img>
+          {/* <img alt="cell phone" src="https://instagram-python.s3.us-east-2.amazonaws.com/instagram-splash.png"></img> */}
         </div>
 
         <div className="log-in-form-container">
@@ -108,9 +109,11 @@ const LoginForm = () => {
         <div className="app-icon-container">
           <span className="google-image">
             <img alt="google app" src="/images/google-app.png"></img>
+            {/* https://instagram-python.s3.us-east-2.amazonaws.com/google-app.png */}
           </span>
           <span className="apple-image">
             <img alt="apple app" src="/images/apple-app.png"></img>
+            {/* https://instagram-python.s3.us-east-2.amazonaws.com/app-store.png */}
           </span>
         </div>
 
