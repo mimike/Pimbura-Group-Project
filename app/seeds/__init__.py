@@ -4,6 +4,7 @@ from .posts import seed_posts, undo_posts
 from .comments import seed_comments, undo_comments
 from .post_likes import seed_post_likes, undo_post_likes
 from .comment_likes import seed_comment_likes, undo_comment_likes
+from .followers import seed_followers, undo_followers
 
 
 # Creates a seed group to hold our commands
@@ -18,6 +19,7 @@ def seed():
     seed_comments()
     seed_post_likes()
     seed_comment_likes()
+    seed_followers()
 
     # Add other seed function
 
@@ -30,5 +32,4 @@ def undo():
     undo_comments()
     undo_post_likes()
     undo_comment_likes()
-
-
+    undo_followers()

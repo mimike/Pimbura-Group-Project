@@ -10,9 +10,9 @@ class Comments(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     comment = db.Column(db.String(), nullable=False)
 
-    user = db.relationship("User", back_populates="comments")
-    post = db.relationship("Posts", back_populates="post_comments")
-    comment_likes = db.relationship("CommentLikes", back_populates="comment")
+    #user = db.relationship("User", back_populates="comments")
+    #post = db.relationship("Posts", back_populates="post_comments")
+    comment_likes = db.relationship("CommentLikes", backref="comment", cascade="all, delete")
 
 
     def to_dict(self):   #{id: asdf, username: asdf}
@@ -22,6 +22,6 @@ class Comments(db.Model):
             "user_id": self.user_id,
             "comment": self.comment,
             "user": self.user.get_user(),
+            "comment_likes": [like.to_dict() for like in self.comment_likes]
             # "user": self.user.to_dict(),  #clarify- may delete this
-            # "comment_likes": self.comment_likes.to_dict()
         }

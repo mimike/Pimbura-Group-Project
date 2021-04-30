@@ -18,7 +18,6 @@ export const getAllPosts = () => async (dispatch) => {
     const response = await fetch('/api/posts/', {  //not done routes yet
         method: "GET",
     });
-
     if (response.ok) {
         const posts = await response.json();
         dispatch(displayPosts(posts))

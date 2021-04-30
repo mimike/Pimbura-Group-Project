@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, redirect, request
 from flask_login import login_required, current_user
-from app.models import db, Posts, Comments, Followers, CommentLikes, User
+from app.models import db, Posts, Comments, CommentLikes, User
 
 
 comment_routes = Blueprint('comments', __name__)
@@ -27,4 +27,3 @@ def comment_unlike(likeId):
     db.session.delete(like)
     db.session.commit()
     return
-
