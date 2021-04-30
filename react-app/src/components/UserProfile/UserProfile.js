@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from 'react-router-dom'
 import { getSingleUser } from '../../store/session'
@@ -10,24 +10,28 @@ import './UserProfile.css'
 function UserProfile(props) {
     const dispatch = useDispatch()
     const location = useLocation()
-    // const [currentUser, setCurrentUser] = useState({});
-    // const users = useSelector(state => state.session.users)
+    const users = useSelector(state => state.session.users)
     const sessionUser = useSelector(state => state.session.user)
     const targetUser = useSelector(state => state.session.target_user)
     var url = /[^/]*$/.exec(`${location.pathname}`)[0];
     console.log('location', url)
 
+    var url = /[^/]*$/.exec(`${location.pathname}`)[0];
+    console.log('location', url)
+    // console.log('users', users.users)
+
     useEffect(() => {
         dispatch(getSingleUser(url))
     }, [dispatch, url]);
 
+    // let followingUsers = users.users.map()
 
 
 
     if (!targetUser) return null
 
     else {
-        { console.log('user', targetUser.avatar_url) }
+        { console.log('user', targetUser) }
         return (
             <>
                 < div className='outer-div'>
@@ -47,8 +51,8 @@ function UserProfile(props) {
                             </div>
                             <div className='profile-stats-outer'>
                                 <div className='profile-post-count'><b>{targetUser.posts.length}</b> Posts</div>
-                                <div className='profile-followers-count'><b>0</b> Followers</div>
-                                <div className='profile-following-count'><b>0</b> Following</div>
+                                <div className='profile-followers-count'><b>{targetUser.followers.length}</b> Followers</div>
+                                <div className='profile-following-count'><b>{targetUser.following.length}</b> Following</div>
                             </div>
                         </div>
                     </div>
@@ -58,7 +62,7 @@ function UserProfile(props) {
                     </div>
                     <div className='user-posts-div'>
                         {targetUser.posts.map(post => (
-                            <div className='single-post'>
+                            <div className='single-post' key={`${post.id}`}>
                                 <div
                                     className='user-post-img'
                                     style={{

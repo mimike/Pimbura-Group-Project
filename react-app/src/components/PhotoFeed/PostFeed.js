@@ -3,6 +3,7 @@ import { NavLink, Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts, likeAPost, unlikeAPost, deleteAComment } from '../../store/posts'
 import Comments from './Comments'
+import SuggestedUsers from '../SuggestedUsers/SuggestedUsers'
 import './PhotoFeed.css';
 
 function PhotoFeed() {
@@ -59,7 +60,7 @@ function PhotoFeed() {
                         </Link>
                     )
                 }
-                // else 
+                // else
             }
 
         }
@@ -97,10 +98,10 @@ function PhotoFeed() {
 
     return (
         <>
-            <div >
+            <div className='container'>
                 <div className='postsDiv'>
                     {Object.values(allPosts).map(post => (
-                        <div className='individualPhotoDiv'>
+                        <div className='individualPhotoDiv' key={`${post.id}`}>
                             <div className='userInfo'>
                                 <img src={post.user.avatar_url} className="avatar" alt="" />
                                 <span className='user' onClick={userProfile} id={`${post.user_id}`}>{post.user.username}</span>
@@ -128,6 +129,7 @@ function PhotoFeed() {
                         </div>
                     ))}
                 </div>
+                <SuggestedUsers />
             </div>
         </>
     )

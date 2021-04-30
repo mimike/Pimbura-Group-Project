@@ -1,38 +1,15 @@
 li{
     list-style-type: none;
   }
-i.icon.search:before{
-    padding: 30px;
-    text-align: center;
-}
-
-.profile-button{
-    /* background-color: white; */
-    cursor: pointer;
-    /* background-image: url('images/splash.jpeg'); */
-    width: 30px;
-    height:30px;
-    border-radius: 50px;
-}
-button{
-    outline: none;
-}
-
-
-/* .profile-button i{
-    background-color:blue;
-    border-radius: 0px;
-    border: none;
-    height: 30px ;
-    width: 30px;
-    padding: 5px;
-    font-size: 2em;
-} */
 .avatar{
     cursor: pointer;
     width: 30px;
     height: 30px;
     border-radius: 50%;
+}
+
+.navbar{
+    border-bottom: 1px solid rgb(209, 207, 207);
 }
 .one-user img{
     margin-top: 3px;
@@ -151,4 +128,22 @@ button{
     font-family: -apple-system,BlinkMacSystemFont,“Segoe UI”,Roboto,Helvetica,Arial,sans-serif;
     font-size: 15px;
 
+}
+    position: absolute;
+    background-color: white;
+}
+
+.one-list{
+    margin: 4px;
+}
+
+.username{
+    margin-left: 10px;
+}
+
+.one-user{
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+    align-items: center;
 }

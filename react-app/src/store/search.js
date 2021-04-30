@@ -1,10 +1,15 @@
 
 const SEARCH_USER = "search/SEARCH_USER";
+const DELETE_SEARCH = "search/DELETE_SEARCH";
 
 //action:
 const searchUser = (searchList) => ({
     type: SEARCH_USER,
     payload: searchList
+})
+
+const deleteSearch = () => ({
+    type: DELETE_SEARCH
 })
 
 
@@ -31,6 +36,8 @@ export default function reducer (state = initialState, action){
     switch (action.type) {
         case SEARCH_USER:
             return { search: action.payload}
+        case DELETE_SEARCH:
+            return {}
         default:
             return state;
     }

@@ -5,13 +5,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 620px;
     background-color: rgb(250, 250, 250);
 }
 
 .individualPhotoDiv{
     border: 1px solid lightgray;
-    margin: 10px 90px;
-    
+    margin: 10px;
+
     background-color: white;
    
 }
@@ -71,4 +72,8 @@
 .editBtn {
     border: none;
     background-color: white;
+}
+.container{
+    display: flex;
+    justify-content: center;
 }

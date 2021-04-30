@@ -12,8 +12,8 @@ def seed_comments():
         'I like this',
         'Fun!'
     ]
-    for num in range(50):
-        comment = Comments(post_id=num+1, user_id=num+1, comment=comment_list[random.randrange(0,4)])
+    for num in range(100):
+        comment = Comments(post_id=random.randrange(1,51), user_id=random.randrange(1,51), comment=comment_list[random.randrange(0,4)])
         db.session.add(comment)
 
     db.session.commit()
