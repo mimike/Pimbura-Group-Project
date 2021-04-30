@@ -1,6 +1,14 @@
 li{
     list-style-type: none;
   }
+
+.avatar{
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
 .navbar{
     border-bottom: 1px solid rgb(209, 207, 207);
 }
@@ -54,4 +62,21 @@ li{
 
 .search-result{
     border: 2px solid rgb(209, 207, 207);
+    position: absolute;
+    background-color: white;
+}
+
+.one-list{
+    margin: 4px;
+}
+
+.username{
+    margin-left: 10px;
+}
+
+.one-user{
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+    align-items: center;
 }
