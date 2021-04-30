@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
 
-const SearchResult = ({search}) => {
+const SearchResult = ({ search }) => {
     const searched_users = useSelector(state => state.search.search) || {};
     const searches = searched_users.users || {}
     // const [isSearch, setIsSearch] = useState(true)
@@ -25,7 +25,7 @@ const SearchResult = ({search}) => {
     //         const closeMenu = () => {
     //         setShowMenu(false);
     //     };
-        
+
     //     document.addEventListener('click', closeMenu);
     //     return (() => document.removeEventListener('click', closeMenu))
     // }, [showMenu]);
@@ -33,21 +33,22 @@ const SearchResult = ({search}) => {
 
     // const onClick = () => style={display: 'hidden'}
     let searchResult = null;
-    if ( showMenu && Object.values(searches).length ) 
-            {searchResult = <ul className="search-result">
-                                    {Object.values(searches).map(search => (
-                                        <li key={search.id} className="one-list">
-                                            <NavLink to="/explore" exact={true} onClick={() => setShowMenu(false)}>
-                                                <div className="one-user">
-                                                    <img className="avatar" src={search.avatar_url} />
-                                                    <div className="username">{search.username}</div>
-                                                </div>
-                                            </NavLink>
-                                        </li>
-                                    ))}
-                                </ul>}
-            // } else if (search  && !showMenu) setShowMenu(true)
-                                
+    if (showMenu && Object.values(searches).length) {
+        searchResult = <ul className="search-result">
+            {Object.values(searches).map(search => (
+                <li key={search.id} className="one-list">
+                    <NavLink to={`/user/${search.id}`} exact={true} onClick={() => setShowMenu(false)}>
+                        <div className="one-user">
+                            <img className="avatar" src={search.avatar_url} />
+                            <div className="username">{search.username}</div>
+                        </div>
+                    </NavLink>
+                </li>
+            ))}
+        </ul>
+    }
+    // } else if (search  && !showMenu) setShowMenu(true)
+
     // if (search  && !showMenu) {
     //     setShowMenu(true)
     // } else {}
