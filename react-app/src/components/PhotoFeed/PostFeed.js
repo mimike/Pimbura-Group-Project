@@ -68,6 +68,7 @@ function PhotoFeed() {
                             <span onClick={handleUnlike} onMouseOver={() => setLikeID(post.post_likes[i].id)}><i className="heart icon"></i></span>
                     )
                 }
+
             }
         }
         return <span onClick={handleLike} onMouseOver={() => setPostID(post.id)}><i value={post.id} className="heart outline icon"></i></span>

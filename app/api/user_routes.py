@@ -44,4 +44,3 @@ def post_search_user():
     users = User.query.filter(User.username.ilike(f'%{data}%')).all()
     # print("5++++++++++", {"users": [user.to_dict() for user in users]})
     return {"users": [user.to_dict() for user in users]}
-    

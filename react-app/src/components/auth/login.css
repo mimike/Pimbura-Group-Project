@@ -5,7 +5,7 @@
 .log-in-form-container{
     order: 2;
     border: 1px solid lightgray;
-    height: 500px;
+    height: 530px;
     width: 390px;
     margin-top: 80px;
     background-color:white;
@@ -30,17 +30,20 @@
     border: 1px solid grey;
 }
 .log-in button{
-    margin-top: 20px;
+    margin: 20px;
     text-align: center;
     margin-bottom: 20px;
     border-radius: 5px;
+    border: none;
+    padding: 10px 0;
     background-color: rgb(52, 121, 211);
     color: white;
     width: 300px;
     font-weight: bold;
     cursor: pointer;
     outline: none;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    font-family: -apple-system,BlinkMacSystemFont,“Segoe UI”,Roboto,Helvetica,Arial,sans-serif;
 }
 .sign-up-box{
     background-color:white;
@@ -94,4 +97,12 @@ footer {
 .footer-links a{
     color: grey;
     font-size: 12px;
+}
+.demo-link input{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.icon h1{
+    text-align: center;
 }
