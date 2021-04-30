@@ -62,6 +62,7 @@ function ProfileButton() {
                             <div className="bottom">
                                 <li className="logout drop-list">
                                     <LogoutButton className="logout-button" />
+                                    
                                 </li>
                             </div>
                         </div>

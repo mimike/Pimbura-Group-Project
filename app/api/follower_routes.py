@@ -16,3 +16,8 @@ def get_followers(user_id):
     for follower in followers:
         print("FFFF", follower)
     return {"user": user.to_dict()}
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> thursday

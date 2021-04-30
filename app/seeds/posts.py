@@ -2,7 +2,7 @@ from app.models import db, Posts
 from faker import Faker
 fake = Faker()
 # make sure to run pip install requests
-import requests 
+import requests
 import json
 import random
 
@@ -13,11 +13,11 @@ def seed_posts():
     newList = []
     for item in response:
         newList.append(item["urls"]["small"])
-    
+
     caption_list = [
     "my lunch today",
-    "my dinner today,",
-    "my breakfast today,",
+    "my dinner today",
+    "my breakfast today",
     "a sunset",
     "a sunrise",
     "a selfie of me and my dog"
@@ -26,7 +26,7 @@ def seed_posts():
     # quantity = 30
     # while i <= quantity:
     # caption=captionList[random.randrange(0, len(captionList))]
-    
+
     for num in range(50):
         post = Posts(photo_url=newList[random.randrange(0,29)], user_id=num+1, caption=caption_list[random.randrange(0,4)])
         db.session.add(post)
@@ -36,5 +36,3 @@ def seed_posts():
 def undo_posts():
     db.session.execute('TRUNCATE posts RESTART IDENTITY CASCADE;')
     db.session.commit()
-
-    

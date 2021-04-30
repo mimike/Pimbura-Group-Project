@@ -24,13 +24,16 @@ const SearchForm = () => {
                     e.preventDefault();
                 }
             }>
-                <input type="text"
-                    placeholder="Search"
-                    value={search}
-                    onChange={onChange}
-                />
-                {console.log(search)}
-                {search_icon}
+                <div className="search-bar">
+                    {search_icon}
+                    <input style={{outline:"none"}} type="text"
+                        placeholder="Search"
+                        value={search}
+                        onChange={onChange}
+                    />
+                    {console.log(search)}
+
+                </div>
             </form>
             <SearchResult searches={[search]}/>
         </div>
