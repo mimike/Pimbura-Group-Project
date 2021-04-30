@@ -15,18 +15,14 @@ def seed_posts():
         newList.append(item["urls"]["small"])
     
     caption_list = [
-    "my lunch today",
-    "my dinner today,",
-    "my breakfast today,",
-    "a sunset",
-    "a sunrise",
-    "a selfie of me and my dog"
+    "Stress less and enjoy the best",
+    "Get out there and live a little",
+    "Look for the magic in every moment",
+    "Do whatever makes you happiest",
+    "Say yes, take risks, and live life on your own terms",
+    "Pursue your passion and you’ll never work a day in your life"
     ]
-    # i = 1
-    # quantity = 30
-    # while i <= quantity:
-    # caption=captionList[random.randrange(0, len(captionList))]
-    
+   
     for num in range(50):
         post = Posts(photo_url=newList[random.randrange(0,29)], user_id=num+1, caption=caption_list[random.randrange(0,4)])
         db.session.add(post)
