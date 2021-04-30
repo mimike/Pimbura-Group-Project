@@ -119,6 +119,10 @@ li{
 }
 .search-result{
     border: 2px solid rgb(209, 207, 207);
+
+    width: 15%;
+    height: 40%;
+
     background-color:white;
 }
 .bottom a{
@@ -127,13 +131,18 @@ li{
 
 }
 
+    position: absolute;
+    background-color: white;
+    margin-top: 0.5%;
+    margin-left: -2.5%;
+    overflow-y: scroll;
+    border-radius: 1.5%;
+}
+
 .one-list{
     margin: 4px;
 }
 
-.username{
-    margin-left: 10px;
-}
 
 .one-user{
     display: flex;
@@ -141,8 +150,21 @@ li{
     /* justify-content: space-around; */
     align-items: center;
 }
-.profile-button{
-    height: 20px;
-    width: 20px;
-    
+
+
+.username{
+    margin-left: 10px;
+    font-weight: bold;
+    color: black;
+    margin: 10px;
+
+}
+
+.username2 {
+    color: grey;
+    font-size: 13px;
+}
+
+.parent-list {
+    /* border-radius: 9%; */
 }

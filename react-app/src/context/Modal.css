@@ -1,0 +1,32 @@
+#modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 30%;
+    margin-top: 10%;
+    margin-left: 30%;
+    border: 2px solid rgb(209, 207, 207);
+    /* background-color: rgba(0,0,0,0.9); */
+  }
+  
+  #modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.103);
+    opacity: 0.1;
+  }
+  
+  #modal-content {
+    /* position: absolute; */
+    position: fixed;
+    background-color:white;
+  }
