@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, redirect, request
 from flask_login import login_required, current_user
-from app.models import db, Posts, Comments, Followers, PostLikes, User
+from app.models import db, Posts, Comments, PostLikes, User
 from app.forms.post_form import PostForm
 from app.forms.comment_form import CommentForm
 from app.awsS3 import (
@@ -21,6 +21,9 @@ post_routes = Blueprint('posts', __name__)
 def get_posts():
     posts = Posts.query.all()  # ??????
     return {"posts": [post.to_dict() for post in posts]}
+#
+
+
 
 
 # Route for the explore page:
@@ -101,7 +104,7 @@ def post_like(id):
 @post_routes.route('/<int:id>/comments', methods=['POST'])
 @login_required
 def post_comment(id):
-    
+
     print('TYPE OF REQUEST', request.json)
     data = request.json
     print(data['comment'])
@@ -114,7 +117,7 @@ def post_comment(id):
     db.session.add(newComment)
     db.session.commit()
     return newComment.to_dict()
-    
+
 
 
 # Route for patching a post

@@ -7,12 +7,12 @@ class PostLikes(db.Model):
     __tablename__ = "post_likes"
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), index=True)
-    post_id = db.Column(db.Integer, db.ForeignKey("posts.id"), nullable=False, index=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    post_id = db.Column(db.Integer, db.ForeignKey("posts.id"), nullable=False)
 
-    post = db.relationship("Posts", back_populates="post_likes")
-    user = db.relationship("User", back_populates="post_likes")
-    
+    #post = db.relationship("Posts", back_populates="post_likes")
+    #user = db.relationship("User", back_populates="post_likes")
+
 
     def to_dict(self):   #{id: asdf, username: asdf}
         return {
