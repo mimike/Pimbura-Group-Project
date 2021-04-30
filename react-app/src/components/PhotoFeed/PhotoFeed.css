@@ -65,6 +65,7 @@
 
 .user {
     font-weight: bold;
+    cursor: pointer;
 }
 
 .editBtn {
