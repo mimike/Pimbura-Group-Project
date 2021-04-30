@@ -5,6 +5,7 @@ import { getAllPosts, likeAPost, unlikeAPost, deleteAComment } from '../../store
 import Comments from './Comments'
 import SuggestedUsers from '../SuggestedUsers/SuggestedUsers'
 import './PhotoFeed.css';
+// import { getAllUsers } from '../../store/session'
 
 function PhotoFeed() {
     const dispatch = useDispatch();
@@ -12,6 +13,7 @@ function PhotoFeed() {
     const user = useSelector(state => state.session.user)
     const userId = user.id
     const history = useHistory()
+    let followedPosts;
 
 
     const [likeID, setLikeID] = useState()
@@ -20,6 +22,7 @@ function PhotoFeed() {
 
     useEffect(() => {
         dispatch(getAllPosts())
+        // dispatch(getAllUsers())
     }, [dispatch])
 
     const handleLike = async (e) => {
@@ -95,12 +98,16 @@ function PhotoFeed() {
     };
 
     if (!allPosts) return null;
+    console.log('posts------', allPosts)
+    { followedPosts = Object.values(allPosts).filter(function (el) { return el.user.username != user.username && user.following.some(obj => obj.username === el.user.username) }) }
+    // obj.username === el.user.username
+    console.log('followedposts', followedPosts)
 
     return (
         <>
             <div className='container'>
                 <div className='postsDiv'>
-                    {Object.values(allPosts).map(post => (
+                    {Object.values(followedPosts).map(post => (
                         <div className='individualPhotoDiv' key={`${post.id}`}>
                             <div className='userInfo'>
                                 <img src={post.user.avatar_url} className="avatar" alt="" />

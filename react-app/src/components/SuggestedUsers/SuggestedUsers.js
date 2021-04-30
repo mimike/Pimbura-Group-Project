@@ -12,7 +12,7 @@ function SuggestedUsers() {
     const sessionUser = useSelector(state => state.session.user)
     let users = useSelector(state => state.session.users)
     let newUsers;
-
+    console.log('sessionUser', sessionUser)
     useEffect(() => {
         dispatch(getAllUsers())
     }, [dispatch])
@@ -35,7 +35,10 @@ function SuggestedUsers() {
     if (!users) return null
 
     else {
-        { newUsers = users.users.filter(function (el) { return el.username != `${sessionUser.username}`; }) }
+        { newUsers = users.users.filter(function (el) { return el.username != `${sessionUser.username}` && !sessionUser.following.some(obj => obj.username === el.username) }) }
+
+
+        console.log('newUser', newUsers)
 
 
         return (
