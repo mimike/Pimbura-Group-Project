@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {getAllPosts, likeAPost, unlikeAPost, deleteAComment } from '../../store/posts'
+import { getAllPosts, likeAPost, unlikeAPost, deleteAComment } from '../../store/posts'
 import Comments from './Comments'
-import  './PhotoFeed.css';
+import './PhotoFeed.css';
 
-function PhotoFeed(){
+function PhotoFeed() {
     const dispatch = useDispatch();
     const allPosts = useSelector(state => state.posts.posts);
     const user = useSelector(state => state.session.user)
     const userId = user.id
+    const history = useHistory()
 
 
     const [likeID, setLikeID] = useState()
@@ -23,7 +24,7 @@ function PhotoFeed(){
     const handleLike = async (e) => {
         const user_id = userId
         const post_id = postID
-        const params = {user_id, post_id}
+        const params = { user_id, post_id }
         console.log('POST ID', postID)
         dispatch(likeAPost(params))
         dispatch(getAllPosts())
@@ -32,14 +33,14 @@ function PhotoFeed(){
     const handleUnlike = async (e) => {
         const post_id = userId
         const like_id = likeID
-        const params = {post_id, like_id}
+        const params = { post_id, like_id }
         console.log('UNLIKE TRIGGERED')
         dispatch(unlikeAPost(params))
         dispatch(getAllPosts())
     }
 
     const handleDeleteAComment = async () => {
-        
+
         console.log('handle delete a comment triggered', commentId)
         dispatch(deleteAComment(commentId))
         dispatch(getAllPosts())
@@ -47,11 +48,11 @@ function PhotoFeed(){
 
     const userHasLiked = (post, userId) => {
         // console.log(post.post_likes.length)
-        if (post.post_likes.length > 0 ){
-            
-            for (let i = 0 ; i < post.post_likes.length; i++){
+        if (post.post_likes.length > 0) {
+
+            for (let i = 0; i < post.post_likes.length; i++) {
                 // console.log(post.post_likes[i].user_id)
-                if (post.post_likes[i].user_id === userId){
+                if (post.post_likes[i].user_id === userId) {
                     return (
                         <Link onClick={handleUnlike} onMouseOver={e => setLikeID(post.post_likes[i].id)}>
                             <i className="heart icon"></i>
@@ -60,29 +61,37 @@ function PhotoFeed(){
                 }
                 // else 
             }
-            
+
         }
         return <Link onClick={handleLike} onMouseOver={e => setPostID(post.id)}><i value={post.id} class="heart outline icon"></i></Link>
-}
-
-const userOwnsComment = (comment, userId) => {
-    
-    if (comment.user_id === userId){
-        let commentId = comment.id
-        return (
-            <div><span className='user'>{comment.user.username}</span>{comment.comment}
-            <button 
-            value={commentId}
-            onMouseOver={() => setCommentId(comment.id)}
-            onClick={handleDeleteAComment}
-            className='editBtn'
-            ><i class="trash alternate icon"></i></button>
-            </div>)
-    } else {
-        
-        return <div><span className='user'>{comment.user.username}</span>{comment.comment}</div>
     }
-}
+
+    const userOwnsComment = (comment, userId) => {
+
+        if (comment.user_id === userId) {
+            let commentId = comment.id
+            return (
+                <div><span className='user' >{comment.user.username}</span>{comment.comment}
+                    <button
+                        value={commentId}
+                        onMouseOver={() => setCommentId(comment.id)}
+                        onClick={handleDeleteAComment}
+                        className='editBtn'
+                    ><i class="trash alternate icon"></i></button>
+                </div>)
+        } else {
+
+            return <div><span className='user'>{comment.user.username}</span>{comment.comment}</div>
+        }
+    }
+
+    const userProfile = async (e) => {
+        let targetUser = Object.values(e.target)
+        console.log('event', targetUser)
+        history.push({
+            pathname: `/user/${targetUser[1].id}`
+        })
+    };
 
     if (!allPosts) return null;
 
@@ -93,10 +102,10 @@ const userOwnsComment = (comment, userId) => {
                     {Object.values(allPosts).map(post => (
                         <div className='individualPhotoDiv'>
                             <div className='userInfo'>
-                                <img src={post.user.avatar_url} className="avatar" alt=""/>
-                                <span>{post.user.username}</span>
+                                <img src={post.user.avatar_url} className="avatar" alt="" />
+                                <span className='user' onClick={userProfile} id={`${post.user_id}`}>{post.user.username}</span>
                             </div>
-                            <img className='individualImg' src={post.photo_url} alt=""/>
+                            <img className='individualImg' src={post.photo_url} alt="" />
                             <div className='icons'>
                                 {
                                     userHasLiked(post, userId)
@@ -106,15 +115,15 @@ const userOwnsComment = (comment, userId) => {
                             </div>
                             {
                                 post.post_likes.length
-                                ? <div>{post.post_likes.length} Likes</div>
-                                : <div>0 Likes</div>
+                                    ? <div>{post.post_likes.length} Likes</div>
+                                    : <div>0 Likes</div>
                             }
-                            <div><span className='user'>{post.user.username}</span> {post.caption}</div>
+                            <div><span className='user' onClick={userProfile} id={`${post.user_id}`}>{post.user.username}</span> {post.caption}</div>
                             {post.post_comments.map(comment => (
                                 userOwnsComment(comment, userId)
                             ))}
                             <div className="commentDiv">
-                                <Comments post_id = {post.id}/>
+                                <Comments post_id={post.id} />
                             </div>
                         </div>
                     ))}
@@ -123,7 +132,7 @@ const userOwnsComment = (comment, userId) => {
         </>
     )
 
-                        
+
 }
 
 export default PhotoFeed

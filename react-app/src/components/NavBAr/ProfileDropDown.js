@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import LogoutButton from '../auth/LogoutButton';
+// import picture from './profile.jpg'
+import picture from "../../images/profile.jpg"
 
+// import { useLocation } from 'react-router-dom'
+// import { getSingleUser } from '../../store/session'
 
 function ProfileButton() {
-
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user)
     const [showMenu, setShowMenu] = useState(false);  // setting the menu showing to false "closed"
 
@@ -26,10 +30,12 @@ function ProfileButton() {
         return (() => document.removeEventListener('click', closeMenu))
     }, [showMenu]);
 
-
     return (
-        <div>
-            <button className="profile-button" onClick={openMenu}>{<i className="image icon" />}</button>
+        <>
+
+            <button className="profile-button"  onClick={openMenu}>
+                <img className="profile-button" alt="profile" src={picture}></img>
+            </button>
             {showMenu && (
 
                 <div className="profile-menu">
@@ -62,7 +68,7 @@ function ProfileButton() {
                             <div className="bottom">
                                 <li className="logout drop-list">
                                     <LogoutButton className="logout-button" />
-                                    
+
                                 </li>
                             </div>
                         </div>
@@ -70,7 +76,7 @@ function ProfileButton() {
                 </div>
 
             )}
-        </div>
+        </>
     )
 }
 

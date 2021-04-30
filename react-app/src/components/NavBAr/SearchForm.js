@@ -8,12 +8,14 @@ const SearchForm = () => {
     const dispatch = useDispatch();
     const searchResult = useSelector(state => state.search.search)
     const [search, setSearch] = useState("")
+    // const [isSearch, setIsSearch] = useState(false)
 
     const onChange = (e) => {
         setSearch(e.target.value)
         e.preventDefault()
         dispatch(getSearchResult(e.target.value));
         // setSearch(searchResult)
+        // setIsSearch(true)
     }
 
 
@@ -35,7 +37,8 @@ const SearchForm = () => {
 
                 </div>
             </form>
-            <SearchResult searches={[search]}/>
+            <SearchResult search={search}/> 
+            {/* { isSearch ? <SearchResult/> : null } */}
         </div>
 
     )
