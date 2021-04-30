@@ -63,15 +63,6 @@ function App() {
           <NavBar />
           <PhotoUploadPage />
         </Route>
-<<<<<<< HEAD
-=======
-
-        <Route path='/test'>
-          <NavBar />
-          <SuggestedUsers />
-        </Route>
-
->>>>>>> 1f2bb6682a8dcc143e4b2026bd1bf3f6ec24d404
         <Route path='/user/:userId' exact={true}>
           <NavBar />
           <UserProfile />
