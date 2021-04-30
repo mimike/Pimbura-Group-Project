@@ -37,10 +37,7 @@ li{
 .bottom{
     border-top: 1px solid rgb(219, 214, 214);
 }
-.profile-dropdown {
-    /* background-color: yellow;
-    text-align:start; */
-}
+
 .dropdown ul{
     border-bottom: 1px solid rgb(209, 207, 207);
 }
@@ -129,9 +126,6 @@ li{
     font-size: 15px;
 
 }
-    position: absolute;
-    background-color: white;
-}
 
 .one-list{
     margin: 4px;
@@ -146,4 +140,9 @@ li{
     flex-wrap: wrap;
     /* justify-content: space-around; */
     align-items: center;
+}
+.profile-button{
+    height: 20px;
+    width: 20px;
+    
 }
