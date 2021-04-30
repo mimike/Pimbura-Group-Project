@@ -23,18 +23,24 @@ const SearchResult = ({ search }) => {
 
     let searchResult = null;
     if (showMenu && Object.values(searches).length) {
-        searchResult = <ul className="search-result">
-            {Object.values(searches).map(search => (
-                <li key={search.id} className="one-list">
-                    <NavLink to={`/user/${search.id}`} exact={true}>
-                        <div className="one-user">
-                            <img className="avatar" src={search.avatar_url} />
-                            <div className="username">{search.username}</div>
-                        </div>
-                    </NavLink>
-                </li>
-            ))}
-        </ul>
+        searchResult = 
+        <div className="parent-list">
+            <ul className="search-result">
+                {Object.values(searches).map(search => (
+                    <li key={search.id} className="one-list">
+                        <NavLink to={`/user/${search.id}`} exact={true}>
+                            <div className="one-user">
+                                <img className="avatar" src={search.avatar_url} />
+                                <div className="username">
+                                    <div className="username1">{search.username}</div>
+                                    <div className="username2">{search.username}</div>
+                                </div>
+                            </div>
+                        </NavLink>
+                    </li>
+                ))}
+            </ul>
+        </div>
     }
     // } if (!showMenu && Object.values(searches).length) {
     //     setShowMenu(true)
