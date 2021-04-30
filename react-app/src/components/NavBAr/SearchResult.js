@@ -5,8 +5,59 @@ import { NavLink } from 'react-router-dom';
 const SearchResult = ({ search }) => {
     const searched_users = useSelector(state => state.search.search) || {};
     const searches = searched_users.users || {}
-    // const [isSearch, setIsSearch] = useState(true)
     const [showMenu, setShowMenu] = useState(true);
+    
+    let onClick = (e) => {
+        console.log('onClick')
+        setShowMenu(false);
+    }
+
+    useEffect( () => {
+        if (search.length){
+            setShowMenu(true)
+        } else {setShowMenu(false)}
+
+        console.log('useEffect')
+        
+    }, [search])
+
+    let searchResult = null;
+    if (showMenu && Object.values(searches).length) {
+        searchResult = <ul className="search-result">
+            {Object.values(searches).map(search => (
+                <li key={search.id} className="one-list">
+                    <NavLink to={`/user/${search.id}`} exact={true}>
+                        <div className="one-user">
+                            <img className="avatar" src={search.avatar_url} />
+                            <div className="username">{search.username}</div>
+                        </div>
+                    </NavLink>
+                </li>
+            ))}
+        </ul>
+    }
+    // } if (!showMenu && Object.values(searches).length) { 
+    //     setShowMenu(true)
+    //     // return
+    // }
+    // } else if (search  && !showMenu) setShowMenu(true)
+
+    // if (search  && !showMenu) {
+    //     setShowMenu(true)
+    // } else {}
+
+
+
+    return (
+        <div>
+            {searchResult}
+        </div>
+    )
+}
+
+export default SearchResult;
+
+// const [searchLength, setSearchLength] = useState(0)
 
     // const [showMenu, setShowMenu] = useState(true);  // setting the menu showing to false "closed"
 
@@ -29,37 +80,3 @@ const SearchResult = ({ search }) => {
     //     document.addEventListener('click', closeMenu);
     //     return (() => document.removeEventListener('click', closeMenu))
     // }, [showMenu]);
-
-
-    // const onClick = () => style={display: 'hidden'}
-    let searchResult = null;
-    if (showMenu && Object.values(searches).length) {
-        searchResult = <ul className="search-result">
-            {Object.values(searches).map(search => (
-                <li key={search.id} className="one-list">
-                    <NavLink to={`/user/${search.id}`} exact={true} onClick={() => setShowMenu(false)}>
-                        <div className="one-user">
-                            <img className="avatar" src={search.avatar_url} />
-                            <div className="username">{search.username}</div>
-                        </div>
-                    </NavLink>
-                </li>
-            ))}
-        </ul>
-    }
-    // } else if (search  && !showMenu) setShowMenu(true)
-
-    // if (search  && !showMenu) {
-    //     setShowMenu(true)
-    // } else {}
-
-
-
-    return (
-        <div>
-            {searchResult}
-        </div>
-    )
-}
-
-export default SearchResult;

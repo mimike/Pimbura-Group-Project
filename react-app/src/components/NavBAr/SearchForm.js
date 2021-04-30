@@ -14,6 +14,7 @@ const SearchForm = () => {
         setSearch(e.target.value)
         e.preventDefault()
         dispatch(getSearchResult(e.target.value));
+        // console.log(search)
         // setSearch(searchResult)
         // setIsSearch(true)
     }
