@@ -21,10 +21,8 @@ function PhotoUploadPage() {
     }
   }
 
-
   return (
     <>
-      
       <h1>Photo Upload</h1>
       <form onSubmit={handleSubmit} enctype="multipart/form">
         <div>

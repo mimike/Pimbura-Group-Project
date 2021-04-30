@@ -12,7 +12,7 @@ const NavBar = (props) => {
         <div className="navbar-left">
           <li>
             <NavLink to="/" exact={true} activeClassName="active">
-              Instagram?
+              Instagram
             </NavLink>
           </li>
         </div>

@@ -60,7 +60,7 @@ function PhotoFeed() {
                         </Link>
                     )
                 }
-                // else 
+                // else
             }
 
         }

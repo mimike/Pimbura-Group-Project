@@ -6,6 +6,10 @@ import { signUp } from '../../store/session'
 import { Link } from 'react-router-dom';
 import './signup.css'
 import './auth.css'
+import google from "../../images/google-app.png"
+import apple from "../../images/apple-app.png"
+import splash from "../../images/splash.jpeg"
+
 
 const SignUpForm = () => {
   const history = useHistory()
@@ -34,7 +38,7 @@ const SignUpForm = () => {
     <>
       <div className="sign-up-container">
         <div className="phones-image">
-          <img alt="cell phone" src="/images/splash.jpeg"></img>
+      <img alt="cell phone" src={splash}></img>
         </div>
         <div className="sign-up-form-container">
           <div className="icon">
@@ -136,10 +140,10 @@ const SignUpForm = () => {
         </div>
         <div className="app-icon-container">
           <span className="google-image">
-            <img alt="google app" src="/images/google-app.png"></img>
+            <img alt="google app" src={google}></img>
           </span>
           <span className="apple-image">
-            <img alt="apple app" src="/images/apple-app.png"></img>
+            <img alt="apple app" src={apple}></img>
           </span>
         </div>
       </div>
