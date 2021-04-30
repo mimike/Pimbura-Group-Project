@@ -6,7 +6,7 @@ const SearchResult = ({ search }) => {
     const searched_users = useSelector(state => state.search.search) || {};
     const searches = searched_users.users || {}
     const [showMenu, setShowMenu] = useState(true);
-    
+
     let onClick = (e) => {
         console.log('onClick')
         setShowMenu(false);
@@ -18,7 +18,7 @@ const SearchResult = ({ search }) => {
         } else {setShowMenu(false)}
 
         console.log('useEffect')
-        
+
     }, [search])
 
     let searchResult = null;
@@ -36,7 +36,7 @@ const SearchResult = ({ search }) => {
             ))}
         </ul>
     }
-    // } if (!showMenu && Object.values(searches).length) { 
+    // } if (!showMenu && Object.values(searches).length) {
     //     setShowMenu(true)
     //     // return
     // }

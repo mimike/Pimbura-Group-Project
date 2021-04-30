@@ -13,6 +13,8 @@ function UserProfile(props) {
     const users = useSelector(state => state.session.users)
     const sessionUser = useSelector(state => state.session.user)
     const targetUser = useSelector(state => state.session.target_user)
+    var url = /[^/]*$/.exec(`${location.pathname}`)[0];
+    console.log('location', url)
 
     var url = /[^/]*$/.exec(`${location.pathname}`)[0];
     console.log('location', url)
@@ -21,7 +23,6 @@ function UserProfile(props) {
     useEffect(() => {
         dispatch(getSingleUser(url))
     }, [dispatch, url]);
-
 
     // let followingUsers = users.users.map()
 
