@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from 'react-router-dom'
 import { getSingleUser } from '../../store/session'
@@ -61,7 +61,7 @@ function UserProfile(props) {
                     </div>
                     <div className='user-posts-div'>
                         {targetUser.posts.map(post => (
-                            <div className='single-post'>
+                            <div className='single-post' key={`${post.id}`}>
                                 <div
                                     className='user-post-img'
                                     style={{
