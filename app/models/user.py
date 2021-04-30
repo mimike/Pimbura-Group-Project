@@ -1,12 +1,13 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-#joins table
 follows = db.Table(
+    # joins table
     "followers", db.Model.metadata,
     db.Column("follower_id", db.Integer, db.ForeignKey("users.id")),
     db.Column("followed_id", db.Integer, db.ForeignKey("users.id"))
 )
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -17,12 +18,13 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     avatar_url = db.Column(db.String())
 
-
     # referencing the variable user in posts.py
     posts = db.relationship("Posts", backref="user", cascade="all, delete")
     comments = db.relationship("Comments", backref="user")
-    comment_likes = db.relationship("CommentLikes", backref="user", cascade="all, delete")
-    post_likes = db.relationship("PostLikes", backref="user", cascade="all, delete")
+    comment_likes = db.relationship(
+        "CommentLikes", backref="user", cascade="all, delete")
+    post_likes = db.relationship(
+        "PostLikes", backref="user", cascade="all, delete")
     # follower = db.relationship("Followers", backref='user', cascade="all, delete")
     followers = db.relationship(
         "User",
@@ -32,10 +34,6 @@ class User(db.Model, UserMixin):
         backref=db.backref("follows", lazy="dynamic"),
         lazy="dynamic"
     )
-    # following_ids = db.relationship("Followers", back_populates='following', foreign_keys='followers.following_id')
-    # Would like to try to make this work
-    # follower_id = db.relationship("Followers", backref='follower', foreign_keys='followers.user_id')
-    # following_ids = db.relationship("Followers", backref='following', foreign_keys='followers.following_id')
 
     @property
     def password(self):
@@ -56,13 +54,10 @@ class User(db.Model, UserMixin):
             "avatar_url": self.avatar_url,
             # a list w/id, photourl, user, caption
             "posts": [post.to_dict() for post in self.posts],
-            "followers": [follower.get_user() for follower in self.followers]
+            "followers": [follower.get_user() for follower in self.followers],
+            "following": [follower.get_user() for follower in self.follows]
             # ^ recursion error if u do follower.to_dict()
 
-            # "comments": self.comments.to_dict(),
-            # "comment_likes": self.comment_likes.to_dict(),
-            # "post_likes": self.post_likes.to_dict(),
-            # "following_ids": self.following_id.to_dict()
         }
 
     def get_user(self):
