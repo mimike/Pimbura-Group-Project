@@ -15,16 +15,17 @@ const ExplorePage = () => {
 
     return (
         <div>
+            <div>
             <ul className="posts-list">
                 {Object.values(allPosts).map(post => (
                     <li key={post.id}>
                         <img src={post.photo_url} />
-                        <Link onClick={click}></Link>
+                        <NavLink to="/explore" onClick={click}></NavLink>
                     </li>
                 ))}
             </ul>
+            </div>
         </div>
-
     )
 }
 
