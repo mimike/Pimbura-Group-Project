@@ -21,10 +21,7 @@ flask seed undo
 
 npm install webcam-easy
 
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-=======
+
 delete migrations folder
 DROP DATABASE instagram_db
 drop user
