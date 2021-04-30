@@ -59,7 +59,7 @@ function SuggestedUsers() {
                 </div>
                     <div className='suggested-user-div'>
                         {newUsers.slice(0, 6).map(user => (
-                            <div className='single-user'>
+                            <div className='single-user' key={`${user.id}`}>
                                 <div
                                     className='user-avatar'
                                     style={{

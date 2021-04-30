@@ -63,12 +63,6 @@ function App() {
           <NavBar />
           <PhotoUploadPage />
         </Route>
-
-        <Route path='/test'>
-          <NavBar />
-          <SuggestedUsers />
-        </Route>
-
         <Route path='/user/:userId' exact={true}>
           <NavBar />
           <UserProfile />
@@ -87,7 +81,6 @@ function App() {
         <ProtectedRoute path="/" exact={true}>
           <NavBar />
           <PhotoFeed />
-          <SuggestedUsers />
         </ProtectedRoute>
 
       </Switch>

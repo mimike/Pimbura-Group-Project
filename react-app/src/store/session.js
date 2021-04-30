@@ -1,4 +1,4 @@
-import { setErrors, removeErrors } from "./errors"
+import { setErrors } from "./errors"
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
@@ -41,14 +41,14 @@ export const authenticate = () => async (dispatch) => {
 
 export const demoLogin = () => async (dispatch) => {
     const response = await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-    },
-      body: JSON.stringify({
-        email: "demo@aa.io",
-        password: "password"
-      }),
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: "demo@aa.io",
+            password: "password"
+        }),
     })
     const data = await response.json()
     dispatch(setUser(data));
@@ -121,7 +121,7 @@ export const getSingleUser = (id) => async (dispatch) => {
     })
     if (res.ok) {
         const user = await res.json();
-        dispatch(getOneUser(user))  
+        dispatch(getOneUser(user))
         return user
     }
 
