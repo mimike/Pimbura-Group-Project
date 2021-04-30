@@ -14,7 +14,7 @@
     margin: 10px;
 
     background-color: white;
-   
+
 }
 
 .individualImg {
@@ -39,7 +39,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-    
+
 }
 .commentInput, .commentButton {
     border: none;
@@ -88,11 +88,9 @@
 }
 .container{
     display: flex;
-
+    justify-content: center;
 }
 
 .commentSpan{
     padding: 5px;
 }
-
-
