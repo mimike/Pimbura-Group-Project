@@ -7,7 +7,7 @@ import './ExplorePage.css';
 const ExplorePage = () => {
 
     const allPosts = useSelector(state => state.posts.posts) || {};
-    // console.log(allPosts)
+    console.log("POSTS--------------------",allPosts)
 
     const click = () => {
         console.log("HI")
