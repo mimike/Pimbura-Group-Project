@@ -1,8 +1,7 @@
 from app.models import db
 from faker import Faker
 faker = Faker()
-# make sure to run pip install requests
-import requests
+
 import json
 import random
 

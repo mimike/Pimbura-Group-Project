@@ -20,6 +20,4 @@ class CommentLikes(db.Model):
         "id": self.id,
         "user_id": self.user_id,
         "comment_id": self.comment_id,
-
-
         }

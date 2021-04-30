@@ -8,7 +8,6 @@ follows = db.Table(
     db.Column("followed_id", db.Integer, db.ForeignKey("users.id"))
 )
 
-# came with the skeleton, do we need to make models.py file for the rest of models?
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 

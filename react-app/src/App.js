@@ -78,7 +78,6 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
           <NavBar />
-          <h1>My Home Page</h1>
           <PhotoFeed />
           <SuggestedUsers />
         </ProtectedRoute>
