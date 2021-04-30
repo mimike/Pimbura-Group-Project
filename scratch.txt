@@ -21,3 +21,25 @@ flask seed undo
 
 npm install webcam-easy
 
+<<<<<<< Updated upstream
+=======
+delete migrations folder
+DROP DATABASE instagram_db
+drop user
+create db, user with owner........
+
+flask db init
+migrate
+migrate
+seed
+
+
+Followers
+1. fullname to our database and models/seed
+2. followers relationships, models and seeder files completed.
+3. follower_routes ?
+4. follower store, neccessary? or in the store/posts.js
+
+5. on profile page, if user is me, than follow button is not there
+6. add a follow button to profile pages
+>>>>>>> Stashed changes
