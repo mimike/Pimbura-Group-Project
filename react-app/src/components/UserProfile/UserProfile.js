@@ -19,7 +19,7 @@ function UserProfile(props) {
 
     useEffect(() => {
         dispatch(getSingleUser(url))
-    }, [dispatch]);
+    }, [dispatch, url]);
 
 
 
