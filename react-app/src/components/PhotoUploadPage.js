@@ -1,14 +1,28 @@
 // sunday MOCK
 import React, { useEffect, useState } from "react";
-//import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { photoUpload } from "../store/posts"  // may change name of this function and store location! curly braces from export const
 import './PhotoUploadPage.css'
 
 function PhotoUploadPage() {
+  let history = useHistory()
 
   const [ caption, setCaption ] = useState("")
   const [ image, setImage ] = useState(null)
+
+  // const [errors, setErrors] = useState([]);
+  // const history = useHistory();
+
+  // useEffect(() => {
+  //   const errors = [];
+  //   if (!image) {
+  //     errors.push("You must select a photo to create a post.");
+  //   }
+
+  //   setErrors(errors);
+  // }, [img]);
+
 
   const dispatch = useDispatch()
   const handleSubmit = async (e) => {
@@ -16,8 +30,11 @@ function PhotoUploadPage() {
     const submission = { caption, image }
     let createdPhoto = await dispatch(photoUpload(submission)) // line ~42 of session.js data return
     if(createdPhoto){            // if photo created, modal, redirect, etc.
-      // redirect to (/feed)
+      history.push('/')
     }
+    // else {
+    //   history.push('/sign-up')
+    // }
   }
 
   return (
@@ -47,7 +64,7 @@ function PhotoUploadPage() {
               className="input-file"
               name = "image"
               type = "file"
-              
+
               // placeholder = "Share your photo"
               onChange = { (e) => setImage(e.target.files[0])} // only accepts ONE photo if they try and upload multiple files
 
