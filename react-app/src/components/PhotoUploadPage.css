@@ -1,0 +1,77 @@
+.upload-container{
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+}
+.title-upload{
+    margin-top: 20px;
+    margin-right: 80px;
+    margin-left: 30px
+}
+.title-upload h1{
+
+}
+.upload-form{
+
+}
+.caption-text-box{
+    margin-top: 40px;
+
+}
+.caption-text-box placeholder{
+    padding: 20px;
+}
+.caption-text-box textarea {
+    padding: 20px;
+    width: 300px;
+    height: 200px;
+    overflow-y: scroll;
+    margin-bottom: 15px;
+}
+
+.upload-image-box{
+
+}
+
+.submit-photo{
+
+}
+.submit-photo button{
+    /* margin: 20px; */
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 0;
+    background-color: rgb(52, 121, 211);
+    color: white;
+    width: 300px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    font-family: -apple-system,BlinkMacSystemFont,“Segoe UI”,Roboto,Helvetica,Arial,sans-serif;
+}
+#file-upload-button input{
+    color: red;
+}
+.input-file button{
+    color: blue;
+}
+.upload-image-box{
+
+}
+/* .inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: red;
+} */
