@@ -14,7 +14,7 @@
     margin: 10px;
 
     background-color: white;
-   
+
 }
 
 .individualImg {
@@ -24,7 +24,7 @@
 
 .icons {
     font-size: 20px;
-    margin: 5px;
+    margin:  5px 10px;
 }
 
 .commentForm{
@@ -32,17 +32,30 @@
     justify-content: space-between;
     width: 100%;
     height: 50px;
+    padding: 10px;
 }
 .commentDiv {
     border-top: 1px solid lightgray;
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
+
 }
 .commentInput, .commentButton {
     border: none;
     background-color: white;
     outline: none;
 }
+
+/* .allCommentsDiv{
+    margin-left: 20px;
+} */
+
+.commentsandlikesDiv {
+    margin-left: 13px;
+}
+
+
 
 .commentButton{
     color:  #0095f6;
@@ -76,4 +89,8 @@
 .container{
     display: flex;
     justify-content: center;
+}
+
+.commentSpan{
+    padding: 5px;
 }

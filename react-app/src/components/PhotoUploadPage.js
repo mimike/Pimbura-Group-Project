@@ -38,7 +38,7 @@ function PhotoUploadPage() {
           <input
             name = "image"
             type = "file"
-            placeholder = "Upload Pix"
+            placeholder = "Share your photo"
             onChange = { (e) => setImage(e.target.files[0])} // only accepts ONE photo if they try and upload multiple files
           />
         </div>
