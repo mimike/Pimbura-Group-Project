@@ -6,7 +6,6 @@ import { photoUpload } from "../store/posts"  // may change name of this functio
 import './PhotoUploadPage.css'
 
 function PhotoUploadPage() {
-  let history = useHistory()
 
   const [ caption, setCaption ] = useState("")
   const [ image, setImage ] = useState(null)
@@ -43,13 +42,12 @@ function PhotoUploadPage() {
           </div>
 
           <div className="upload-image-box">
-          <label className="upload-label" htmlFor="file">Choose photo</label>
+          <label className="upload-label" htmlFor="file">Upload <i class="fas fa-upload"></i></label>
             <input
               id = "file"
               className="input-file"
               name = "image"
               type = "file"
-              // placeholder = "Share your photo"
               onChange = { (e) => setImage(e.target.files[0])} // only accepts ONE photo if they try and upload multiple files
 
             />

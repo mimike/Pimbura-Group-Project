@@ -19,7 +19,7 @@
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 50%;
-    border: 1px solid black;
+    border: 1px solid grey;
 }
 
 .profile-info-div{
@@ -115,7 +115,7 @@
     width: 300px;
     flex: 0 0 33.333333%;
     padding: 20px;
-    
+
 }
 
 .user-post-img{
