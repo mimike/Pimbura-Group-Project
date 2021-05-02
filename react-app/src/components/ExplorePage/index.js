@@ -67,7 +67,7 @@ const ExplorePage = () => {
                                 <div className="first">
                                     <div ><img className="user-avatar" src={postUser.avatar_url}></img></div>
                                     <div className="user-follow">
-                                        <div className="username-bold">{postUser.username}<span className="follow"><NavLink to="/follow">Follow</NavLink></span></div>
+                                        <div className="username-bold">{postUser.username}<div className="follow"><NavLink to="/follow">Follow</NavLink></div></div>
                                     <div className="username-light">{postUser.username}</div>
                                     </div>
                                 </div>
