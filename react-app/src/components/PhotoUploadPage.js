@@ -1,5 +1,5 @@
 // sunday MOCK
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, redirect } from "react";
 //import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { photoUpload } from "../store/posts"  // may change name of this function and store location! curly braces from export const
@@ -9,15 +9,15 @@ function PhotoUploadPage() {
 
   const [ caption, setCaption ] = useState("")
   const [ image, setImage ] = useState(null)
+  const [photoCreated, setPhotoCreated] = useState()
 
   const dispatch = useDispatch()
   const handleSubmit = async (e) => {
     e.preventDefault();
     const submission = { caption, image }
     let createdPhoto = await dispatch(photoUpload(submission)) // line ~42 of session.js data return
-    if(createdPhoto){            // if photo created, modal, redirect, etc.
-      // redirect to (/feed)
-    }
+    return alert('Post Created!')
+    
   }
 
   return (
@@ -59,6 +59,7 @@ function PhotoUploadPage() {
               type="submit"
             >Submit
             </button>
+            {photoCreated ? <p>Posted!</p> :<p></p>}
           </div>
         </form>
       </div>

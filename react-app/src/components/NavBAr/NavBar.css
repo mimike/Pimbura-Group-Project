@@ -32,6 +32,7 @@ li{
     border: none;
     cursor: pointer;
     border-radius: 50px ;
+    background-color: #FAFAFA;
 }
 
 .profile-page span{
