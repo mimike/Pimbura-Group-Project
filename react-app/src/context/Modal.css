@@ -1,17 +1,17 @@
 #modal {
     position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
+    top: 20px;
+    right: 20px;
+    left: 20px;
+    bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50%;
-    width: 30%;
-    margin-top: 10%;
-    margin-left: 30%;
-    border: 2px solid rgb(209, 207, 207);
+    height: 100%;
+    width: 100%;
+    /* margin-top: 10%; */
+    /* margin-left: 30%; */
+    /* border: 2px solid rgb(209, 207, 207); */
     /* background-color: rgba(0,0,0,0.9); */
   }
   
@@ -21,12 +21,22 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 0.103);
-    opacity: 0.1;
+    /* background-color: rgba(253, 252, 252, 0.144); */
+    opacity: 0.7;
+    background-color: rgb(241, 236, 236);
   }
   
   #modal-content {
-    /* position: absolute; */
-    position: fixed;
-    background-color:white;
+    position: absolute;
+    /* position: fixed; */
+    /* background-color:red; */
+    height: 50%;
+    /* margin-right: 18%; */
+    width: 40%;
+    border: 2px solid rgb(209, 207, 207);
   }
+
+  /* .post-userName{
+    background-color: green;
+    margin-right: 500px;
+} */
