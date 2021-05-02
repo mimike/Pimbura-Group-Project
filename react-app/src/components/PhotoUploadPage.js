@@ -1,6 +1,6 @@
 // sunday MOCK
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useState, redirect } from "react";
+//import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { photoUpload } from "../store/posts"  // may change name of this function and store location! curly braces from export const
 import './PhotoUploadPage.css'
@@ -10,30 +10,15 @@ function PhotoUploadPage() {
 
   const [ caption, setCaption ] = useState("")
   const [ image, setImage ] = useState(null)
-  // const [errors, setErrors] = useState([]);
-  // const history = useHistory();
-
-  // useEffect(() => {
-  //   const errors = [];
-  //   if (!image) {
-  //     errors.push("You must select a photo to create a post.");
-  //   }
-
-  //   setErrors(errors);
-  // }, [img]);
+  const [photoCreated, setPhotoCreated] = useState()
 
   const dispatch = useDispatch()
   const handleSubmit = async (e) => {
     e.preventDefault();
     const submission = { caption, image }
     let createdPhoto = await dispatch(photoUpload(submission)) // line ~42 of session.js data return
-    console.log("------------")
-    if(createdPhoto){            // if photo created, modal, redirect, etc.
-      history.push('/')
-    }
-    else {
-      history.push('/sign-up')
-    }
+    return alert('Post Created!')
+
   }
 
   return (
@@ -75,6 +60,7 @@ function PhotoUploadPage() {
               type="submit"
             >Submit
             </button>
+            {photoCreated ? <p>Posted!</p> :<p></p>}
           </div>
         </form>
       </div>

@@ -38,8 +38,7 @@ function ProfileButton() {
         <>
 
             <button className="profile-button"  onClick={openMenu}>
-                <img className="profile-button" alt="profile" src={picture}></img>
-                {/* <img className="profile-button" alt="profile" src={targetUser.avatar_url}></img> */}
+                <img className="profile-button" alt="profile" src={sessionUser.avatar_url}></img>
             </button>
             {showMenu && (
 
