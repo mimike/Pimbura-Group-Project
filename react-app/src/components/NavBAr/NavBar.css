@@ -34,10 +34,6 @@ li{
     border-radius: 50px ;
 }
 
-
-.profile-button img{
-
-}
 .profile-page span{
     font-size: 15px;
     margin-left: 5px;
@@ -53,9 +49,7 @@ li{
 .bottom{
     border-top: 1px solid rgb(219, 214, 214);
 }
-/* .dropdown ul{
-    border-bottom: 1px solid rgb(209, 207, 207);
-} */
+
 .navbar a{
     font-family: Billabong;
     color: black;
