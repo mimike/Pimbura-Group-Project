@@ -138,6 +138,7 @@ const SignUpForm = () => {
         <div className="get-app">
             <p>Get the app.</p>
         </div>
+        
         <div className="app-icon-container">
           <span className="google-image">
             <img alt="google app" src={google}></img>
@@ -163,7 +164,6 @@ const SignUpForm = () => {
       </footer>
 
     </>
-
 
 
 

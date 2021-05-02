@@ -17,7 +17,7 @@ function PhotoUploadPage() {
     const submission = { caption, image }
     let createdPhoto = await dispatch(photoUpload(submission)) // line ~42 of session.js data return
     return alert('Post Created!')
-    
+
   }
 
   return (
@@ -42,13 +42,12 @@ function PhotoUploadPage() {
           </div>
 
           <div className="upload-image-box">
-          {/* <label for="file">Choose a PHOTO: </label> */}
+          <label className="upload-label" htmlFor="file">Upload <i class="fas fa-upload"></i></label>
             <input
+              id = "file"
               className="input-file"
               name = "image"
               type = "file"
-              
-              // placeholder = "Share your photo"
               onChange = { (e) => setImage(e.target.files[0])} // only accepts ONE photo if they try and upload multiple files
 
             />

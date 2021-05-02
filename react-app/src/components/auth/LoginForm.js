@@ -7,7 +7,10 @@ import { Link } from 'react-router-dom';
 import DemoUser from '../auth/DemoUser';
 import './auth.css'
 import './login.css'
-//you see this when a new user vists ig.com
+import google from "../../images/google-app.png"
+import apple from "../../images/apple-app.png"
+import splash from "../../images/splash.jpeg"
+
 const LoginForm = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -41,8 +44,7 @@ const LoginForm = () => {
     <>
       <div className="log-in-container">
         <div className="phones-image">
-          <img alt="cell phone" src="/images/splash.jpeg"></img>
-          {/* <img alt="cell phone" src="https://instagram-python.s3.us-east-2.amazonaws.com/instagram-splash.png"></img> */}
+          <img alt="cell phone" src={splash}></img>
         </div>
 
         <div className="log-in-form-container">
@@ -106,17 +108,15 @@ const LoginForm = () => {
         <div className="get-app">
             <p>Get the app.</p>
         </div>
+
         <div className="app-icon-container">
           <span className="google-image">
-            <img alt="google app" src="/images/google-app.png"></img>
-            {/* https://instagram-python.s3.us-east-2.amazonaws.com/google-app.png */}
+            <img alt="google app" src={google}></img>
           </span>
           <span className="apple-image">
-            <img alt="apple app" src="/images/apple-app.png"></img>
-            {/* https://instagram-python.s3.us-east-2.amazonaws.com/app-store.png */}
+            <img alt="apple app" src={apple}></img>
           </span>
         </div>
-
       </div>
 
       <footer>

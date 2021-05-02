@@ -25,6 +25,12 @@
 .icons {
     font-size: 20px;
     margin:  5px 10px;
+    cursor: pointer;
+
+}
+.icons i{
+    margin: 6px;
+    cursor: pointer;
 }
 
 .commentForm{
@@ -65,7 +71,7 @@
     width: 40px;
     background-size: cover;
     border-radius: 50%;
-    border: 2px solid black;
+    border: 2px solid rgb(160, 158, 158);
     margin-right: 10px;
 }
 
