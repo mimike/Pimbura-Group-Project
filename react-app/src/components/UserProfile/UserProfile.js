@@ -4,9 +4,6 @@ import { useLocation } from 'react-router-dom'
 import { getSingleUser } from '../../store/session'
 import './UserProfile.css'
 
-
-
-
 function UserProfile(props) {
     const dispatch = useDispatch()
     const location = useLocation()

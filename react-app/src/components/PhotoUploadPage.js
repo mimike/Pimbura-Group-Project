@@ -10,7 +10,6 @@ function PhotoUploadPage() {
 
   const [ caption, setCaption ] = useState("")
   const [ image, setImage ] = useState(null)
-
   // const [errors, setErrors] = useState([]);
   // const history = useHistory();
 
@@ -23,18 +22,18 @@ function PhotoUploadPage() {
   //   setErrors(errors);
   // }, [img]);
 
-
   const dispatch = useDispatch()
   const handleSubmit = async (e) => {
     e.preventDefault();
     const submission = { caption, image }
     let createdPhoto = await dispatch(photoUpload(submission)) // line ~42 of session.js data return
+    console.log("------------")
     if(createdPhoto){            // if photo created, modal, redirect, etc.
       history.push('/')
     }
-    // else {
-    //   history.push('/sign-up')
-    // }
+    else {
+      history.push('/sign-up')
+    }
   }
 
   return (
@@ -59,12 +58,12 @@ function PhotoUploadPage() {
           </div>
 
           <div className="upload-image-box">
-          {/* <label for="file">Choose a PHOTO: </label> */}
+          <label className="upload-label" htmlFor="file">Choose photo</label>
             <input
+              id = "file"
               className="input-file"
               name = "image"
               type = "file"
-
               // placeholder = "Share your photo"
               onChange = { (e) => setImage(e.target.files[0])} // only accepts ONE photo if they try and upload multiple files
 

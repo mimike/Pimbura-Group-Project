@@ -53,11 +53,18 @@
     /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     font-family: -apple-system,BlinkMacSystemFont,“Segoe UI”,Roboto,Helvetica,Arial,sans-serif;
 }
-#file-upload-button input{
+#file-upload-button {
     color: red;
 }
-.input-file button{
-    color: blue;
+.input-file {
+
+    display: none;
+}
+.upload-label{
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 4px;
 }
 .upload-image-box{
 

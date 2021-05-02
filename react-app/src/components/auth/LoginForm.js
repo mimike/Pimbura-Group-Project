@@ -10,7 +10,7 @@ import './login.css'
 import google from "../../images/google-app.png"
 import apple from "../../images/apple-app.png"
 import splash from "../../images/splash.jpeg"
-//you see this when a new user vists ig.com
+
 const LoginForm = () => {
   const history = useHistory();
   const dispatch = useDispatch();
