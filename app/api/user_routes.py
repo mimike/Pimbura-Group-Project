@@ -59,8 +59,10 @@ def post_follow(id):
     #     followed_id=current_user.id,
     # )
     # print('id-----', id, 'user-id', current_user.id)
-    newFollow = follows.insert().values(
-        follower_id=f'{id}', followed_id=f'{current_user.id}')
-    print('------------', newFollow)
+    # newFollow = follows.insert().values(
+    #     follower_id=id, followed_id=current_user.id)
+    db.session.execute(f'''INSERT INTO followers (follower_id, followed_id)
+    VALUES ({id}, {current_user.id});''')
+    # print('------------', newFollow)
     db.session.commit()
     return 'test'
