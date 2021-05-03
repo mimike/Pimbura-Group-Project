@@ -5,9 +5,12 @@ import { login } from "../../store/session";
 import * as sessionActions from '../../store/session'
 import { Link } from 'react-router-dom';
 import DemoUser from '../auth/DemoUser';
-import './auth.css'
+
 import './login.css'
-//you see this when a new user vists ig.com
+import google from "../../images/google-app.png"
+import apple from "../../images/apple-app.png"
+import splash from "../../images/splash.jpeg"
+
 const LoginForm = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -41,13 +44,12 @@ const LoginForm = () => {
     <>
       <div className="log-in-container">
         <div className="phones-image">
-          <img alt="cell phone" src="/images/splash.jpeg"></img>
-          {/* <img alt="cell phone" src="https://instagram-python.s3.us-east-2.amazonaws.com/instagram-splash.png"></img> */}
+          <img alt="cell phone" src={splash}></img>
         </div>
 
         <div className="log-in-form-container">
           <div className="icon">
-                <h1>Instagram</h1>
+                <h1>Overshare</h1>
           </div>
         <div className="log-in-form">
           <form onSubmit={onLogin}>
@@ -79,7 +81,7 @@ const LoginForm = () => {
           </div>
         </form>
 
-      <span class="or-divider">OR</span>
+
 
         <div className="facebook-login">
               <a href="https://www.facebook.com"  style={{textDecoration:'none', fontSize:"1.1em", color:"#4267B2"}}><i class="fab fa-facebook-square" area-hidden="true" style={{fontSize: '1.5em'}}></i></a>
@@ -106,17 +108,21 @@ const LoginForm = () => {
         <div className="get-app">
             <p>Get the app.</p>
         </div>
+
         <div className="app-icon-container">
-          <span className="google-image">
-            <img alt="google app" src="/images/google-app.png"></img>
-            {/* https://instagram-python.s3.us-east-2.amazonaws.com/google-app.png */}
-          </span>
+          <a href="https://play.google.com/store/apps/details?id=com.instagram.android&hl=en_US&gl=US">
+            <span className="google-image">
+              <img alt="google app" src={google}></img>
+            </span>
+          </a>
+
           <span className="apple-image">
-            <img alt="apple app" src="/images/apple-app.png"></img>
-            {/* https://instagram-python.s3.us-east-2.amazonaws.com/app-store.png */}
+            <a href="https://apps.apple.com/us/app/instagram/id389801252">
+              <img alt="apple app" src={apple}></img>
+            </a>
+
           </span>
         </div>
-
       </div>
 
       <footer>

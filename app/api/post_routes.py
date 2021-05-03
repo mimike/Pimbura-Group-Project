@@ -83,7 +83,7 @@ def post_post():
 
         db.session.add(post)
         db.session.commit()
-    return "HI!!!"
+    
 
 # route for liking a post
 

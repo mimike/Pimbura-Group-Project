@@ -1,13 +1,21 @@
 .post-image-div2{
-
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    
     align-items: center;
-    margin: 50px 280px;
+    /* margin: 50px 280px; */
+    margin-left: 10px;
+    margin-right: 10px;
     background-color: rgb(251, 249, 249);
 }
-
+.explore-tile{
+    padding: 15px;
+    /* flex-direction: column; */
+}
+.explore-tile img{
+    height: 350px;
+    width: 350px;
+}
 .post-image-button{
     border: none;
     background-color: rgb(251, 249, 249);
@@ -21,26 +29,30 @@
     flex-wrap: wrap;
     justify-content: space-between;
     background-color: white;
-    
+    overflow-y: scroll;
+
 }
 
 .post-image {
-    
-    height: 49.6%;
-    width: 23%; 
+
+    /* height: 49.6%; */
+    height: auto;
+    width: auto;
     position: fixed;
 }
 
 .post-content{
     background-color: white;
     position: fixed;
-    height: 49.6%;
-    width: 16.8%;
+    /* height: 49.6%;
+    width: 16.8%; */
+    width: 400px;
+    height: 400px;
     position: fixed;
     display: flex;
     flex-wrap: wrap;
     margin-left: 23%;
-} 
+}
 
 .user-follow{
     display: flex;
@@ -51,61 +63,63 @@
 
 .username-bold {
     display: flex;
-    font-weight: bolder;
+    font-weight: 600;
+
     font-size: 15px;
     /* padding-right: 5px; */
-    margin-left: 45px;
+    margin-left: 65px;
     /* margin-top: -30px; */
     /* margin-top: -5px; */
+    position: relative;
 }
 
 .username-light {
     font-weight: light;
     display: flex;
     font-size: 12px;
-    margin-top: 20px;  
+    margin-top: 20px;
     margin-right: -100px;
     margin-left: -100px;
-    font-family: cursive;
-    
+
 }
 
 .follow{
-
-    margin-left: 10px;
-    color: black;
+    margin-left: 20px;
+    position: relative;
 }
-
 
 .user-avatar-div2{
     display: flex;
+
     flex-wrap: wrap;
     align-items: flex-end;
-    margin-top: 3px;
-    margin-left: 15px; 
+    margin-top: 100px;
+    margin-left: 7px;
+    position: fixed;
 
-} 
+}
 
 .username-bold2{
     font-weight: bolder;
     font-size: 15px;
     margin-bottom: 15px;
-    margin-left: 10px;
+    margin-left: 20px;
     color: black;
-    
+
 }
 
 .post-caption{
     margin-left: 65px;
-    font-family: cursive;
+    margin-top: 140px;
+    position: relative;
 }
 
 .user-comment-avatar-div{
-    display: flex; 
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-end;
-    margin-left: 10px;
+
     margin-top: 35px;
 }
 
@@ -113,8 +127,9 @@
     cursor: pointer;
     width: 30px;
     height: 30px;
+    margin: 10px;
     border-radius: 50%;
-    
+
 }
 .username-comment{
     margin-left: 50px;
@@ -125,7 +140,7 @@
 
 .user-comment{
     margin-top: -30px;
-    margin-left: 35px;
+    margin-left: 65px;
     font-weight: bolder;
     color: black;
 }
@@ -133,23 +148,23 @@
 
     align-items: flex-start;
     margin-left: -33px;
-    margin-top: -7px; 
+    margin-top: -7px;
     overflow-y: scroll;
     max-height: 30%;
     width: 800px;
-    
-    
+    height: 600px;
+
+
 }
 .comment{
-    margin-left: 44px;
+    margin-left: 65px;
     margin-top: 4px;
-    font-family: cursive;
     font-size: 12px;
 }
 
 .icons{
     margin-top: 15px;
-    
+
 }
 
 .post-comment-div{
@@ -157,18 +172,20 @@
     width: 300px;
     margin-right: 10px;
     background-color: white;
-    
+
 }
 
 .post-comment{
     height: 100%;
 }
 
+
 .first{
     border-bottom: 1px solid rgb(209, 207, 207);
-    width: 100%;
+    width: 15%;
     margin-top: 7px;
     height: 70px;
     margin-left: 10px;
     color: black;
-} 
+    position: fixed;
+}

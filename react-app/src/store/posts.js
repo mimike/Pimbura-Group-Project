@@ -57,7 +57,7 @@ export const likeAComment = (params) => async dispatch => {
         user_id,
     })
     const data = await response.json()
-    return 
+    return
 }
 
 
@@ -126,12 +126,14 @@ export const photoUpload = (submission) => async (dispatch) => {
         method: "POST",
         body: formData
     });
-
+    console.log("------!")
     if (response.ok) {  //202
         const data = await response.json();
+        console.log('from inside the thunk',data)
         dispatch(createPost(data))
-        // return data
+        return 
     }
+  
     // if (data.errors) {
     //     return;
     // }

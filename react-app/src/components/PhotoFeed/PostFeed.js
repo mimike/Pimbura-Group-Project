@@ -52,7 +52,6 @@ function PhotoFeed() {
 
     const handleCommentUnlike = async (e) => {
         const id = commentLike
-        console.log('INSIDE UNLIKE A COMMENT', id)
         dispatch(unlikeAcomment(id))
         dispatch(getAllPosts())
 
@@ -96,13 +95,14 @@ function PhotoFeed() {
     }
 
     const userOwnsCommentLike = (comment, userId) => {
+
         if (comment.comment_likes.length) {
             for (let i = 0; i < comment.comment_likes.length; i++) {
+                console.log('each like within comment likes array',comment.comment_likes[i])
                 if (comment.comment_likes[i].user_id === userId) {
-                    return <i onMouseOver={() => setCommentLikeId(comment.comment_likes[i].id)} onClick={handleCommentUnlike} className="heart icon"></i>
+                     return <i onMouseOver={() => setCommentLikeId(comment.comment_likes[i].id)} onClick={handleCommentUnlike} className="heart icon"></i>
                 }
             }
-
         }
         else {
             return <i onMouseOver={() => setCommentId(comment.id)} onClick={handleCommentLike} className="heart outline icon"></i>

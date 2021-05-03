@@ -4,9 +4,6 @@ import { useLocation } from 'react-router-dom'
 import { getSingleUser } from '../../store/session'
 import './UserProfile.css'
 
-
-
-
 function UserProfile(props) {
     const dispatch = useDispatch()
     const location = useLocation()
@@ -70,8 +67,8 @@ function UserProfile(props) {
                                     }}
                                 >
                                     <div className='like-comments'>
-                                        <div className='display-likes'>  {post.post_comments.length}</div>
-                                        <div className='display-comments'>  {post.post_likes.length}</div>
+                                        <div className='display-likes'>    {post.post_comments.length}   </div>
+                                        <div className='display-comments'>    {post.post_likes.length}   </div>
                                     </div>
                                 </div>
                             </div>

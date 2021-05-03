@@ -21,7 +21,7 @@ const ExplorePage = () => {
     const [postUser, setPostUser] = useState()
 
 
-    
+
     let thePost
     let ee
     let targetPost
@@ -37,14 +37,15 @@ const ExplorePage = () => {
         setComments(targetPost.post_comments)
         setPostUser(targetPost.user)
         setUserProfile(targetPost.user_id)
-        
+
     }
 
-    
 
-   
+
+
 
     return (
+        <>
         <div className="posts-list">
             <ul>
                 <div className="post-image-div2">
@@ -52,30 +53,33 @@ const ExplorePage = () => {
                             <li  key={i}>
                             {/* {console.log("++++++++++++++",Object.values(post))} */}
                                 <button className="post-image-button" onClick={onClick} value={post.id}>
-                                    <img  src={post.photo_url} value={post}/>
+                                    <div className="explore-tile">
+                                        <img  src={post.photo_url} value={post}/>
+                                    </div>
+                                    {/* <img  src={post.photo_url} value={post}/> */}
                                 </button>
                             </li>
                     ))}
-                </div>  
+                </div>
             </ul>
             {showModal && (
                 <Modal  onClose={() => setShowModal(false)}>
                     <div className="modal">
                         <div className="post-image-div"><img className="post-image" src={targetedPhoto} /></div>
-                        <div className="post-content">                      
+                        <div className="post-content">
                             <NavLink to={`/user/${userProfile}`}>
                                 <div className="first">
-                                    <div ><img className="user-avatar" src={postUser.avatar_url}></img></div>
+                                    <div><img className="user-avatar" src={postUser.avatar_url}></img></div>
                                     <div className="user-follow">
-                                        <div className="username-bold">{postUser.username}<span className="follow"><NavLink to="/follow">Follow</NavLink></span></div>
-                                    <div className="username-light">{postUser.username}</div>
+                                        <div className="username-bold">{postUser.username}<div className="follow"><NavLink to="/follow">Follow</NavLink></div></div>
+                                    {/* <div className="username-light">{postUser.username}</div> */}
                                     </div>
                                 </div>
                             </NavLink>
                             <NavLink to={`/user/${userProfile}`}>
                                 <div className="user-avatar-div2">
                                     <div><img className="user-avatar" src={postUser.avatar_url}></img></div>
-                                    <div className="username-bold2">{postUser.username}: </div>
+                                    <div className="username-bold2">{postUser.username} </div>
                                 </div>
                             </NavLink>
                                 <div className="post-caption">{targetimg.caption}</div>
@@ -92,14 +96,14 @@ const ExplorePage = () => {
                                             </div>
                                         </NavLink>
                                             <div className="comment">
-                                                {comment.comment} 
+                                                {comment.comment}
                                              </div>
                                         </li>
                                         )}
                                     </ul>
                                 </div>
                                 <div className='icons'>
-            
+
                                     <i className="heart outline icon"></i>
                                     <i className="comment outline icon"></i>
                                     <i className="paper plane outline icon"></i>
@@ -111,7 +115,21 @@ const ExplorePage = () => {
                     </div>
                 </Modal>
             )}
+               <footer>
+        <ul class="footer-links">
+          <li><a href="/">About</a></li>
+          <li><a href="/">Blog</a></li>
+          <li><a href="/">Jobs</a></li>
+          <li><a href="/">API</a></li>
+          <li><a href="/">Privacy</a></li>
+          <li><a href="/">Terms</a></li>
+          <li><a href="/">Top Accounts</a></li>
+          <li><a href="/">Hashtags</a></li>
+          <li><a href="/">Locations</a></li>
+        </ul>
+      </footer>
         </div>
+        </>
     )
 }
 

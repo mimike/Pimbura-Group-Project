@@ -1,23 +1,26 @@
 // sunday MOCK
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, redirect } from "react";
 //import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { photoUpload } from "../store/posts"  // may change name of this function and store location! curly braces from export const
 import './PhotoUploadPage.css'
+import {useHistory} from 'react-router-dom'
+
 
 function PhotoUploadPage() {
+  let history = useHistory()
 
   const [ caption, setCaption ] = useState("")
   const [ image, setImage ] = useState(null)
+  const [photoCreated, setPhotoCreated] = useState()
 
   const dispatch = useDispatch()
   const handleSubmit = async (e) => {
     e.preventDefault();
     const submission = { caption, image }
     let createdPhoto = await dispatch(photoUpload(submission)) // line ~42 of session.js data return
-    if(createdPhoto){            // if photo created, modal, redirect, etc.
-      // redirect to (/feed)
-    }
+    // return alert('Post Created!')
+    history.push('/')
   }
 
   return (
@@ -42,13 +45,12 @@ function PhotoUploadPage() {
           </div>
 
           <div className="upload-image-box">
-          {/* <label for="file">Choose a PHOTO: </label> */}
+          <label className="upload-label" htmlFor="file">Upload <i class="fas fa-upload"></i></label>
             <input
+              id = "file"
               className="input-file"
               name = "image"
               type = "file"
-              
-              // placeholder = "Share your photo"
               onChange = { (e) => setImage(e.target.files[0])} // only accepts ONE photo if they try and upload multiple files
 
             />
@@ -59,6 +61,7 @@ function PhotoUploadPage() {
               type="submit"
             >Submit
             </button>
+            {photoCreated ? <p>Posted!</p> :<p></p>}
           </div>
         </form>
       </div>

@@ -4,13 +4,17 @@ import { NavLink, useHistory } from "react-router-dom";
 import LogoutButton from '../auth/LogoutButton';
 // import picture from './profile.jpg'
 import picture from "../../images/profile.jpg"
-
 // import { useLocation } from 'react-router-dom'
 // import { getSingleUser } from '../../store/session'
-
 function ProfileButton() {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user)
+
+    const targetUser = useSelector(state => state.session.target_user)
+    console.log("TARGETUSERRR", targetUser)
+    // const targetUserAvatar = targetUser.avatar_url;
+
+    console.log("-------", sessionUser)
     const [showMenu, setShowMenu] = useState(false);  // setting the menu showing to false "closed"
 
     // function to open the menu
@@ -34,7 +38,7 @@ function ProfileButton() {
         <>
 
             <button className="profile-button"  onClick={openMenu}>
-                <img className="profile-button" alt="profile" src={picture}></img>
+                <img className="profile-button" alt="profile" src={sessionUser.avatar_url}></img>
             </button>
             {showMenu && (
 
@@ -50,7 +54,7 @@ function ProfileButton() {
                                 </NavLink>
                             </li>
                             <li className="drop-list">
-                                <NavLink to="/posts" exact={true}>
+                                <NavLink to="/upload" exact={true}>
                                     <div className="add-post">
                                         <i className="upload icon" />
                                         <span>New Post</span>
