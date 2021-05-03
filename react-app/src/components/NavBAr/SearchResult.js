@@ -23,8 +23,8 @@ const SearchResult = ({ search }) => {
 
     let searchResult = null;
     if (showMenu && Object.values(searches).length) {
-        searchResult = 
-        <div className="parent-list">
+        searchResult =
+        <div onClick={onClick} className="parent-list">
             <ul className="search-result">
                 {Object.values(searches).map(search => (
                     <li key={search.id} className="one-list">

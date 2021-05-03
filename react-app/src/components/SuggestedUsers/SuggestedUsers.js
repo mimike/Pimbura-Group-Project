@@ -83,7 +83,7 @@ function SuggestedUsers() {
                             </div>
                         ))}
                     </div>
-                    <div className='bogus-legal-info'>About * Help * Press * API * Jobs * Privacy * Terms * Locations * Top Accounts * Hashtags * Language</div>
+                    {/* <div className='bogus-legal-info'>About * Help * Press * API * Jobs * Privacy * Terms * Locations * Top Accounts * Hashtags * Language</div> */}
                 </div>
             </>
         );
@@ -91,5 +91,3 @@ function SuggestedUsers() {
 }
 
 export default SuggestedUsers;
-
-
