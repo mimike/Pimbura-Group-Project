@@ -126,7 +126,7 @@ const LoginForm = () => {
       </div>
 
       <footer>
-        <ul class="footer-links">
+        <ul className="footer-links">
           <li><a href="/">About</a></li>
           <li><a href="/">Blog</a></li>
           <li><a href="/">Jobs</a></li>
@@ -138,6 +138,10 @@ const LoginForm = () => {
           <li><a href="/">Locations</a></li>
         </ul>
       </footer>
+
+      <div className="footer-copyright">
+					<h6>© 2021 Overshare from Marc, Savannah, Heba & Mimi</h6>
+			</div>
 
     </>
 
