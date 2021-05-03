@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { getAllUsers, followAUser } from '../../store/session'
+// import { getAllUsers} from '../../store/session'
+import { getAllUsers,  followAUser} from '../../store/session'
 import { logout } from "../../store/session";
 import './SuggestedUsers.css'
 
@@ -80,7 +81,7 @@ function SuggestedUsers() {
                             </div>
                         ))}
                     </div>
-                    <div className='bogus-legal-info'>About * Help * Press * API * Jobs * Privacy * Terms * Locations * Top Accounts * Hashtags * Language</div>
+                    {/* <div className='bogus-legal-info'>About * Help * Press * API * Jobs * Privacy * Terms * Locations * Top Accounts * Hashtags * Language</div> */}
                 </div>
             </>
         );
@@ -88,5 +89,3 @@ function SuggestedUsers() {
 }
 
 export default SuggestedUsers;
-
-

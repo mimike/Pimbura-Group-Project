@@ -69,12 +69,34 @@ function PhotoUploadPage() {
           <h4>Explore our community where you can feel free to be yourself and </h4>
           <h4>overshare everything from your daily moments to life's highlights.</h4>
           <div className="how-to">
+          {/* <div className="upload-image-box">
+          <label className="upload-label" htmlFor="file"><i class="fas fa-upload"></i></label>
+            <input
+              id = "file"
+              className="input-file"
+              name = "image"
+              type = "file"
+              onChange = { (e) => setImage(e.target.files[0])} // only accepts ONE photo if they try and upload multiple files
+
+            />
+          </div> */}
             <h4>Choose a file from your computer</h4>
+            {/* <div className="upload-image-box">
+          <label className="upload-label" htmlFor="file"><i class="fas fa-upload"></i></label>
+            <input
+              id = "file"
+              className="input-file"
+              name = "image"
+              type = "file"
+              onChange = { (e) => setImage(e.target.files[0])} // only accepts ONE photo if they try and upload multiple files
+
+            />
+          </div> */}
             <h4>Wait for it to upload</h4>
             <h4>Write a witty caption</h4>
           </div>
 
-          <h4>Overshare your experience with others</h4>
+
         </div>
 
         <form className="upload-form" onSubmit={handleSubmit} enctype="multipart/form">

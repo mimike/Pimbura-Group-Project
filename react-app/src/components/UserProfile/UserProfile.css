@@ -1,7 +1,8 @@
 .outer-div{
     width: 100%;
     height: 100vh;
-    padding: 30px 20px 0px;
+    /* padding: 30px 20px 0px; */
+    padding: 90px 50px 50px 90px;
     background-color: #FAFAFA;
 }
 
@@ -25,7 +26,7 @@
 .profile-info-div{
     display: flex;
     justify-content: center;
-    height: 20%;
+    height: 15%;
 }
 
 .profile-info{
@@ -114,7 +115,7 @@
     height: 300px;
     width: 300px;
     flex: 0 0 33.333333%;
-    padding: 20px;
+    padding-top: 20px;
 
 }
 
