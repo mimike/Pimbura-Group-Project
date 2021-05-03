@@ -128,6 +128,9 @@ const ExplorePage = () => {
           <li><a href="/">Locations</a></li>
         </ul>
       </footer>
+      <div className="footer-copyright">
+					<h6>© 2021 Overshare from Marc, Savannah, Heba & Mimi</h6>
+	    </div>
         </div>
         </>
     )
