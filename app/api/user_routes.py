@@ -53,18 +53,10 @@ def post_search_user():
 @login_required
 def post_follow(id):
 
-    # print('TYPE OF REQUEST', request.json)
-    # data = request.json
-    # print('follows-------------------------------', follows, User)
-    # newFollow = follows(
-    #     follower_id=id,
-    #     followed_id=current_user.id,
-    # )
-    # print('id-----', id, 'user-id', current_user.id)
-    # newFollow = follows.insert().values(
-    #     follower_id=id, followed_id=current_user.id)
+    user = User.query.get(id)
+
     db.session.execute(f'''INSERT INTO followers (follower_id, followed_id)
     VALUES ({id}, {current_user.id});''')
     # print('------------', newFollow)
     db.session.commit()
-    return 'test'
+    return user.to_dict()

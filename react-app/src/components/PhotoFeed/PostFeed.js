@@ -98,9 +98,9 @@ function PhotoFeed() {
 
         if (comment.comment_likes.length) {
             for (let i = 0; i < comment.comment_likes.length; i++) {
-                console.log('each like within comment likes array',comment.comment_likes[i])
+                // console.log('each like within comment likes array', comment.comment_likes[i])
                 if (comment.comment_likes[i].user_id === userId) {
-                     return <i onMouseOver={() => setCommentLikeId(comment.comment_likes[i].id)} onClick={handleCommentUnlike} className="heart icon"></i>
+                    return <i onMouseOver={() => setCommentLikeId(comment.comment_likes[i].id)} onClick={handleCommentUnlike} className="heart icon"></i>
                 }
             }
         }
@@ -118,10 +118,10 @@ function PhotoFeed() {
     };
 
     if (!allPosts) return null;
-    console.log('posts------', allPosts)
+    // console.log('posts------', allPosts)
     { followedPosts = Object.values(allPosts).filter(function (el) { return el.user.username != user.username && user.following.some(obj => obj.username === el.user.username) }) }
     // obj.username === el.user.username
-    console.log('followedposts', followedPosts)
+    // console.log('followedposts', followedPosts)
 
     return (
         <>

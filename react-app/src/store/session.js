@@ -134,8 +134,9 @@ export const followAUser = (follower_id) => async dispatch => {
     const response = await fetch(`/api/users/${follower_id}/follow`, {
         method: "POST"
     })
-    const data = await response.json()
-    return
+    const user = await response.json()
+    // dispatch(setUser(user))
+    return user
 }
 
 // reducer
