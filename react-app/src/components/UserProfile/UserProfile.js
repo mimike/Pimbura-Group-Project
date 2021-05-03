@@ -67,8 +67,8 @@ function UserProfile(props) {
                                     }}
                                 >
                                     <div className='like-comments'>
-                                        <div className='display-likes'>  {post.post_comments.length}</div>
-                                        <div className='display-comments'>  {post.post_likes.length}</div>
+                                        <div className='display-likes'>    {post.post_comments.length}   </div>
+                                        <div className='display-comments'>    {post.post_likes.length}   </div>
                                     </div>
                                 </div>
                             </div>

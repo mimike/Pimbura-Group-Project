@@ -5,7 +5,6 @@ import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session'
 import { Link } from 'react-router-dom';
 import './signup.css'
-import './auth.css'
 import google from "../../images/google-app.png"
 import apple from "../../images/apple-app.png"
 import splash from "../../images/splash.jpeg"
@@ -42,7 +41,7 @@ const SignUpForm = () => {
         </div>
         <div className="sign-up-form-container">
           <div className="icon">
-              <h1>Instagram</h1>
+              <h1>Overshare</h1>
           </div>
         <div className="see-friends">
             <h4>Sign up to see photos and videos from your friends.</h4>
@@ -51,7 +50,7 @@ const SignUpForm = () => {
             <a href='https://www.facebook.com/'><button>Log in with Facebook</button></a>
         </div>
         {/* ---or---- */}
-        <span class="or-divider">OR</span>
+        {/* <span class="or-divider">OR</span> */}
         {/* sign up form */}
         <div className="sign-up-form">
           <form onSubmit={onSignUp}>
@@ -138,19 +137,25 @@ const SignUpForm = () => {
         <div className="get-app">
             <p>Get the app.</p>
         </div>
-        
+
         <div className="app-icon-container">
-          <span className="google-image">
-            <img alt="google app" src={google}></img>
-          </span>
+          <a href="https://play.google.com/store/apps/details?id=com.instagram.android&hl=en_US&gl=US">
+            <span className="google-image">
+              <img alt="google app" src={google}></img>
+            </span>
+          </a>
+
           <span className="apple-image">
-            <img alt="apple app" src={apple}></img>
+            <a href="https://apps.apple.com/us/app/instagram/id389801252">
+              <img alt="apple app" src={apple}></img>
+            </a>
+
           </span>
         </div>
       </div>
 
       <footer>
-        <ul class="footer-links">
+        <ul className="footer-links">
           <li><a href="/">About</a></li>
           <li><a href="/">Blog</a></li>
           <li><a href="/">Jobs</a></li>
@@ -162,6 +167,10 @@ const SignUpForm = () => {
           <li><a href="/">Locations</a></li>
         </ul>
       </footer>
+
+      <div className="footer-copyright">
+					<h6>© 2021 Overshare from Marc, Savannah, Heba & Mimi</h6>
+			</div>
 
     </>
 

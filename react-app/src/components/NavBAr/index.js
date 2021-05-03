@@ -12,7 +12,7 @@ const NavBar = (props) => {
         <div className="navbar-left">
           <li>
             <NavLink to="/" exact={true} activeClassName="active">
-              Instagram
+              Overshare
             </NavLink>
           </li>
         </div>
@@ -32,7 +32,7 @@ const NavBar = (props) => {
             <NavLink to="/upload" exact={true} activeClassName="active">
               <i className="upload icon right-list"/>
             </NavLink>
-            <NavLink to="/inbox" exact={true} activeClassName="active">
+            <NavLink to="/" exact={true} activeClassName="active">
               <i className="comment alternate outline icon right-list"/>
             </NavLink>
           </li>

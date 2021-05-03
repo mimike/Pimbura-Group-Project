@@ -11,7 +11,7 @@
 
 .individualPhotoDiv{
     border: 1px solid lightgray;
-    margin: 10px;
+    margin: 25px;
 
     background-color: white;
 
@@ -19,6 +19,7 @@
 
 .individualImg {
     width: 600px;
+    border-top: 1px solid rgb(230, 230, 230);
 
 }
 
@@ -26,6 +27,7 @@
     font-size: 20px;
     margin:  5px 10px;
     cursor: pointer;
+    fill:red;
 
 }
 .icons i{
@@ -60,7 +62,32 @@
 .commentsandlikesDiv {
     margin-left: 13px;
 }
+img{
+    cursor: pointer;
+}
+.heart.icon{
+    cursor: pointer;
+}
+/* .heart.icon::before{
+    border: 1px solid black;
+} */
+/* .heart.icon::after{
+    -webkit-text-fill-color:red;
+} */
+/* .heart{
+    outline: red; */
+    /* -webkit-text-fill-color:red; */
+/* } */
+/* .heart{
+    -webkit-text-fill-color:black;
+} */
+/* .heart::active{
+    -webkit-text-fill-color:red;
+} */
 
+/* .fa-heart::active{
+    color:blue;
+} */
 
 
 .commentButton{

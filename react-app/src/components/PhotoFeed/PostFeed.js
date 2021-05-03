@@ -98,16 +98,16 @@ function PhotoFeed() {
 
         if (comment.comment_likes.length) {
             for (let i = 0; i < comment.comment_likes.length; i++) {
-                console.log('each like within comment likes array',comment.comment_likes[i])
+                // console.log('each like within comment likes array', comment.comment_likes[i])
                 if (comment.comment_likes[i].user_id === userId) {
-                     return <i onMouseOver={() => setCommentLikeId(comment.comment_likes[i].id)} onClick={handleCommentUnlike} className="heart icon"></i>
+                    return <i onMouseOver={() => setCommentLikeId(comment.comment_likes[i].id)} onClick={handleCommentUnlike} className="heart icon"></i>
                 }
             }
         }
         else {
             return <i onMouseOver={() => setCommentId(comment.id)} onClick={handleCommentLike} className="heart outline icon"></i>
         }
-       
+
     }
 
     const userProfile = async (e) => {
@@ -118,10 +118,10 @@ function PhotoFeed() {
     };
 
     if (!allPosts) return null;
-    console.log('posts------', allPosts)
+    // console.log('posts------', allPosts)
     { followedPosts = Object.values(allPosts).filter(function (el) { return el.user.username != user.username && user.following.some(obj => obj.username === el.user.username) }) }
     // obj.username === el.user.username
-    console.log('followedposts', followedPosts)
+    // console.log('followedposts', followedPosts)
 
     return (
         <>
@@ -160,6 +160,22 @@ function PhotoFeed() {
                 </div>
                 <SuggestedUsers />
             </div>
+            <footer>
+                <ul className="footer-links">
+                <li><a href="/">About</a></li>
+                <li><a href="/">Blog</a></li>
+                <li><a href="/">Jobs</a></li>
+                <li><a href="/">API</a></li>
+                <li><a href="/">Privacy</a></li>
+                <li><a href="/">Terms</a></li>
+                <li><a href="/">Top Accounts</a></li>
+                <li><a href="/">Hashtags</a></li>
+                <li><a href="/">Locations</a></li>
+                </ul>
+            </footer>
+            <div className="footer-copyright">
+				<h6>© 2021 Overshare from Marc, Savannah, Heba & Mimi</h6>
+			</div>
         </>
     )
 

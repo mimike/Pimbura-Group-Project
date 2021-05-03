@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { getAllUsers } from '../../store/session'
+import { getAllUsers, followAUser, authenticate } from '../../store/session'
 import { logout } from "../../store/session";
 import './SuggestedUsers.css'
 
@@ -9,10 +9,11 @@ import './SuggestedUsers.css'
 function SuggestedUsers() {
     const history = useHistory()
     const dispatch = useDispatch()
+    const [followid, setFollowId] = useState()
     const sessionUser = useSelector(state => state.session.user)
     let users = useSelector(state => state.session.users)
     let newUsers;
-    console.log('sessionUser', sessionUser)
+    // console.log('sessionUser', sessionUser)
     useEffect(() => {
         dispatch(getAllUsers())
     }, [dispatch])
@@ -22,26 +23,28 @@ function SuggestedUsers() {
         history.push('/')
     };
 
-    console.log('sessionUser', sessionUser)
 
     const userProfile = async (e) => {
         let targetUser = Object.values(e.target)
-        // console.log('event', targetUser[1].value)
         history.push({
             pathname: `/user/${targetUser[1].value}`,
             state: { user_id: targetUser[1].value }
         })
     };
 
-    // console.log('sessionUser', sessionUser)
+    const handleFollowUser = async (e) => {
+        e.preventDefault()
+        // const params = { user_id, post_id, comment }
+        // console.log('-*********()', followid)
+        dispatch(followAUser(followid))
+        // dispatch(authenticate())
+        dispatch(getAllUsers())
+    }
+
     if (!users) return null
 
     else {
         { newUsers = users.users.filter(function (el) { return el.username != `${sessionUser.username}` && !sessionUser.following.some(obj => obj.username === el.username) }) }
-
-
-        console.log('newUser', newUsers)
-
 
         return (
             <>
@@ -76,7 +79,7 @@ function SuggestedUsers() {
                                     <div className='user-name' value={user.id} onClick={userProfile}>{user.username}</div>
                                     <div className='suggested-text'>Suggested for you</div>
                                 </div>
-                                <div className='user-follow-button'>Follow</div>
+                                <div className='user-follow-button' value={user.id} onClick={handleFollowUser} onMouseOver={() => setFollowId(user.id)}>Follow</div>
                             </div>
                         ))}
                     </div>
