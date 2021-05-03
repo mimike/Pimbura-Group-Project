@@ -127,6 +127,16 @@ export const getSingleUser = (id) => async (dispatch) => {
 
 }
 
+export const followAUser = (follower_id) => async dispatch => {
+    // const { follower_id } = params
+    console.log("INSIDE FollowerAUser FUNCTION THUNK")
+    const response = await fetch(`/api/users/${follower_id}/follow`, {
+        method: "POST"
+    })
+    const data = await response.json()
+    return
+}
+
 // reducer
 
 const initialState = { user: null, users: null, target_user: null };

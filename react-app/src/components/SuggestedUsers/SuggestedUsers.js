@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { getAllUsers } from '../../store/session'
+import { getAllUsers, followAUser } from '../../store/session'
 import { logout } from "../../store/session";
 import './SuggestedUsers.css'
 
@@ -76,7 +76,7 @@ function SuggestedUsers() {
                                     <div className='user-name' value={user.id} onClick={userProfile}>{user.username}</div>
                                     <div className='suggested-text'>Suggested for you</div>
                                 </div>
-                                <div className='user-follow-button'>Follow</div>
+                                <div className='user-follow-button' onClick={e => dispatch(followAUser(user.id))}>Follow</div>
                             </div>
                         ))}
                     </div>

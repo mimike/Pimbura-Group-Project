@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
-from app.models import User
+from flask_login import login_required, current_user
+from app.models import User, follows, db
 import json
 
 user_routes = Blueprint('users', __name__)
@@ -44,3 +44,25 @@ def post_search_user():
     users = User.query.filter(User.username.ilike(f'%{data}%')).all()
     # print("5++++++++++", {"users": [user.to_dict() for user in users]})
     return {"users": [user.to_dict() for user in users]}
+
+
+# route for posting a follow
+@user_routes.route('/<int:id>/follow', methods=['POST'])
+@login_required
+def post_follow(id):
+
+    # print('TYPE OF REQUEST', request.json)
+    # data = request.json
+    # print('follows-------------------------------', follows, User)
+    # newFollow = follows(
+    #     follower_id=id,
+    #     followed_id=current_user.id,
+    # )
+    # print('id-----', id, 'user-id', current_user.id)
+    # newFollow = follows.insert().values(
+    #     follower_id=id, followed_id=current_user.id)
+    db.session.execute(f'''INSERT INTO followers (follower_id, followed_id)
+    VALUES ({id}, {current_user.id});''')
+    # print('------------', newFollow)
+    db.session.commit()
+    return 'test'
