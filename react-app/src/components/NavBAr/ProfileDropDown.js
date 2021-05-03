@@ -54,7 +54,7 @@ function ProfileButton() {
                                 </NavLink>
                             </li>
                             <li className="drop-list">
-                                <NavLink to="/posts" exact={true}>
+                                <NavLink to="/upload" exact={true}>
                                     <div className="add-post">
                                         <i className="upload icon" />
                                         <span>New Post</span>

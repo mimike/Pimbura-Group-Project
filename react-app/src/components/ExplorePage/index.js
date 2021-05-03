@@ -115,6 +115,19 @@ const ExplorePage = () => {
                     </div>
                 </Modal>
             )}
+               <footer>
+        <ul class="footer-links">
+          <li><a href="/">About</a></li>
+          <li><a href="/">Blog</a></li>
+          <li><a href="/">Jobs</a></li>
+          <li><a href="/">API</a></li>
+          <li><a href="/">Privacy</a></li>
+          <li><a href="/">Terms</a></li>
+          <li><a href="/">Top Accounts</a></li>
+          <li><a href="/">Hashtags</a></li>
+          <li><a href="/">Locations</a></li>
+        </ul>
+      </footer>
         </div>
         </>
     )
