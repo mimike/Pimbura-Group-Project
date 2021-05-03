@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink} from "react-router-dom";
 import { Modal } from '../../context/Modal';
 import Comments from '../PhotoFeed/Comments'
+import { getAllPosts } from '../../store/posts'
 
 import './ExplorePage.css';
 import '../../context/Modal.css';
@@ -19,7 +20,11 @@ const ExplorePage = () => {
     const [ post_id, setPost_id ] = useState()
     const [userProfile, setUserProfile] = useState()
     const [postUser, setPostUser] = useState()
+    const dispatch= useDispatch()
 
+    useEffect(() => {
+       dispatch(getAllPosts())
+    }, [dispatch])
 
     
     let thePost
@@ -42,7 +47,7 @@ const ExplorePage = () => {
 
     
 
-   
+   if (!allPosts) return null;
 
     return (
         <div className="posts-list">
