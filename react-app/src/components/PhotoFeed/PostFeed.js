@@ -107,7 +107,7 @@ function PhotoFeed() {
         else {
             return <i onMouseOver={() => setCommentId(comment.id)} onClick={handleCommentLike} className="heart outline icon"></i>
         }
-       
+
     }
 
     const userProfile = async (e) => {

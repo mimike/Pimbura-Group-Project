@@ -4,8 +4,11 @@ import React, { useEffect, useState, redirect } from "react";
 import { useDispatch } from "react-redux";
 import { photoUpload } from "../store/posts"  // may change name of this function and store location! curly braces from export const
 import './PhotoUploadPage.css'
+import {useHistory} from 'react-router-dom'
+
 
 function PhotoUploadPage() {
+  let history = useHistory()
 
   const [ caption, setCaption ] = useState("")
   const [ image, setImage ] = useState(null)
@@ -16,8 +19,8 @@ function PhotoUploadPage() {
     e.preventDefault();
     const submission = { caption, image }
     let createdPhoto = await dispatch(photoUpload(submission)) // line ~42 of session.js data return
-    return alert('Post Created!')
-
+    // return alert('Post Created!')
+    history.push('/')
   }
 
   return (

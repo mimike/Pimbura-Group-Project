@@ -3,7 +3,7 @@ import React from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { demoLogin,login } from "../../store/session";
-import './auth.css'
+
 import { setErrors } from '../../store/errors';
 
 const DemoUser = () => {
