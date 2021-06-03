@@ -40,6 +40,7 @@
     justify-content: space-between;
     width: 100%;
     height: 50px;
+    /* height: 50px; */
     padding: 10px;
 }
 .commentDiv {
@@ -53,6 +54,14 @@
     border: none;
     background-color: white;
     outline: none;
+}
+
+.commentInput{
+    width: 70%;
+}
+
+.commentButton{
+    width: 30%;
 }
 
 /* .allCommentsDiv{
