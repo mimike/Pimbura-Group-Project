@@ -86,12 +86,12 @@ const ExplorePage = () => {
                                     </div>
                                 </NavLink>
                             </div>
-                            <NavLink to={`/user/${userProfile}`}>
-                                <div className="user-avatar-div2">
-                                    <div><img className="user-avatar" src={postUser.avatar_url}></img></div>
+                            <div className=" second-div">
+                                <NavLink to={`/user/${userProfile}`} className=" second">
+                                    <div className=" second-img"><img className=" avatar2" src={postUser.avatar_url}></img></div>
                                     <div className="username-bold2">{postUser.username} </div>
-                                </div>
-                            </NavLink>
+                                </NavLink>
+                            </div>
                             <div className="post-caption">{targetimg.caption}</div>
                             <div className="comments-div">
                                 <ul className="comments"> {comments.map((comment,i) =>
