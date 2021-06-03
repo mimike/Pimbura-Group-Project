@@ -11,10 +11,10 @@ function UserProfile(props) {
     const sessionUser = useSelector(state => state.session.user)
     const targetUser = useSelector(state => state.session.target_user)
     var url = /[^/]*$/.exec(`${location.pathname}`)[0];
-    console.log('location', url)
+    // console.log('location', url)
 
     var url = /[^/]*$/.exec(`${location.pathname}`)[0];
-    console.log('location', url)
+    // console.log('location', url)
     // console.log('users', users.users)
 
     useEffect(() => {
@@ -28,7 +28,7 @@ function UserProfile(props) {
     if (!targetUser) return null
 
     else {
-        { console.log('user', targetUser) }
+        // { console.log('user', targetUser) }
         return (
             <>
                 < div className='outer-div'>
