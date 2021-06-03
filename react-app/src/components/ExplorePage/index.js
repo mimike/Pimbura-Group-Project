@@ -95,16 +95,18 @@ const ExplorePage = () => {
                             <div className="post-caption">{targetimg.caption}</div>
                             <div className="comments-div">
                                 <ul className="comments"> {comments.map((comment,i) =>
-                                    <li className="comments-list" key={i}>
-                                        {/* {console.log("++++++++++++++",comment)} */}
-                                        <NavLink to={`/user/${comment.user_id}`}>
-                                            <div className="user-comment-avatar-div">
-                                                <img className="user-comment-avatar" src={comment.user.avatar_url}/>
-                                                <div className="user-comment">{comment.user.username}</div>
+                                    <li key={i}>
+                                        <div className="comments-list">
+                                            {/* {console.log("++++++++++++++",comment)} */}
+                                            <NavLink to={`/user/${comment.user_id}`} className="user-comment-avatar-div">
+                                                {/* <div className="user-comment-avatar-div"> */}
+                                                    <div className="user-comment-avatar2"><img className="user-comment-avatar" src={comment.user.avatar_url}/></div>
+                                                    <div className="user-comment">{comment.user.username}</div>
+                                                {/* </div> */}
+                                            </NavLink>
+                                            <div className="comment">
+                                                {comment.comment}
                                             </div>
-                                        </NavLink>
-                                        <div className="comment">
-                                            {comment.comment}
                                         </div>
                                     </li>
                                     )}

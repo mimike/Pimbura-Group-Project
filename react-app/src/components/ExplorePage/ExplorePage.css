@@ -5,8 +5,6 @@
     justify-content: center;
     align-items: center;
     margin: auto;
-    /* margin-left: 10px; */
-    /* margin-right: 10px; */
     background-color: rgb(251, 249, 249);
 }
 
@@ -24,17 +22,10 @@
 }
 
 .modal{
-    /* position: fixed; */
     display: flex;
-    /* flex-direction: column; */
-    /* flex-wrap: wrap; */
-    /* width: 50%; */
     align-items: center;
     height: 100%;
     justify-content: center;
-    /* background-color: white; */
-    /* overflow-y: scroll; */
-
 }
 
 .post-image-div{
@@ -43,50 +34,31 @@
 }
 
 .post-image {
-
     height: 100%;
-    /* height: 20vw; */
     width: 100%;
-    /* position: fixed; */
 }
 
 .post-content{
     background-color: white;
-    /* position: fixed; */
     height: 100%;
     width: 50%;
-    /* height: 49.6%; */
-    /* width: 16.8%; */
-    /* width: 400px; */
-    /* height: 400px; */
-    /* position: fixed; */
     display: flex;
-    /* justify-content: center; */
     flex-direction: column;
-    /* flex-wrap: wrap; */
-    /* margin-left: 23%; */
 }
 
 .first{
     border-bottom: 1px solid rgb(209, 207, 207);
     width: 100%;
-    /* margin-top: 7px; */
     height: 20%;
-    /* margin-left: 10px; */
     color: black;
     display: flex;
-    /* flex-direction: column; */
-    /* justify-content: space-between; */
     align-items: center;
-
-    /* position: fixed; */
 }
 
 .first-nav{
     display: flex;
     width: 100%;
     height: 100%;
-    /* flex-direction: column; */
     justify-content: space-between;
     align-items: center;
 }
@@ -98,78 +70,42 @@
     justify-content: center;
 }
 
-.username-bold{
-    /* width:40%; */
-    /* align-self: flex-end; */
-}
-
 .user-follow{
     display: flex;
     width: 80%;
     justify-content: space-around;
     flex-wrap: wrap;
-    /* margin-top: -30px; */
     color: black;
 }
 
 .username-bold,
 .follow {
-    /* display: flex; */
     font-weight: 600;
-
     font-size: 15px;
     width: 45%;
-    /* padding-right: 5px; */
-    /* margin-left: 65px; */
-    /* margin-top: -30px; */
-    /* margin-top: -5px; */
-    /* position: relative; */
 }
 
 .user-avatar-div2{
     width: 100%;
-    /* margin-top: 7px; */
     height: 50vw;
-    /* margin-left: 10px; */
     color: black;
     display: flex;
-    /* flex-direction: column; */
-    /* justify-content: space-between; */
     align-items: center;
-    /* display: flex;
-    width: 100%;
-    justify-content: space-around;
-    align-items: center; */
-    /* flex-wrap: wrap; */
-    /* display: flex; */
-    /* flex-wrap: wrap; */
-    /* align-items: flex-end; */
-    /* margin-top: 100px; */
-    /* margin-left: 7px; */
-    /* position: fixed; */
 }
 
 .second-div{
-    /* border-bottom: none; */
     width: 100%;
     height: 15%;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* flex-direction: column; */
 }
 
 .second{
     padding: 10px 1px 0px 0px;
     width: 47%;
-    /* height: 40vw; */
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    /* flex-direction: column; */
 }
 
-/* .second-img, */
 .avatar2{
     width: 30px;
     height: 30px;
@@ -177,134 +113,111 @@
     border: 1px solid rgb(160, 158, 158);
 }
 
-.username-light {
-    /* font-weight: light; */
-    display: flex;
-    font-size: 12px;
-    margin-top: 20px;
-    margin-right: -100px;
-    margin-left: -100px;
-
-}
-
-.follow{
-    /* margin-left: 20px; */
-    /* position: relative; */
-}
-
-
-
 .username-bold2{
     font-weight: bold;
     font-size: 13px;
-    /* margin-bottom: 15px; */
-    /* margin-left: 20px; */
     color: black;
 }
 
 .post-caption{
-    margin-left: 6.9%;
-    /* margin-top: 140px; */
-    /* position: relative; */
+    margin-left: 20px;
+    margin-bottom: 6px;
     width: 100%;
     height: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    
 }
 
 .comments-div{
-
-    /* align-items: flex-start; */
-    /* margin-left: -33px; */
-    /* margin-top: -7px; */
+    border-top: .7px solid rgb(228, 228, 228);
+    border-bottom: .7px solid rgb(228, 228, 228);
     overflow-y: scroll;
-    height: 40%; 
+    height: 50%; 
     width: 100%;
-    /* height: 600px; */
-
-
+    /* background-color: rgb(255, 255, 255); */
 }
 
 .comments{
     width: 100%;
     height: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
 }
 
 .comments-list{
-    height: 40%;
-    /* padding: 20px 0px;  */
-    /* display: flex; */
-    /* justify-content: space-between; */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    /* margin-bottom: 20px; */
+    /* margin: 3px 0px; */
 }
-
 .user-comment-avatar-div{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     height: 100%;
-    width: 50%;
-
-
-
-    /* margin-top: 35px; */
+    width: 100%;
+    /* margin-bottom: 10px; */
 }
 
 .user-comment-avatar{
     cursor: pointer;
-    width: 21%;
-    margin-left: -13%;
-
-    /* height: 100%; */
-    /* margin: 10px; */
+    width: 35px;
+    height: 30px;
     border-radius: 50%;
+    /* margin: 3px 0px; */
+}
 
+.user-comment-avatar2{
+    width: 40px;
+    height: 30px;
+    margin-right: 20px;
+    margin-top: 10px;
 }
 .username-comment{
-    /* margin-left: 50px; */
-    /* margin-top: 20px; */
     font-size: 14px;
     font-weight: bolder;
+    /* margin: 3px 0px; */
 }
 
 .user-comment{
-    /* margin-top: -30px; */
-    /* margin-left: 65px; */
     font-weight: bolder;
     color: black;
-    /* margin-left: -20%; */
+    
 }
 
 .comment{
-    /* margin-left: 65px; */
-    /* margin-top: 4px; */
     font-size: 12px;
-    margin-left: 10%;
+    margin-left: 60px;
 }
 
 .icons2{
-    /* margin-top: 15px; */
     width: 35%;
-    height: 10%;
-     display: flex; 
+    height: 5%;
+    display: flex; 
     justify-content: center;
+    margin-top: 3px;
 }
 
 .post-comment-div{
     height: 16%;
     width: 100%;
-    /* align-self:flex-start; */
-    /* margin-right: 10px; */
-    
-    /* background-color: white; */
-
+    /* background-color: rgb(248, 246, 246); */
 }
 
 .post-comment{
     height: 99%;
     width: 100%;
+    /* background-color: rgb(209, 205, 205); */
 }
 
 
