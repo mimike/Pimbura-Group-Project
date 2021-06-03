@@ -22,8 +22,8 @@ const ExplorePage = () => {
     const [postUser, setPostUser] = useState()
     const dispatch= useDispatch()
 
-    useEffect(() => {
-       dispatch(getAllPosts())
+    useEffect( async() => {
+       await dispatch(getAllPosts())
     }, [dispatch])
 
 
@@ -97,25 +97,23 @@ const ExplorePage = () => {
                                 <ul className="comments"> {comments.map((comment,i) =>
                                     <li className="comments-list" key={i}>
                                         {/* {console.log("++++++++++++++",comment)} */}
-                                    <NavLink to={`/user/${comment.user_id}`}>
-                                        <div className="user-comment-avatar-div">
-                                            <div >
+                                        <NavLink to={`/user/${comment.user_id}`}>
+                                            <div className="user-comment-avatar-div">
                                                 <img className="user-comment-avatar" src={comment.user.avatar_url}/>
                                                 <div className="user-comment">{comment.user.username}</div>
                                             </div>
-                                        </div>
-                                    </NavLink>
+                                        </NavLink>
                                         <div className="comment">
                                             {comment.comment}
-                                            </div>
+                                        </div>
                                     </li>
                                     )}
                                 </ul>
                             </div>
-                            <div className='icons'>
-                                <i className="heart outline icon"></i>
-                                <i className="comment outline icon"></i>
-                                <i className="paper plane outline icon"></i>
+                            <div className='icons2'>
+                                <i className="heart outline icon" style={{fontSize: "17px"}}></i>
+                                <i className="comment outline icon" style={{fontSize: "17px"}}></i>
+                                <i className="paper plane outline icon" style={{fontSize: "17px"}}></i>
                             </div>
                             <div className="post-comment-div">
                                 <Comments  className="post-comment" post_id={post_id}/>

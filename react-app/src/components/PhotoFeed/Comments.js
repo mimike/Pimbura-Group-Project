@@ -13,9 +13,9 @@ function Comments(postID) {
     const handleMakeAComment = async (e) => {
         e.preventDefault()
         const params = { user_id, post_id, comment }
-        dispatch(commentOnAPost(params))
+        await dispatch(commentOnAPost(params))
         setComment('')
-        dispatch(getAllPosts())
+        await dispatch(getAllPosts())
     }
 
     return (
@@ -24,7 +24,7 @@ function Comments(postID) {
                 className='commentInput'
                 type="text"
                 value={comment}
-                placeholder="Add a comment..."
+                placeholder="Add a comment ....."
                 onChange={(e) => setComment(e.target.value)}
             />
             <button className="commentButton" type="submit">Post</button>
