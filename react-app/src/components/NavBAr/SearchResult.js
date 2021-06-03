@@ -8,7 +8,7 @@ const SearchResult = ({ search }) => {
     const [showMenu, setShowMenu] = useState(true);
 
     let onClick = (e) => {
-        // console.log('onClick')
+        console.log('onClick')
         setShowMenu(false);
     }
 
@@ -17,7 +17,7 @@ const SearchResult = ({ search }) => {
             setShowMenu(true)
         } else {setShowMenu(false)}
 
-        .log('useEffect')
+        // console.log('useEffect')
 
     }, [search])
 

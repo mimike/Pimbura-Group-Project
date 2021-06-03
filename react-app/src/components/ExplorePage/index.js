@@ -72,7 +72,7 @@ const ExplorePage = () => {
                 </div>
             </ul>
             {showModal && (
-                <Modal  onClose={() => setShowModal(false)}>
+                <Modal  onClose={() => setShowModal(false)} className="modal1">
                     <div className="modal">
                         <div className="post-image-div"><img className="post-image" src={targetedPhoto} /></div>
                         <div className="post-content">

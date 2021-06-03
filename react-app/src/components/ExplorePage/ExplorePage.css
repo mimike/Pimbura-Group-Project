@@ -1,21 +1,25 @@
 .post-image-div2{
+    width: 70%;
     display: flex;
     flex-wrap: wrap;
-    
+    justify-content: center;
     align-items: center;
-    /* margin: 50px 280px; */
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: auto;
+    /* margin-left: 10px; */
+    /* margin-right: 10px; */
     background-color: rgb(251, 249, 249);
 }
+
 .explore-tile{
     padding: 15px;
     /* flex-direction: column; */
 }
+
 .explore-tile img{
     height: 350px;
     width: 350px;
 }
+
 .post-image-button{
     border: none;
     background-color: rgb(251, 249, 249);
@@ -24,34 +28,45 @@
 }
 
 .modal{
-    position: fixed;
+    /* position: fixed; */
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    background-color: white;
-    overflow-y: scroll;
+    /* flex-direction: column; */
+    /* flex-wrap: wrap; */
+    /* width: 50%; */
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+    /* background-color: white; */
+    /* overflow-y: scroll; */
 
+}
+
+.post-image-div{
+    height: 100%;
+    width: 50%;
 }
 
 .post-image {
 
-    /* height: 49.6%; */
-    height: auto;
-    width: auto;
-    position: fixed;
+    height: 100%;
+    /* height: 20vw; */
+    width: 100%;
+    /* position: fixed; */
 }
 
 .post-content{
     background-color: white;
-    position: fixed;
+    /* position: fixed; */
+    height: 100%;
+    width: 50%;
     /* height: 49.6%;
     width: 16.8%; */
-    width: 400px;
+    /* width: 400px;
     height: 400px;
     position: fixed;
     display: flex;
     flex-wrap: wrap;
-    margin-left: 23%;
+    margin-left: 23%; */
 }
 
 .user-follow{
