@@ -34,7 +34,7 @@ const SearchForm = () => {
                         value={search}
                         onChange={onChange}
                     />
-                    {console.log(search)}
+                    {/* {console.log(search)} */}
 
                 </div>
             </form>

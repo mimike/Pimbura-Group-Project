@@ -11,10 +11,10 @@ function ProfileButton() {
     const sessionUser = useSelector(state => state.session.user)
 
     const targetUser = useSelector(state => state.session.target_user)
-    console.log("TARGETUSERRR", targetUser)
+    // console.log("TARGETUSERRR", targetUser)
     // const targetUserAvatar = targetUser.avatar_url;
 
-    console.log("-------", sessionUser)
+    // console.log("-------", sessionUser)
     const [showMenu, setShowMenu] = useState(false);  // setting the menu showing to false "closed"
 
     // function to open the menu
