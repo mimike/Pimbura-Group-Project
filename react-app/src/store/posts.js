@@ -63,7 +63,8 @@ export const likeAComment = (params) => async dispatch => {
         user_id,
     })
     const data = await response.json()
-    return
+    dispatch(updatePostLikes(data))
+    
 }
 
 
@@ -80,13 +81,13 @@ export const unlikeAPost = (params) => async dispatch => {
     dispatch(updatePostLikes(data))
 }
 
-export const unlikeAcomment = (id) => async dispatch => {
-    const response = await fetch(`api/comments/${id}/unlike`, {
+export const unlikeAcomment = (id, comment_id) => async dispatch => {
+    const response = await fetch(`api/comments/${id}/unlike/${comment_id}`, {
         method: "DELETE",
     })
 
     const data = await response.json()
-    return
+    dispatch(updatePostLikes(data))
 }
 
 export const commentOnAPost = (params) => async dispatch => {
