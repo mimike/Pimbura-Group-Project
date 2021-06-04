@@ -40,7 +40,7 @@ function PhotoFeed() {
         const comment_id = commentId
         const params = { user_id, comment_id }
         dispatch(likeAComment(params))
-        dispatch(getAllPosts())
+        // dispatch(getAllPosts())
     }
 
     const handleUnlike = async (e) => {
@@ -51,9 +51,11 @@ function PhotoFeed() {
     }
 
     const handleCommentUnlike = async (e) => {
+        const comment_id = Object.values(e.target)[1].value
+        console.log(comment_id)
         const id = commentLike
-        dispatch(unlikeAcomment(id))
-        dispatch(getAllPosts())
+        dispatch(unlikeAcomment(id, comment_id))
+        // dispatch(getAllPosts())
 
     }
 
@@ -97,20 +99,19 @@ function PhotoFeed() {
     }
 
     const userOwnsCommentLike = (comment, userId) => {
-        console.log('comment from userOwnsCommentLike', comment)
         if (comment.comment_likes.length) {
             for (let i = 0; i < comment.comment_likes.length; i++) {
                 if (comment.comment_likes[i].user_id === userId) {
                     // liked
-                    return <i onMouseOver={() => setCommentLikeId(comment.comment_likes[i].id)} onClick={handleCommentUnlike} className="heart icon"></i>
+                    return <i value={comment.id} onMouseOver={() => setCommentLikeId(comment.comment_likes[i].id)} onClick={handleCommentUnlike} className="heart icon"></i>
                 } else {
-                    return <i onMouseOver={() => setCommentLikeId(comment.comment_likes[i].id)} onClick={handleCommentUnlike} className="heart outline icon"></i> 
+                    return <i value={comment.id} onMouseOver={() => setCommentLikeId(comment.comment_likes[i].id)} onClick={handleCommentUnlike} className="heart outline icon"></i> 
                 }
             }
         }
         else {
             // not liked
-            return <i onMouseOver={() => setCommentId(comment.id)} onClick={handleCommentLike} className="heart outline icon"></i>
+            return <i value={comment.id} onMouseOver={() => setCommentId(comment.id)} onClick={handleCommentLike} className="heart outline icon"></i>
         }
 
     }

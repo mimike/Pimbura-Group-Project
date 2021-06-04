@@ -10,22 +10,29 @@ comment_routes = Blueprint('comments', __name__)
 @comment_routes.route('/<int:id>/like', methods=['POST'])
 @login_required
 def comment_like(id):
-    print('INSIDE BACKEND ROUTE FOR LIKING A POST===========================')
     like = CommentLikes(
         user_id=current_user.id,
         comment_id=id
     )
     db.session.add(like)
     db.session.commit()
-    return {"like": like.to_dict()}
+    comment = Comments.query.get(id)
+    post_id = comment.post_id
+    post = Posts.query.get(post_id)
+    return {"post": post.to_dict()}
+    # return {"like": like.to_dict()}
 
 
 
 #Route for unliking a comment on a post:
-@comment_routes.route('/<int:id>/unlike', methods=['DELETE'])
+@comment_routes.route('/<int:id>/unlike/<int:comment_id>', methods=['DELETE'])
 @login_required
-def comment_unlike(id):
-    like = CommentLikes.query.get(id)
+def comment_unlike(id, comment_id):
+    user_id=current_user.id
+    like = CommentLikes.query.filter(CommentLikes.user_id == user_id, CommentLikes.comment_id == comment_id).one()
     db.session.delete(like)
     db.session.commit()
-    return {"unliked": "test"}
+    comment = Comments.query.get(comment_id)
+    post_id = comment.post_id
+    post = Posts.query.get(post_id)
+    return {"post": post.to_dict()} 
