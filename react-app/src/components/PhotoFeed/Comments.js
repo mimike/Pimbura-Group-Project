@@ -13,9 +13,9 @@ function Comments(postID) {
     const handleMakeAComment = async (e) => {
         e.preventDefault()
         const params = { user_id, post_id, comment }
-        await dispatch(commentOnAPost(params))
+        dispatch(commentOnAPost(params))
         setComment('')
-        await dispatch(getAllPosts())
+        // await dispatch(getAllPosts())
     }
 
     return (
