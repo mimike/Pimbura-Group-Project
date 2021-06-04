@@ -97,17 +97,15 @@ def post_like(id):
     )
     db.session.add(like)
     db.session.commit()
-    return like.to_dict()
+    post = Posts.query.get(id)
+    return {"post": post.to_dict()}
 
 
 # route for posting a comment
 @post_routes.route('/<int:id>/comments', methods=['POST'])
 @login_required
 def post_comment(id):
-
-    print('TYPE OF REQUEST', request.json)
     data = request.json
-    print(data['comment'])
 
     newComment = Comments(
         post_id=id,
@@ -157,7 +155,6 @@ def delete_post(id):
 @post_routes.route('/comments/<int:commentId>', methods=['DELETE'])
 @login_required
 def delete_comment(commentId):
-    print('++++++++++++++++++++++++++++++++++++++++++++++++++', commentId)
     comment = Comments.query.get(commentId)
     db.session.delete(comment)
     db.session.commit()
@@ -165,14 +162,17 @@ def delete_comment(commentId):
 
 
 # Route for unliking a post
-@post_routes.route('/like/<int:likeId>', methods=['DELETE'])
+@post_routes.route('/like/<int:postId>', methods=['DELETE'])
 @login_required
-def post_unlike(likeId):
-    print('---------------------------', likeId)
-    like = PostLikes.query.get(likeId)
+def post_unlike(postId):
+    
+    user_id=current_user.id
+    like = PostLikes.query.filter(PostLikes.user_id == user_id, PostLikes.post_id == postId).one()
     db.session.delete(like)
     db.session.commit()
-    return {"like": None}
+    post = Posts.query.get(postId)
+    
+    return {"post": post.to_dict()}
 
 
 # Route for getting all posts for a single User

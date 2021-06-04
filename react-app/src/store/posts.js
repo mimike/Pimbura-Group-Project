@@ -1,6 +1,7 @@
 
 const UPLOAD_PHOTO = "posts/UPLOAD_PHOTO";
 const DISPLAY_PHOTOS = "posts/DISPLAY_PHOTOS";
+const UPDATE_LIKES = "posts/UPDATE_LIKES"
 
 const createPost = (submission) => ({
     type: UPLOAD_PHOTO,
@@ -11,6 +12,11 @@ const displayPosts = (posts) => ({
     type: DISPLAY_PHOTOS,
     payload: posts
 
+})
+
+const updatePostLikes = (post) => ({
+    type: UPDATE_LIKES,
+    payload: post
 })
 
 export const getAllPosts = () => async (dispatch) => {
@@ -46,7 +52,7 @@ export const likeAPost = (params) => async dispatch => {
         post_id
     })
     const data = await response.json()
-    return
+    dispatch(updatePostLikes(data))
 }
 
 export const likeAComment = (params) => async dispatch => {
@@ -64,13 +70,14 @@ export const likeAComment = (params) => async dispatch => {
 
 export const unlikeAPost = (params) => async dispatch => {
     const { post_id, like_id } = params
-    const response = await fetch(`/api/posts/like/${like_id}`, {
-        method: "DELETE",
-        post_id,
-        like_id
+    
+    console.log('post id from thunk',post_id, like_id)
+    const response = await fetch(`/api/posts/like/${post_id}`, {
+        method: "DELETE"
+        
     })
     const data = await response.json()
-    return
+    dispatch(updatePostLikes(data))
 }
 
 export const unlikeAcomment = (id) => async dispatch => {
@@ -153,6 +160,13 @@ export default function reducer(state = initialState, action) {
                 postsObj[post.id] = post
             }
             return { ...state, posts: postsObj }
+        }
+        case UPDATE_LIKES: {
+            const post = action.payload.post
+            const allPosts = {...state.posts}
+            allPosts[post.id] = post
+            return {...state, posts: allPosts}
+
         }
 
         default:
