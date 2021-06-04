@@ -2,24 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
 
-const SearchResult = ({ search }) => {
+const SearchResult = ({ search, setSearch }) => {
     const searched_users = useSelector(state => state.search.search) || {};
     const searches = searched_users.users || {}
+    // To show the search reasult in drop-down menu, first set the drop-dwon to be opened 
     const [showMenu, setShowMenu] = useState(true);
 
-    let onClick = (e) => {
-        console.log('onClick')
-        setShowMenu(false);
-    }
-
+    // Then check if there is any characters in the search bar the the menu will be opened,
+    // otherwise it will not be shown
     useEffect( () => {
         if (search.length){
             setShowMenu(true)
         } else {setShowMenu(false)}
-
-        // console.log('useEffect')
-
     }, [search])
+    
+    // After that when the user selects from the result dropdown,
+    // the menu will be closed and the search bar will be empty
+    let onClick = (e) => {
+        setShowMenu(false);
+        setSearch("")
+    }
 
     let searchResult = null;
     if (showMenu && Object.values(searches).length) {
@@ -42,18 +44,6 @@ const SearchResult = ({ search }) => {
             </ul>
         </div>
     }
-    // } if (!showMenu && Object.values(searches).length) {
-    //     setShowMenu(true)
-    //     // return
-    // }
-    // } else if (search  && !showMenu) setShowMenu(true)
-
-    // if (search  && !showMenu) {
-    //     setShowMenu(true)
-    // } else {}
-
-
-
     return (
         <div>
             {searchResult}
@@ -62,6 +52,18 @@ const SearchResult = ({ search }) => {
 }
 
 export default SearchResult;
+
+
+
+
+
+
+
+
+
+
+
+
 
 // const [searchLength, setSearchLength] = useState(0)
 
@@ -86,3 +88,16 @@ export default SearchResult;
     //     document.addEventListener('click', closeMenu);
     //     return (() => document.removeEventListener('click', closeMenu))
     // }, [showMenu]);
+
+
+
+        // } if (!showMenu && Object.values(searches).length) {
+    //     setShowMenu(true)
+    //     // return
+    // }
+    // } else if (search  && !showMenu) setShowMenu(true)
+
+    // if (search  && !showMenu) {
+    //     setShowMenu(true)
+    // } else {}
+
