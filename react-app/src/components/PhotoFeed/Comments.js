@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllPosts, commentOnAPost } from '../../store/posts'
+import { commentOnAPost } from '../../store/posts'
 import './PhotoFeed.css';
 
 function Comments(postID) {

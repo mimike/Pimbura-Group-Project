@@ -10,8 +10,8 @@ import '../../context/Modal.css';
 
 const ExplorePage = () => {
     const allPosts = useSelector(state => state.posts.posts) || {};
-    const user = useSelector(state => state.session.user) || {}
-    const userId = user.id
+    // const user = useSelector(state => state.session.user) || {}
+    // const userId = user.id
     // console.log("POSTS--------------------",userId)
     const [showModal, setShowModal] = useState(false);
     const [targetedPhoto, setTargetedPhoto] = useState()
@@ -22,8 +22,8 @@ const ExplorePage = () => {
     const [postUser, setPostUser] = useState()
     const dispatch= useDispatch()
 
-    useEffect( async() => {
-       await dispatch(getAllPosts())
+    useEffect( () => {
+       dispatch(getAllPosts())
     }, [dispatch])
 
 
@@ -125,7 +125,7 @@ const ExplorePage = () => {
                 </Modal>
             )}
                <footer>
-        <ul class="footer-links">
+        <ul className="footer-links">
           <li><a href="/">About</a></li>
           <li><a href="/">Blog</a></li>
           <li><a href="/">Jobs</a></li>

@@ -9,10 +9,10 @@ import User from "./components/User";
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 import PhotoUploadPage from "./components/PhotoUploadPage"
-import SuggestedUsers from "./components/SuggestedUsers/SuggestedUsers";
+// import SuggestedUsers from "./components/SuggestedUsers/SuggestedUsers";
 import SignUpPage from "./components/SignUpPage"
 import LoginPage from "./components/LoginPage"
-import DemoUser from "./components/auth/DemoUser"
+// import DemoUser from "./components/auth/DemoUser"
 
 import PhotoFeed from "./components/PhotoFeed/PostFeed"
 

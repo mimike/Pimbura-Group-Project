@@ -1,6 +1,5 @@
 // sunday MOCK
-import React, { useEffect, useState, redirect } from "react";
-//import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { photoUpload } from "../store/posts"  // may change name of this function and store location! curly braces from export const
 import './PhotoUploadPage.css'
@@ -32,14 +31,14 @@ function PhotoUploadPage() {
 
         <div className="left-ig">
           <div className="ig-pic">
-            <img src={igPic} alt="cute photo of hair"/>
+            <img src={igPic} alt="cute hair"/>
           </div>
 
           <div>
             <div className="title-text">
               <h1>Bringing you closer to the people and things you
                 <span className="love">
-                  <button className="love2" tabindex="0">
+                  <button className="love2" tabIndex="0">
                     <span style={{WebKitBackgroundClip:"text"}}>
                     <span className="love-link">love</span>
                     </span>
@@ -99,7 +98,7 @@ function PhotoUploadPage() {
 
         </div>
 
-        <form className="upload-form" onSubmit={handleSubmit} enctype="multipart/form">
+        <form className="upload-form" onSubmit={handleSubmit} encType="multipart/form">
           <div className="caption-text-box">
             <textarea
               type="text"
@@ -110,7 +109,7 @@ function PhotoUploadPage() {
           </div>
 
           <div className="upload-image-box">
-          <label className="upload-label" htmlFor="file">Upload <i class="fas fa-upload"></i></label>
+          <label className="upload-label" htmlFor="file">Upload <i className="fas fa-upload"></i></label>
             <input
               id = "file"
               className="input-file"
