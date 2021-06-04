@@ -83,7 +83,7 @@ function PhotoFeed() {
         if (comment.user_id === userId) {
             let commentId = comment.id
             return (
-                <div><span className='user' >{comment.user.username}</span><span className='commentSpan'>{comment.comment}</span>
+                <div key={comment.id}><span className='user' >{comment.user.username}</span><span className='commentSpan'>{comment.comment}</span>
                     <button
                         value={commentId}
                         onMouseOver={() => setCommentId(comment.id)}
@@ -93,7 +93,7 @@ function PhotoFeed() {
                     {userOwnsCommentLike(comment, userId)}
                 </div>)
         } else {
-            return <div><span className='user'>{comment.user.username}</span><span className='commentSpan'>{comment.comment}</span>{userOwnsCommentLike(comment, userId)}</div>
+            return <div key={comment.id}><span className='user'>{comment.user.username}</span><span className='commentSpan'>{comment.comment}</span>{userOwnsCommentLike(comment, userId)}</div>
         }
     }
 
@@ -102,15 +102,15 @@ function PhotoFeed() {
             for (let i = 0; i < comment.comment_likes.length; i++) {
                 if (comment.comment_likes[i].user_id === userId) {
                     // liked
-                    return <i value={comment.id} onMouseOver={() => setCommentLikeId(comment.comment_likes[i].id)} onClick={handleCommentUnlike} className="heart icon"></i>
+                    return <i key={comment.id} value={comment.id} onMouseOver={() => setCommentLikeId(comment.comment_likes[i].id)} onClick={handleCommentUnlike} className="heart icon"></i>
                 } else {
-                    return <i value={comment.id} onMouseOver={() => setCommentLikeId(comment.comment_likes[i].id)} onClick={handleCommentUnlike} className="heart outline icon"></i> 
+                    return <i key={comment.id} value={comment.id} onMouseOver={() => setCommentLikeId(comment.comment_likes[i].id)} onClick={handleCommentUnlike} className="heart outline icon"></i> 
                 }
             }
         }
         else {
             // not liked
-            return <i value={comment.id} onMouseOver={() => setCommentId(comment.id)} onClick={handleCommentLike} className="heart outline icon"></i>
+            return <i key={comment.id} value={comment.id} onMouseOver={() => setCommentId(comment.id)} onClick={handleCommentLike} className="heart outline icon"></i>
         }
 
     }
@@ -123,14 +123,14 @@ function PhotoFeed() {
     };
 
     if (!allPosts) return null;
-    { followedPosts = Object.values(allPosts).filter(function (el) { return el.user.username != user.username && user.following.some(obj => obj.username === el.user.username) }) }
+    { followedPosts = Object.values(allPosts).filter(function (el) { return el.user.username !== user.username && user.following.some(obj => obj.username === el.user.username) }) }
 
     return (
         <>
             <div className='container'>
                 <div className='postsDiv'>
                     {Object.values(followedPosts).map(post => (
-                        <div key={post.id} className='individualPhotoDiv' key={`${post.id}`}>
+                        <div key={post.id} className='individualPhotoDiv'>
                             <div className='userInfo'>
                                 <img src={post.user.avatar_url} className="avatar" alt="" />
                                 <span className='user' onClick={userProfile} id={`${post.user_id}`}>{post.user.username}</span>

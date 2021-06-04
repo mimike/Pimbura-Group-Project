@@ -4,7 +4,7 @@ import { getSearchResult } from '../../store/search';
 import { useDispatch, useSelector } from 'react-redux';
 
 const SearchForm = () => {
-    const search_icon = <i class="fas fa-search"></i>
+    const search_icon = <i className="fas fa-search"></i>
     const dispatch = useDispatch();
     const searchResult = useSelector(state => state.search.search)
     const [search, setSearch] = useState("")

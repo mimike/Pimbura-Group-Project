@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
     posts,
     errorsReducer,
     search,
-    commentsReducer,
+    
 
 });
 

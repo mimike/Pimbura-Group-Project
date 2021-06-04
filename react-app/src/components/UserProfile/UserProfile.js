@@ -7,13 +7,13 @@ import './UserProfile.css'
 function UserProfile(props) {
     const dispatch = useDispatch()
     const location = useLocation()
-    const users = useSelector(state => state.session.users)
-    const sessionUser = useSelector(state => state.session.user)
+    // const users = useSelector(state => state.session.users)
+    // const sessionUser = useSelector(state => state.session.user)
     const targetUser = useSelector(state => state.session.target_user)
     var url = /[^/]*$/.exec(`${location.pathname}`)[0];
     // console.log('location', url)
 
-    var url = /[^/]*$/.exec(`${location.pathname}`)[0];
+    // var url = /[^/]*$/.exec(`${location.pathname}`)[0];
     // console.log('location', url)
     // console.log('users', users.users)
 

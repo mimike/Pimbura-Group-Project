@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { getAllUsers, followAUser, authenticate } from '../../store/session'
+import { getAllUsers, followAUser } from '../../store/session'
 import { logout } from "../../store/session";
 import './SuggestedUsers.css'
 
@@ -13,13 +13,12 @@ function SuggestedUsers() {
     const sessionUser = useSelector(state => state.session.user)
     let users = useSelector(state => state.session.users)
     let newUsers;
-    // console.log('sessionUser', sessionUser)
     useEffect(() => {
         dispatch(getAllUsers())
     }, [dispatch])
 
     const onLogout = async (e) => {
-        await dispatch(logout());
+        dispatch(logout());
         history.push('/')
     };
 
@@ -34,17 +33,14 @@ function SuggestedUsers() {
 
     const handleFollowUser = async (e) => {
         e.preventDefault()
-        // const params = { user_id, post_id, comment }
-        // console.log('-*********()', followid)
         dispatch(followAUser(followid))
-        // dispatch(authenticate())
         dispatch(getAllUsers())
     }
 
     if (!users) return null
 
     else {
-        { newUsers = users.users.filter(function (el) { return el.username != `${sessionUser.username}` && !sessionUser.following.some(obj => obj.username === el.username) }) }
+        { newUsers = users.users.filter(function (el) { return el.username !== `${sessionUser.username}` && !sessionUser.following.some(obj => obj.username === el.username) }) }
 
         return (
             <>
