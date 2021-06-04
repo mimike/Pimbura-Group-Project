@@ -52,7 +52,6 @@ function PhotoFeed() {
 
     const handleCommentUnlike = async (e) => {
         const comment_id = Object.values(e.target)[1].value
-        console.log(comment_id)
         const id = commentLike
         dispatch(unlikeAcomment(id, comment_id))
         // dispatch(getAllPosts())
@@ -61,7 +60,7 @@ function PhotoFeed() {
 
     const handleDeleteAComment = async () => {
         dispatch(deleteAComment(commentId))
-        dispatch(getAllPosts())
+        // dispatch(getAllPosts())
     }
 
     const userHasLiked = (post, userId) => {

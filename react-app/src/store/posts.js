@@ -102,8 +102,8 @@ export const commentOnAPost = (params) => async dispatch => {
             comment,
         }),
     });
-    const data = await response.json
-    return
+    const data = await response.json()
+    dispatch(updatePostLikes(data))
 }
 export const deleteAComment = (commentId) => async dispatch => {
     const response = await fetch(`api/posts/comments/${commentId}`, {
@@ -112,7 +112,7 @@ export const deleteAComment = (commentId) => async dispatch => {
     })
 
     const data = await response.json()
-    return
+    dispatch(updatePostLikes(data))
 }
 
 export const photoUpload = (submission) => async (dispatch) => {

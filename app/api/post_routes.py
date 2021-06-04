@@ -106,7 +106,7 @@ def post_like(id):
 @login_required
 def post_comment(id):
     data = request.json
-
+    post = Posts.query.get(id)
     newComment = Comments(
         post_id=id,
         user_id=current_user.id,
@@ -114,7 +114,10 @@ def post_comment(id):
     )
     db.session.add(newComment)
     db.session.commit()
-    return newComment.to_dict()
+    
+    return {"post": post.to_dict()}
+
+    
 
 
 
@@ -156,9 +159,12 @@ def delete_post(id):
 @login_required
 def delete_comment(commentId):
     comment = Comments.query.get(commentId)
+    post_id = comment.post_id
     db.session.delete(comment)
     db.session.commit()
-    return {"delete": "post deleted"}
+    post = Posts.query.get(post_id)
+    return {"post": post.to_dict()}
+
 
 
 # Route for unliking a post
