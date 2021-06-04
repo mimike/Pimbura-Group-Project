@@ -20,18 +20,20 @@ function PhotoFeed() {
     const [postID, setPostID] = useState()
     const [commentId, setCommentId] = useState()
     const [commentLike, setCommentLikeId] = useState()
+    
 
     useEffect(() => {
         dispatch(getAllPosts())
-        // dispatch(getAllUsers())
+        
     }, [dispatch])
 
     const handleLike = async (e) => {
         const user_id = userId
         const post_id = postID
+        // setPostID(post_id)
         const params = { user_id, post_id }
-        dispatch(likeAPost(params))
-        dispatch(getAllPosts())
+        await dispatch(likeAPost(params))
+        
     }
 
     const handleCommentLike = async (e) => {
@@ -43,11 +45,15 @@ function PhotoFeed() {
     }
 
     const handleUnlike = async (e) => {
-        const post_id = userId
+        console.log(Object.values(e.target)[1].value.id)
+        const post_id = Object.values(e.target)[1].value.id
         const like_id = likeID
+        // setPostID(post_id)
+        // setLikeID(like_id)
         const params = { post_id, like_id }
         dispatch(unlikeAPost(params))
-        dispatch(getAllPosts())
+        // dispatch(getAllPosts())
+        
     }
 
     const handleCommentUnlike = async (e) => {
@@ -63,17 +69,23 @@ function PhotoFeed() {
     }
 
     const userHasLiked = (post, userId) => {
+        
+        // const setLikeAndPost = () => {
+        //     setPostID(post.id)
+        //     setLikeID(post.post_likes[i].id)
+        // }
+
         if (post.post_likes.length > 0) {
             for (let i = 0; i < post.post_likes.length; i++) {
                 if (post.post_likes[i].user_id === userId) {
                     return (
-                        <span onClick={handleUnlike} onMouseOver={() => setLikeID(post.post_likes[i].id)}><i className="heart icon"></i></span>
+                        <span value={post} onClick={handleUnlike} onMouseOver={() => setLikeID(post.post_likes[i].id)}><i value={post} className="heart icon"></i></span>
                     )
                 }
 
             }
         }
-        return <span onClick={handleLike} onMouseOver={() => setPostID(post.id)}><i value={post.id} className="heart outline icon"></i></span>
+        return <span value={post} onClick={handleLike} onMouseOver={() => setPostID(post.id)}><i value={post} className="heart outline icon"></i></span>
     }
 
     const userOwnsComment = (comment, userId) => {
