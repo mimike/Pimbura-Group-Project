@@ -30,9 +30,8 @@ function PhotoFeed() {
     const handleLike = async (e) => {
         const user_id = userId
         const post_id = postID
-        // setPostID(post_id)
         const params = { user_id, post_id }
-        await dispatch(likeAPost(params))
+        dispatch(likeAPost(params))
         
     }
 
@@ -45,15 +44,10 @@ function PhotoFeed() {
     }
 
     const handleUnlike = async (e) => {
-        console.log(Object.values(e.target)[1].value.id)
         const post_id = Object.values(e.target)[1].value.id
         const like_id = likeID
-        // setPostID(post_id)
-        // setLikeID(like_id)
         const params = { post_id, like_id }
         dispatch(unlikeAPost(params))
-        // dispatch(getAllPosts())
-        
     }
 
     const handleCommentUnlike = async (e) => {
@@ -69,22 +63,18 @@ function PhotoFeed() {
     }
 
     const userHasLiked = (post, userId) => {
-        
-        // const setLikeAndPost = () => {
-        //     setPostID(post.id)
-        //     setLikeID(post.post_likes[i].id)
-        // }
-
+       
         if (post.post_likes.length > 0) {
             for (let i = 0; i < post.post_likes.length; i++) {
                 if (post.post_likes[i].user_id === userId) {
                     return (
+                        // liked
                         <span value={post} onClick={handleUnlike} onMouseOver={() => setLikeID(post.post_likes[i].id)}><i value={post} className="heart icon"></i></span>
                     )
                 }
-
             }
         }
+        // not liked
         return <span value={post} onClick={handleLike} onMouseOver={() => setPostID(post.id)}><i value={post} className="heart outline icon"></i></span>
     }
 
@@ -107,16 +97,19 @@ function PhotoFeed() {
     }
 
     const userOwnsCommentLike = (comment, userId) => {
-
+        console.log('comment from userOwnsCommentLike', comment)
         if (comment.comment_likes.length) {
             for (let i = 0; i < comment.comment_likes.length; i++) {
-                // console.log('each like within comment likes array', comment.comment_likes[i])
                 if (comment.comment_likes[i].user_id === userId) {
+                    // liked
                     return <i onMouseOver={() => setCommentLikeId(comment.comment_likes[i].id)} onClick={handleCommentUnlike} className="heart icon"></i>
+                } else {
+                    return <i onMouseOver={() => setCommentLikeId(comment.comment_likes[i].id)} onClick={handleCommentUnlike} className="heart outline icon"></i> 
                 }
             }
         }
         else {
+            // not liked
             return <i onMouseOver={() => setCommentId(comment.id)} onClick={handleCommentLike} className="heart outline icon"></i>
         }
 
@@ -130,10 +123,7 @@ function PhotoFeed() {
     };
 
     if (!allPosts) return null;
-    // console.log('posts------', allPosts)
     { followedPosts = Object.values(allPosts).filter(function (el) { return el.user.username != user.username && user.following.some(obj => obj.username === el.user.username) }) }
-    // obj.username === el.user.username
-    // console.log('followedposts', followedPosts)
 
     return (
         <>
@@ -150,8 +140,8 @@ function PhotoFeed() {
                                 {
                                     userHasLiked(post, userId)
                                 }
-                                <i className="comment outline icon"></i>
-                                <i className="paper plane outline icon"></i>
+                                {/* <i className="comment outline icon"></i>
+                                <i className="paper plane outline icon"></i> */}
                             </div>
                             {
                                 post.post_likes.length
