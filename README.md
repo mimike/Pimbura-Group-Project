@@ -4,7 +4,7 @@
 ## Features
   ### Search
    It makes easier for the user to search for another user from the list and select it from the suggestion list.
-    Require jQuery AJAX for implementing this.
+    Require AJAX for implementing this.
     Whenever the user enters a character send an AJAX request to fetch records with PHP and display the result.
     
    ![search (1)](https://user-images.githubusercontent.com/70715884/120728901-7bc2a800-c4a3-11eb-8eb2-d17c7b828367.gif)
