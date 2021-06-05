@@ -89,7 +89,7 @@ function PhotoFeed() {
                         onMouseOver={() => setCommentId(comment.id)}
                         onClick={handleDeleteAComment}
                         className='editBtn'
-                    ><i class="trash alternate icon"></i></button>
+                    ><i className="trash alternate icon"></i></button>
                     {userOwnsCommentLike(comment, userId)}
                 </div>)
         } else {

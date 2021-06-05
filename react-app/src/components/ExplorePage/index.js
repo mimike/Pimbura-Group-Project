@@ -10,9 +10,6 @@ import '../../context/Modal.css';
 
 const ExplorePage = () => {
     const allPosts = useSelector(state => state.posts.posts) || {};
-    // const user = useSelector(state => state.session.user) || {}
-    // const userId = user.id
-    // console.log("POSTS--------------------",userId)
     const [showModal, setShowModal] = useState(false);
     const [targetedPhoto, setTargetedPhoto] = useState()
     const [ targetimg, setTargetimg] = useState()
@@ -45,13 +42,7 @@ const ExplorePage = () => {
 
     }
 
-
-
    if (!allPosts) return null;
-
-
-
-
 
     return (
         <>

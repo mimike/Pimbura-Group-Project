@@ -4,16 +4,14 @@ import session from './session'
 import posts from './posts'
 import { errorsReducer } from "./errors"
 import search from './search'
-import { commentsReducer } from "./comments"
-import { followers } from './followers'
+// import { commentsReducer } from "./comments"
+// import { followers } from './followers'
 
 const rootReducer = combineReducers({
     session,
     posts,
     errorsReducer,
     search,
-    
-
 });
 
 let enhancer;
