@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { getAllUsers, followAUser } from '../../store/session'
+import { getAllUsers, followAUser, getSuggested } from '../../store/session'
 import { logout } from "../../store/session";
-import './SuggestedUsers.css'
+import './SuggestedUsers.css';
+import IndividualSuggested from './IndividualSuggested'
 
 
 function SuggestedUsers() {
@@ -11,10 +12,11 @@ function SuggestedUsers() {
     const dispatch = useDispatch()
     const [followid, setFollowId] = useState()
     const sessionUser = useSelector(state => state.session.user)
-    let users = useSelector(state => state.session.users)
-    let newUsers;
+    let suggested = useSelector(state => state.session.suggested)
+    const [followBtn, setFollowBtn] = useState('Follow')
+    
     useEffect(() => {
-        dispatch(getAllUsers())
+        dispatch(getSuggested())
     }, [dispatch])
 
     const onLogout = async (e) => {
@@ -33,14 +35,12 @@ function SuggestedUsers() {
 
     const handleFollowUser = async (e) => {
         e.preventDefault()
+        
         dispatch(followAUser(followid))
-        dispatch(getAllUsers())
+        setFollowBtn('Following')
     }
 
-    if (!users) return null
-
-    else {
-        { newUsers = users.users.filter(function (el) { return el.username !== `${sessionUser.username}` && !sessionUser.following.some(obj => obj.username === el.username) }) }
+    if (!suggested) return null
 
         return (
             <>
@@ -62,28 +62,14 @@ function SuggestedUsers() {
                         Suggested for you
                 </div>
                     <div className='suggested-user-div'>
-                        {newUsers.slice(0, 6).map(user => (
-                            <div className='single-user' key={`${user.id}`}>
-                                <div
-                                    className='user-avatar'
-                                    style={{
-                                        backgroundImage: `url(${user.avatar_url})`
-                                    }}
-                                >
-                                </div>
-                                <div className='user-information'>
-                                    <div className='user-name' value={user.id} onClick={userProfile}>{user.username}</div>
-                                    <div className='suggested-text'>Suggested for you</div>
-                                </div>
-                                <div className='user-follow-button' value={user.id} onClick={handleFollowUser} onMouseOver={() => setFollowId(user.id)}>Follow</div>
-                            </div>
-                        ))}
+                        {Object.values(suggested).map((user, idx) => (
+                            idx < 10 && (
+                                <IndividualSuggested user={user}/>
+                        )))}
                     </div>
-                    {/* <div className='bogus-legal-info'>About * Help * Press * API * Jobs * Privacy * Terms * Locations * Top Accounts * Hashtags * Language</div> */}
                 </div>
             </>
         );
-    }
 }
 
 export default SuggestedUsers;

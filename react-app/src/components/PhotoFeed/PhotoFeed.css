@@ -52,6 +52,7 @@
 }
 .commentInput, .commentButton {
     border: none;
+    
     background-color: white;
     outline: none;
 }
@@ -61,7 +62,10 @@
 }
 
 .commentButton{
-    width: 30%;
+    width: 20%;
+    text-align: right;
+    cursor: pointer;
+    
 }
 
 /* .allCommentsDiv{
@@ -107,7 +111,6 @@ img{
     width: 40px;
     background-size: cover;
     border-radius: 50%;
-    border: 2px solid rgb(160, 158, 158);
     margin-right: 10px;
 }
 
@@ -135,4 +138,8 @@ img{
 
 .commentSpan{
     padding: 5px;
+}
+
+.trash {
+    cursor: pointer;
 }

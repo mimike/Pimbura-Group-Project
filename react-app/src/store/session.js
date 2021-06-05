@@ -3,7 +3,8 @@ import { setErrors } from "./errors"
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
 const GET_USERS = 'session/GET_USERS';
-const GET_SINGLE_USER = 'session/GET_SINGLE_USER'
+const GET_SINGLE_USER = 'session/GET_SINGLE_USER';
+const GET_SUGGESTED = 'session/GET_SUGGESTED';
 
 const setUser = (user) => ({
     type: SET_USER,
@@ -22,6 +23,11 @@ const getUsers = (users) => ({
 const getOneUser = (user) => ({
     type: GET_SINGLE_USER,
     payload: user
+})
+
+const getSuggestedUsers = (users) => ({
+    type: GET_SUGGESTED,
+    payload: users
 })
 
 // thunks
@@ -113,7 +119,12 @@ export const getAllUsers = () => async (dispatch) => {
     const users = await res.json();
     dispatch(getUsers(users))
     return users
+}
 
+export const getSuggested = () => async (dispatch) => {
+    const res = await fetch('/api/users/suggested')
+    const users = await res.json();
+    dispatch(getSuggestedUsers(users))
 }
 
 export const getSingleUser = (id) => async (dispatch) => {
@@ -129,21 +140,16 @@ export const getSingleUser = (id) => async (dispatch) => {
 }
 
 export const followAUser = (follower_id) => async dispatch => {
-    // const { follower_id } = params
-    // console.log("INSIDE FollowerAUser FUNCTION THUNK")
     const response = await fetch(`/api/users/${follower_id}/follow`, {
         method: "POST"
     })
     const user = await response.json()
-    // dispatch(setUser(user))
     return user
 }
 
 // reducer
 
-const initialState = { user: null, users: null, target_user: null };
-
-// useSelector(state => state.session.user)
+const initialState = { user: null, users: null, target_user: null, suggested: null };
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -152,9 +158,16 @@ export default function reducer(state = initialState, action) {
         case REMOVE_USER:
             return { user: null };
         case GET_USERS:
-            return { ...state, users: action.payload }
+            return { ...state, users: action.payload };
         case GET_SINGLE_USER:
-            return { ...state, target_user: action.payload }
+            return { ...state, target_user: action.payload };
+        case GET_SUGGESTED:
+            const suggested = action.payload.users;
+            const suggestedObj = {}
+            for (const user of suggested){
+                suggestedObj[user.id] = user;
+            }
+            return {...state, suggested: suggestedObj}
         default:
             return state;
     }
