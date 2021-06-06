@@ -53,7 +53,7 @@ function SuggestedUsers() {
                             }}
                         >
                         </div>
-                        <div className='user-information user-name'>
+                        <div className='user-information user-name-logged'>
                             {sessionUser.username}
                         </div>
                         <div className='user-follow-button' onClick={onLogout}>Switch</div>

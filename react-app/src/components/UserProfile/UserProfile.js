@@ -1,34 +1,57 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from 'react-router-dom'
-import { getSingleUser } from '../../store/session'
+import { getSingleUser, getSuggested, followAUser } from '../../store/session'
 import './UserProfile.css'
 
 function UserProfile(props) {
-    const dispatch = useDispatch()
-    const location = useLocation()
-    // const users = useSelector(state => state.session.users)
-    // const sessionUser = useSelector(state => state.session.user)
-    const targetUser = useSelector(state => state.session.target_user)
+    const dispatch = useDispatch();
+    const location = useLocation();
+    const targetUser = useSelector(state => state.session.target_user);
+    const suggested = useSelector(state => state.session.suggested);
     var url = /[^/]*$/.exec(`${location.pathname}`)[0];
-    // console.log('location', url)
-
-    // var url = /[^/]*$/.exec(`${location.pathname}`)[0];
-    // console.log('location', url)
-    // console.log('users', users.users)
-
+    const userIdArr = []
+    const [btnText, setBtnText] = useState('')
+    let btn;
+    
     useEffect(() => {
-        dispatch(getSingleUser(url))
+        dispatch(getSingleUser(url));
+        dispatch(getSuggested())
+        
     }, [dispatch, url]);
 
-    // let followingUsers = users.users.map()
+    useEffect(() => {
+        if (targetUser && suggested){
+            for (let user in suggested){
+                userIdArr.push(parseInt(user))
+             }
+
+            if (userIdArr.includes(targetUser.id)){
+                setBtnText('Follow')
+            } else {
+                setBtnText('Following')
+            }
+        }
+
+    }, [targetUser, suggested])
+
+    const handleClick = (id) => {
+        if (btnText === 'Follow'){
+            // dispatch(followAUser(id))
+            // dispatch(getSuggested())
+            setBtnText('Following')
+        } else {
+            setBtnText('Follow')
+        }
+    }
 
 
-
-    if (!targetUser) return null
+    if (!targetUser) return null;
 
     else {
-        // { console.log('user', targetUser) }
+
+       
+        
         return (
             <>
                 < div className='outer-div'>
@@ -44,7 +67,10 @@ function UserProfile(props) {
                         <div className='profile-info'>
                             <div className='outer-name-div'>
                                 <div className='profile-name'>{targetUser.username}</div>
-                                <div className='follow-profile-button'>Follow</div>
+                                <div 
+                                className='follow-profile-button'
+                                onClick={() => handleClick(targetUser.id)}
+                                >{btnText}</div>
                             </div>
                             <div className='profile-stats-outer'>
                                 <div className='profile-post-count'><b>{targetUser.posts.length}</b> Posts</div>
