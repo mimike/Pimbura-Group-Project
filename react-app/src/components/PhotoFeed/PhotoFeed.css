@@ -143,3 +143,7 @@ img{
 .trash {
     cursor: pointer;
 }
+
+.suggested-users-div {
+    width: 300px;
+}

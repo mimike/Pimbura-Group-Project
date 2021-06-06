@@ -160,7 +160,9 @@ function PhotoFeed() {
                         </div>
                     ))}
                 </div>
-                <SuggestedUsers />
+                <div className='suggested-users-div'>
+                    <SuggestedUsers />
+                </div>
             </div>
             <footer>
                 <ul className="footer-links">
